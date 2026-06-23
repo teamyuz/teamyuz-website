@@ -1172,7 +1172,6 @@ textarea { resize: vertical; min-height: 120px; }
   transform-style: preserve-3d;
   transition: transform .65s cubic-bezier(.4,.2,.2,1);
 }
-.member-card:hover .member-flip-inner,
 .member-card.flipped .member-flip-inner { transform: rotateY(180deg); }
 
 .member-front, .member-back {

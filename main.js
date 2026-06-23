@@ -381,7 +381,6 @@ function initStarAnimation() {
 
 // ===== MEMBER FLIP (touch 대응) (15) =====
 function initMemberFlip() {
-  if (!window.matchMedia('(hover: none)').matches) return;
   document.querySelectorAll('.member-card').forEach(card => {
     card.addEventListener('click', () => card.classList.toggle('flipped'));
   });
