@@ -68,6 +68,7 @@ img { display: block; max-width: 100%; }
 
 .nav-links {
   display: flex; align-items: center; gap: 28px; list-style: none;
+  position: fixed; top: 0; right: 24px; height: 68px; z-index: 1001;
 }
 .nav-links a {
   font-size: .84rem; letter-spacing: .06em; color: var(--text-mid);
