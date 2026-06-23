@@ -126,9 +126,17 @@ function initNav() {
 
   const toggle = document.getElementById('navToggle');
   const links  = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    toggle.classList.toggle('open');
+    document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+  });
   document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => links.classList.remove('open'));
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
 }
 
