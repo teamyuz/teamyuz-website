@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Yuz | 팀 유즈</title>
+  <meta name="description" content="무대에서 노는 걸 제일 좋아하는 팀, 유즈. 실용음악·뮤지컬·성악 기반 크로스오버 퍼포먼스 팀." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="images/logo-new.jpg" alt="Team YUZ 팀 유즈" class="nav-logo-img" />
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">팀 소개</a></li>
+      <li><a href="#videos">영상</a></li>
+      <li><a href="#credentials">실적</a></li>
+      <li><a href="#members">팀원</a></li>
+      <li><a href="#programs">프로그램</a></li>
+      <li><a href="#schedule">일정</a></li>
+      <li><a href="#repertoire">레퍼토리</a></li>
+      <li><a href="#reviews">후기</a></li>
+      <li><a href="#guestbook">방명록</a></li>
+      <li><a href="#shop">굿즈샵</a></li>
+      <li><a href="#contact" class="nav-cta">공연 문의</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg-gradient">
+    <img src="images/team-group1.jpg" alt="Team YUZ" class="hero-bg-img" />
+  </div>
+  <div class="hero-content">
+    <p class="hero-sub">CROSSOVER MUSIC PERFORMANCE</p>
+    <h1 class="hero-title">TEAM <em>YUZ</em></h1>
+    <p class="hero-tagline">무대에서 노는 걸 제일 좋아하는 팀, 유즈</p>
+    <div class="hero-badges">
+      <span>DIMF 린지 공식 선정</span>
+      <span>현대백화점 공연</span>
+      <span>NC 다이노스 개막식</span>
+      <span>영화의전당</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">공연 문의하기</a>
+      <a href="#about" class="btn btn-ghost">팀 알아보기</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- ===== COUNTDOWN BANNER ===== -->
+<div class="countdown-banner" id="countdownBanner">
+  <div class="countdown-inner">
+    <div class="cd-info">
+      <span class="cd-label">다음 공연 D-DAY</span>
+      <span class="cd-title">2026.7.11 · 부산 영도 깡깡이 마을 공연</span>
+    </div>
+    <div class="cd-timer">
+      <div class="cd-unit"><span class="cd-num" id="cdDays">--</span><span class="cd-lbl">일</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cdHours">--</span><span class="cd-lbl">시간</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cdMins">--</span><span class="cd-lbl">분</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cdSecs">--</span><span class="cd-lbl">초</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">ABOUT US</div>
+    <h2 class="section-title">저희는 무대에서 노는 걸<br>제일 좋아하는 팀, 유즈입니다.</h2>
+
+    <div class="about-layout">
+      <div class="about-text-block">
+        <p>실용음악, 뮤지컬, 성악을 기반으로 한 멤버들이 모여 장르의 경계를 넘나드는 무대를 만듭니다. 서로 다른 음악적 배경은 유즈만의 표현 방식이 되고, 그 에너지는 하나의 무대로 완성됩니다.</p>
+        <p class="about-em">때로는 강렬하게, 때로는 유쾌하게, 때로는 깊이 있게.<br>유즈는 노래와 퍼포먼스로 관객과 함께 뛰고, 웃고, 즐기는 무대를 만듭니다.</p>
+      </div>
+      <div class="about-photo-wrap">
+        <img src="images/team-blue-seated.jpg" alt="팀 유즈 단체 사진" class="about-photo" />
+      </div>
+    </div>
+
+    <div class="story-stats">
+      <div class="stat"><span class="stat-num">4</span><span class="stat-label">년차 팀</span></div>
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">인 구성</span></div>
+      <div class="stat"><span class="stat-num">50</span><span class="stat-label">곡 레퍼토리</span></div>
+      <div class="stat"><span class="stat-num">30+</span><span class="stat-label">공연 실적</span></div>
+    </div>
+
+    <div class="identity-grid">
+      <div class="id-card">
+        <div class="id-icon">🎭</div>
+        <h3>크로스오버</h3>
+        <p>실용음악·뮤지컬·성악이 만나는 독창적 장르. 어디에도 없는 유즈만의 무대.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-icon">📍</div>
+        <h3>대구·경북·부산</h3>
+        <p>지역 연고를 기반으로 전국 무대까지. 지자체·문화기관·기업·웨딩 다양한 발주처와 협력.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-icon">⚡</div>
+        <h3>즉시 대응</h3>
+        <p>50곡 즉시 가능 레퍼토리 + MR 기반 운영. 악기 세팅 없이도 빠른 현장 투입 가능.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-icon">🏆</div>
+        <h3>검증된 실적</h3>
+        <p>DIMF 공식 선정, 현대백화점, NC 다이노스, 영화의전당 등 다양한 발주처와 협업.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEOS ===== -->
+<section id="videos">
+  <div class="container">
+    <div class="section-label">OUR PERFORMANCES</div>
+    <h2 class="section-title">공연 영상</h2>
+    <p class="section-desc">팀 유즈의 무대를 영상으로 만나보세요.</p>
+    <div class="video-grid">
+      <a class="video-card" href="https://youtube.com/@yuzevent-m3o?si=EU79TVnv4PNMsl62" target="_blank" rel="noopener">
+        <div class="video-thumb-wrap">
+          <img src="images/perf-imgs/img-018.png" alt="해운대 버스킹 페스티벌" class="video-thumb" />
+          <div class="video-play-overlay">
+            <div class="video-play-btn">
+              <svg viewBox="0 0 24 24" width="36" height="36"><path d="M8 5v14l11-7z" fill="white"/></svg>
+            </div>
+            <span class="video-duration">04:56</span>
+          </div>
+        </div>
+        <div class="video-info">
+          <h4>이게 버스킹이라고?🔥 역대급 인파와 함께하는 팀 유즈</h4>
+          <p>해운대 버스킹 페스티벌 · 2025</p>
+        </div>
+      </a>
+      <div class="video-channel-cta">
+        <div class="vc-yt-icon">
+          <svg viewBox="0 0 24 24" fill="#FF0000" width="52" height="52"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </div>
+        <h4>팀 유즈 YouTube 채널</h4>
+        <p>공연 풀영상, 해운대 버스킹, 현장 비하인드까지<br>팀 유즈의 모든 영상이 모여 있습니다.</p>
+        <a href="https://youtube.com/@yuzevent-m3o?si=EU79TVnv4PNMsl62" target="_blank" rel="noopener" class="btn-youtube">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          채널 구독하기
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CREDENTIALS ===== -->
+<section id="credentials">
+  <div class="container">
+    <div class="section-label">PERFORMANCE HISTORY</div>
+    <h2 class="section-title">주요 공연 실적</h2>
+
+    <div class="featured-grid">
+      <div class="featured-card">
+        <div class="fc-tag">2025 공식 선정</div>
+        <h3>DIMF<br><small>대구국제뮤지컬페스티벌</small></h3>
+        <p>DIMF 린지 공식 선정</p>
+      </div>
+      <div class="featured-card">
+        <div class="fc-tag">상설 전속</div>
+        <h3>커넥트현대</h3>
+        <p>부산 커넥트현대<br>매주 일 2회 상설 공연</p>
+      </div>
+      <div class="featured-card">
+        <div class="fc-tag">2026.3</div>
+        <h3>NC 다이노스</h3>
+        <p>프로야구 개막식<br>축하 공연</p>
+      </div>
+      <div class="featured-card">
+        <div class="fc-tag">2025.10~11</div>
+        <h3>영화의전당</h3>
+        <p>부산 영화의전당<br>시네마 팝업 공연</p>
+      </div>
+    </div>
+
+    <div class="perf-table-wrap">
+      <table class="perf-table">
+        <thead>
+          <tr><th>시기</th><th>공연명</th><th>장소</th><th>주최</th></tr>
+        </thead>
+        <tbody>
+          <!-- 2026 -->
+          <tr class="year-header"><td colspan="4">2026</td></tr>
+          <tr class="perf-upcoming"><td>2026.7.11</td><td>부산 영도 깡깡이 마을 공연</td><td>깡깡이 마을 (부산 영도)</td><td>—</td></tr>
+          <tr class="perf-new" data-imgs="9" data-title="수성못 뮤직앤비어 페스티벌"><td>2026.6.20</td><td>수성못 뮤직앤비어 페스티벌</td><td>수성못 (대구)</td><td>대구 MBC</td></tr>
+          <tr data-imgs="10" data-title="광안리 발코니 음악회"><td>2026.5</td><td>광안리 발코니 음악회</td><td>수영구생활문화센터 (부산)</td><td>부산 수영구</td></tr>
+          <tr data-imgs="11" data-title="부산 북구 숲속 작은 음악회"><td>2026.5</td><td>숲속 작은 음악회</td><td>백양근린공원 (부산 북구)</td><td>부산 북구</td></tr>
+          <tr data-imgs="12" data-title="경산 어린이날 큰 잔치"><td>2026.5</td><td>경산 어린이날 큰 잔치</td><td>경산시민운동장 (경북)</td><td>경산시</td></tr>
+          <tr data-imgs="13" data-title="NC 다이노스 개막식 공연"><td>2026.3</td><td>NC 다이노스 개막식 공연</td><td>NC 다이노스 구장</td><td>NC 다이노스</td></tr>
+          <tr data-imgs="15" data-title="포항 정월 대보름 달집 태우기"><td>2026.3</td><td>포항 정월 대보름 달집 태우기 공연</td><td>포항</td><td>—</td></tr>
+          <tr data-imgs="16" data-title="반여초 병설유치원 졸업공연"><td>2026.3</td><td>반여초등학교 병설 유치원 졸업공연</td><td>부산</td><td>반여초등학교병설유치원</td></tr>
+          <tr data-imgs="14" data-title="부산 롯데호텔 공연"><td>2026.1</td><td>부산 롯데호텔 공연</td><td>부산 롯데호텔</td><td>—</td></tr>
+          <!-- 2025 -->
+          <tr class="year-header"><td colspan="4">2025</td></tr>
+          <tr data-imgs="23" data-title="인동 도시숲 빛 축제"><td>2025.12</td><td>인동 도시숲 빛 축제</td><td>로데오거리 (구미 인동)</td><td>구미시</td></tr>
+          <tr data-imgs="30" data-title="김천시 자원봉사자 대회 시상식"><td>2025.12</td><td>김천시 자원봉사자 대회 시상식 공연</td><td>김천시</td><td>김천시</td></tr>
+          <tr><td>2025.12</td><td>마을 빛 그림에 담다 울진 미술관 공연</td><td>울진 미술관</td><td>울진</td></tr>
+          <tr data-imgs="26" data-title="창원 북 페스타"><td>2025.11</td><td>창원 북 페스타</td><td>용지문화공원 (창원특례시)</td><td>창원특례시</td></tr>
+          <tr data-imgs="29" data-title="부산 영화의전당 시네마 팝업"><td>2025.10~11</td><td>부산 영화의전당 시네마 팝업</td><td>영화의전당 (부산)</td><td>부산 영화의전당</td></tr>
+          <tr data-imgs="24" data-title="봉화 설죽 예술제"><td>2025.10</td><td>봉화 설죽 예술제 공연</td><td>봉화</td><td>봉화예총</td></tr>
+          <tr data-imgs="21" data-title="경산 대추축제"><td>2025.10</td><td>경산 대추축제</td><td>경산생활체육공원 (경북)</td><td>경산시</td></tr>
+          <tr data-imgs="25" data-title="부산 세븐브릿지 투어"><td>2025.10</td><td>부산 세븐브릿지 투어</td><td>벡스코 (부산)</td><td>부산</td></tr>
+          <tr data-imgs="28" data-title="전국 장애인 체육대회 결단식 2025"><td>2025.10</td><td>전국 장애인 체육대회 선수단 결단식 공연</td><td>—</td><td>대구광역시</td></tr>
+          <tr data-imgs="18" data-title="해운대 버스킹 페스티벌"><td>2025</td><td>해운대 버스킹 페스티벌</td><td>해운대 (부산)</td><td>페스티벌 공식초청</td></tr>
+          <tr data-imgs="17" data-title="DIMF 린지 공식 선정"><td>2025</td><td>대구국제뮤지컬페스티벌 DIMF 린지 공식 선정</td><td>동성로 28아트스퀘어 (대구)</td><td>DIMF</td></tr>
+          <tr data-imgs="27" data-title="연제구청 30주년 기념 음악회"><td>2025.7</td><td>연제구청 기념 음악회</td><td>부산</td><td>연제구청</td></tr>
+          <tr data-imgs="22" data-title="서면 차 없는 거리 축제"><td>2025.5</td><td>서면 차 없는 거리 축제 공연</td><td>서면 (부산)</td><td>서면</td></tr>
+          <tr data-imgs="31" data-title="청도 프로방스 어린이날"><td>2025.5</td><td>청도 프로방스 어린이날 공연</td><td>청도 프로방스</td><td>청도 프로방스</td></tr>
+          <tr data-imgs="43" data-title="예술고등학교 졸업식 공연"><td>2025.3</td><td>예술 고등학교 졸업식 공연</td><td>—</td><td>—</td></tr>
+          <!-- 2024 -->
+          <tr class="year-header"><td colspan="4">2024</td></tr>
+          <tr data-imgs="32" data-title="영남대 챔버홀 콘서트"><td>2024.12</td><td>영남대 챔버홀 콘서트</td><td>영남대 챔버홀</td><td>—</td></tr>
+          <tr data-imgs="36" data-title="봉화 세대공감 별빛문화제"><td>2024.11</td><td>봉화 세대공감 별빛문화제</td><td>봉화</td><td>봉화</td></tr>
+          <tr data-imgs="44" data-title="커넥트현대 힐링콘서트"><td>2024.10~현재</td><td>커넥트현대 힐링콘서트</td><td>커넥트현대 그리너리 라운지</td><td>커넥트현대 — 상설 전속</td></tr>
+          <tr data-imgs="34,1" data-title="부산 남구 버스킹 페스티벌"><td>2024.10</td><td>유엔남구 버스킹 페스티벌</td><td>부산 남구</td><td>부산 남구</td></tr>
+          <tr data-imgs="33" data-title="전국 장애인 체육대회 결단식 2024"><td>2024.10</td><td>전국 장애인 체육대회 대구 선수단 결단식</td><td>—</td><td>대구광역시</td></tr>
+          <tr data-imgs="41" data-title="군위 바베큐 축제 개막식"><td>2024</td><td>군위 바베큐 축제 개막식 공연</td><td>경북 군위</td><td>대구광역시</td></tr>
+          <tr data-imgs="40" data-title="대구 동성로 청년 버스킹"><td>2024</td><td>대구 프리즘 동성로 청년 버스킹</td><td>동성로 (대구)</td><td>대구</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEMBERS ===== -->
+<section id="members">
+  <div class="container">
+    <div class="section-label">OUR TEAM</div>
+    <h2 class="section-title">팀원 소개</h2>
+    <p class="section-desc">실용음악·뮤지컬·성악 전공의 6인이 함께합니다.</p>
+
+    <div class="members-grid">
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="images/member-ryu.jpg" alt="류수홍" />
+        </div>
+        <div class="member-info">
+          <div class="member-role-tag musical">뮤지컬 배우 · 리더</div>
+          <h3 class="member-name">류수홍</h3>
+          <p class="member-role">뮤지컬 배우 | 연기자 | 공연 기획자</p>
+          <ul class="member-career">
+            <li>TEAM YUZ 리더</li>
+            <li>대구국제뮤지컬페스티벌 DIMF 린지 공식 선정</li>
+            <li>부산 현대백화점 전속 싱어</li>
+            <li>뮤지컬 「터널 아래 별을 심다」 연출</li>
+            <li>뮤지컬 「서푼짜리 오페라」 출연</li>
+          </ul>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="images/member-lee-jh.jpg" alt="이정효" />
+        </div>
+        <div class="member-info">
+          <div class="member-role-tag crossover">실용음악 · 뮤지컬 · 성악</div>
+          <h3 class="member-name">이정효</h3>
+          <p class="member-role">Main Vocal</p>
+          <ul class="member-career">
+            <li>영남대학교 음악대학 성악과 졸업 (2023)</li>
+            <li>2017 경상남도 성악 콩쿨 최우수 수상</li>
+            <li>2024~2025 현대백화점 전속 싱어</li>
+            <li>2025 부산 남구 최우수 버스커</li>
+            <li>現 911연기학원 뮤지컬 강사</li>
+          </ul>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo placeholder"><span class="member-initial">♪</span></div>
+        <div class="member-info">
+          <div class="member-role-tag vocal">성악 · Tenor</div>
+          <h3 class="member-name">박성빈</h3>
+          <p class="member-coming">사진 준비 중</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo placeholder"><span class="member-initial">♪</span></div>
+        <div class="member-info">
+          <div class="member-role-tag vocal">성악 · Bass</div>
+          <h3 class="member-name">이호준</h3>
+          <p class="member-coming">사진 준비 중</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo placeholder"><span class="member-initial">🎭</span></div>
+        <div class="member-info">
+          <div class="member-role-tag musical">뮤지컬</div>
+          <h3 class="member-name">멤버 5</h3>
+          <p class="member-coming">프로필 준비 중</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo placeholder"><span class="member-initial">🎭</span></div>
+        <div class="member-info">
+          <div class="member-role-tag musical">뮤지컬</div>
+          <h3 class="member-name">멤버 6</h3>
+          <p class="member-coming">프로필 준비 중</p>
+        </div>
+      </div>
+    </div>
+    <p class="members-note">* 팀원 사진과 프로필을 보내주시면 바로 업데이트합니다.</p>
+  </div>
+</section>
+
+<!-- ===== PROGRAMS ===== -->
+<section id="programs">
+  <div class="container">
+    <div class="section-label">PROGRAMS</div>
+    <h2 class="section-title">공연 프로그램</h2>
+    <p class="section-desc">행사 성격에 맞게 구성합니다.</p>
+
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="prog-icon">🎪</div>
+        <div class="prog-number">01</div>
+        <h3>페스티벌 & 행사 축하공연</h3>
+        <p>지자체 축제·기업 행사·개막식·기념식. 팝페라부터 가요까지 분위기에 맞게 구성.</p>
+        <ul>
+          <li>지자체·공공기관 행사</li>
+          <li>기업 행사·시상식</li>
+          <li>프로구단 개막식</li>
+          <li>지역 문화 페스티벌</li>
+        </ul>
+      </div>
+      <div class="program-card">
+        <div class="prog-icon">🎵</div>
+        <div class="prog-number">02</div>
+        <h3>상설 & 전속 공연</h3>
+        <p>정기적인 공연 파트너십. 매주·매월 반복 운영 가능. 현재 커넥트현대 상설 운영 중.</p>
+        <ul>
+          <li>백화점·쇼핑몰 상설 공연</li>
+          <li>호텔·리조트 전속 공연</li>
+          <li>문화센터 정기 공연</li>
+        </ul>
+      </div>
+      <div class="program-card">
+        <div class="prog-icon">💍</div>
+        <div class="prog-number">03</div>
+        <h3>뮤지컬 웨딩 축가</h3>
+        <p>특별한 날을 위한 감동적인 공연. 뮤지컬부터 팝페라까지 맞춤 셋리스트 구성.</p>
+        <ul>
+          <li>뮤지컬 넘버 축가</li>
+          <li>팝페라 축가</li>
+          <li>맞춤형 셋리스트</li>
+        </ul>
+      </div>
+      <div class="program-card">
+        <div class="prog-icon">🌟</div>
+        <div class="prog-number">04</div>
+        <h3>갈라 & 단독 콘서트</h3>
+        <p>완성도 높은 단독 공연 기획. 뮤지컬 갈라콘서트부터 팝페라 콘서트까지.</p>
+        <ul>
+          <li>뮤지컬 갈라콘서트</li>
+          <li>팝페라 힐링 콘서트</li>
+          <li>크리스마스 특별 공연</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCHEDULE ===== -->
+<section id="schedule">
+  <div class="container">
+    <div class="section-label">SCHEDULE</div>
+    <h2 class="section-title">공연 일정</h2>
+    <p class="section-desc">팀 유즈의 공연 일정입니다. 정기적으로 업데이트됩니다.</p>
+
+    <div class="schedule-wrap">
+      <div class="schedule-ongoing">
+        <div class="sched-badge ongoing">상설</div>
+        <div class="sched-info">
+          <h4>커넥트현대 힐링콘서트</h4>
+          <p>매주 일요일 2시 · 4시</p>
+          <span class="sched-place">📍 부산 커넥트현대 2층 그리너리 라운지</span>
+        </div>
+      </div>
+
+      <div class="schedule-list" id="scheduleList">
+        <!-- JS로 렌더링 -->
+      </div>
+
+      <p class="schedule-note">* 공연 일정은 변경될 수 있습니다. 정확한 정보는 인스타그램 <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">@team_yuz_</a>에서 확인하세요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REPERTOIRE ===== -->
+<section id="repertoire">
+  <div class="container">
+    <div class="section-label">REPERTOIRE</div>
+    <h2 class="section-title">레퍼토리 <span class="rep-count">50곡</span></h2>
+    <p class="section-desc">즉시 공연 가능한 50곡. 장르별로 확인하세요.</p>
+
+    <div class="rep-filters">
+      <button class="rep-filter active" data-filter="all">전체</button>
+      <button class="rep-filter" data-filter="뮤지컬">뮤지컬</button>
+      <button class="rep-filter" data-filter="디즈니">디즈니</button>
+      <button class="rep-filter" data-filter="팝">팝</button>
+      <button class="rep-filter" data-filter="가요">가요</button>
+      <button class="rep-filter" data-filter="트로트">트로트</button>
+      <button class="rep-filter" data-filter="팝페라">팝페라</button>
+      <button class="rep-filter" data-filter="민요">민요·기타</button>
+    </div>
+    <div class="rep-grid" id="repGrid"></div>
+  </div>
+</section>
+
+<!-- ===== SHOP ===== -->
+<section id="shop">
+  <div class="container">
+    <div class="section-label">OFFICIAL GOODS</div>
+    <h2 class="section-title">팀 유즈 굿즈샵</h2>
+    <p class="section-desc">팀 유즈 공식 굿즈. 현장 또는 DM으로 구매 가능합니다.</p>
+
+    <div class="shop-coming-banner">
+      <span class="shop-badge">COMING SOON</span>
+      <p>공식 굿즈가 곧 출시됩니다! 인스타그램 <strong>@team_yuz_</strong>을 팔로우하고 소식을 먼저 받아보세요.</p>
+      <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener" class="btn btn-sky">인스타 팔로우</a>
+    </div>
+
+    <div class="shop-grid">
+      <div class="shop-item">
+        <div class="shop-img-wrap">
+          <div class="shop-img-ph">🃏</div>
+          <div class="shop-badge-overlay">추후 출시</div>
+        </div>
+        <div class="shop-info">
+          <h4>팀 유즈 포토카드 세트</h4>
+          <p class="shop-desc">멤버 6인 포토카드 + 팀샷 포함 7장 구성</p>
+          <button class="btn btn-shop-soon" disabled>추후 출시</button>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-img-wrap">
+          <div class="shop-img-ph">👜</div>
+          <div class="shop-badge-overlay">추후 출시</div>
+        </div>
+        <div class="shop-info">
+          <h4>팀 유즈 에코백</h4>
+          <p class="shop-desc">로고 프린팅 캔버스 에코백</p>
+          <button class="btn btn-shop-soon" disabled>추후 출시</button>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-img-wrap">
+          <div class="shop-img-ph">🏷️</div>
+          <div class="shop-badge-overlay">추후 출시</div>
+        </div>
+        <div class="shop-info">
+          <h4>스티커 팩</h4>
+          <p class="shop-desc">팀 유즈 로고 & 캐릭터 스티커 10종</p>
+          <button class="btn btn-shop-soon" disabled>추후 출시</button>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-img-wrap">
+          <div class="shop-img-ph">☕</div>
+          <div class="shop-badge-overlay">추후 출시</div>
+        </div>
+        <div class="shop-info">
+          <h4>로고 텀블러</h4>
+          <p class="shop-desc">스테인리스 보온 텀블러</p>
+          <button class="btn btn-shop-soon" disabled>추후 출시</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-contact">
+      <p>🛍️ 공연 현장 구매 또는 사전 예약 문의</p>
+      <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">Instagram DM @team_yuz_</a>
+      <span>·</span>
+      <a href="mailto:yuzevent@naver.com">yuzevent@naver.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-label">TESTIMONIALS</div>
+    <h2 class="section-title">함께하신 분들의 이야기</h2>
+    <p class="section-desc">팀 유즈와 특별한 순간을 함께한 분들입니다.</p>
+    <p class="swipe-hint" aria-hidden="true">← 옆으로 밀어보세요</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Team Yuz 덕분에 저희 결혼식이 정말 특별해졌어요. 감미로운 목소리와 완벽한 하모니가 모든 하객에게 큰 감동을 주었습니다. 인생 최고의 순간을 더욱 아름답게 장식할 수 있었습니다. 강력 추천합니다!"</p>
+        <div class="review-meta">
+          <span class="review-tag wedding">웨딩 축가</span>
+          <span class="review-author">— 김민준 &amp; 이수진 부부</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"부산 버스킹 페스티벌에서 Team Yuz의 공연을 보고 정말 놀랐습니다. 압도적인 에너지와 다채로운 레퍼토리에 저절로 몸이 들썩였어요. 관객들과의 소통도 최고였고, 덕분에 페스티벌이 한층 더 즐거웠습니다!"</p>
+        <div class="review-meta">
+          <span class="review-tag festival">버스킹 페스티벌</span>
+          <span class="review-author">— 페스티벌 관객 박선영</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"저희 회사 연말 파티에 Team Yuz를 초청했는데, 기대 이상으로 멋진 공연을 보여주셨습니다. 전문적이고 세련된 무대 매너로 행사의 품격을 높여주셔서 모든 임직원이 대만족했습니다. 다음 행사에도 꼭 다시 모시고 싶습니다."</p>
+        <div class="review-meta">
+          <span class="review-tag corporate">기업 행사</span>
+          <span class="review-author">— 이사 이지혜</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Team Yuz의 따뜻한 마음이 담긴 자선 콘서트에 참여할 수 있어서 정말 감사했습니다. 아름다운 음악으로 많은 사람들에게 희망과 위로를 선사해주셨어요. 진정한 예술의 힘을 느낄 수 있는 시간이었습니다."</p>
+        <div class="review-meta">
+          <span class="review-tag charity">자선 콘서트</span>
+          <span class="review-author">— 자선단체 관계자</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"우리 동네 문화 축제에 Team Yuz가 함께 해주어 행사가 더욱 풍성해졌습니다. 남녀노소 누구나 즐길 수 있는 공연으로 지역 주민들에게 큰 즐거움을 주었고, 덕분에 축제 분위기가 한층 더 고조되었습니다."</p>
+        <div class="review-meta">
+          <span class="review-tag local">지역 행사</span>
+          <span class="review-author">— 지역 주민 대표</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">CONTACT</div>
+    <h2 class="section-title">공연 문의</h2>
+    <p class="section-desc">행사 규모와 예산에 관계없이 먼저 연락주세요.<br>최대한 빠르게 답변드립니다.</p>
+
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <div class="ci-block">
+          <h3>직접 연락</h3>
+          <div class="ci-row">
+            <span class="ci-label">공연 섭외</span>
+            <a href="tel:010-6668-2436">010-6668-2436</a>
+          </div>
+          <div class="ci-row">
+            <span class="ci-label">이메일</span>
+            <a href="mailto:yuzevent@naver.com">yuzevent@naver.com</a>
+          </div>
+        </div>
+        <div class="ci-block">
+          <h3>SNS</h3>
+          <div class="ci-row">
+            <span class="ci-label">Instagram</span>
+            <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">@team_yuz_</a>
+          </div>
+          <div class="ci-row">
+            <span class="ci-label">YouTube</span>
+            <a href="https://youtube.com/@yuzevent-m3o" target="_blank" rel="noopener">팀 유즈 채널</a>
+          </div>
+          <div class="ci-row">
+            <span class="ci-label">Blog</span>
+            <a href="https://blog.naver.com/yuzevent" target="_blank" rel="noopener">blog.naver.com/yuzevent</a>
+          </div>
+        </div>
+        <div class="ci-block">
+          <h3>발주처 유형</h3>
+          <div class="ci-tags">
+            <span>지자체</span><span>기업 행사</span><span>웨딩홀</span>
+            <span>문화기관</span><span>프로구단</span><span>페스티벌</span><span>상설 전속</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="org">단체 / 성함 <span class="req">*</span></label>
+            <input type="text" id="org" name="org" placeholder="예) OO시청, 홍길동" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">연락처 <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="eventType">행사 유형 <span class="req">*</span></label>
+            <select id="eventType" name="eventType" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option>지자체 / 공공기관 행사</option>
+              <option>기업 행사 / 시상식</option>
+              <option>웨딩 축가</option>
+              <option>페스티벌 / 축제</option>
+              <option>상설 / 전속 공연</option>
+              <option>갈라 / 단독 콘서트</option>
+              <option>기타</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="eventDate">행사 날짜</label>
+            <input type="date" id="eventDate" name="eventDate" />
+          </div>
+          <div class="form-group">
+            <label for="venue">행사 장소</label>
+            <input type="text" id="venue" name="venue" placeholder="예) 대구 엑스코, 부산 벡스코" />
+          </div>
+        </div>
+        <div class="form-group full">
+          <label for="budget">예산 규모</label>
+          <select id="budget" name="budget">
+            <option value="" disabled selected>선택하세요 (선택사항)</option>
+            <option>100만원 미만</option>
+            <option>100~300만원</option>
+            <option>300~500만원</option>
+            <option>500만원~1000만원</option>
+            <option>1000만원 이상</option>
+            <option>미정 / 협의</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">문의 내용 <span class="req">*</span></label>
+          <textarea id="message" name="message" rows="5" placeholder="행사 개요, 공연 시간, 특별 요청사항 등을 자유롭게 적어주세요." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">문의 보내기</button>
+        <p class="form-note">* 문의 내용은 yuzevent@naver.com으로 전달됩니다. 영업일 기준 1~2일 내 답변드립니다.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GUESTBOOK ===== -->
+<section id="guestbook">
+  <div class="container">
+    <div class="section-label">GUESTBOOK</div>
+    <h2 class="section-title">방명록</h2>
+    <p class="section-desc">팀 유즈에게 응원 메시지를 남겨주세요! 💙</p>
+    <div class="guestbook-wrap">
+      <form class="guestbook-form" id="guestbookForm">
+        <input type="text" id="gbName" class="gb-input" placeholder="이름 (필명 가능)" maxlength="20" required />
+        <input type="text" id="gbMessage" class="gb-input gb-msg-input" placeholder="응원 메시지를 남겨주세요! (최대 200자)" maxlength="200" required />
+        <button type="submit" class="btn btn-primary">남기기</button>
+      </form>
+      <div class="guestbook-list" id="guestbookList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo-new.jpg" alt="Team YUZ 팀 유즈" class="footer-logo-img" />
+        <p>유즈 이벤트 컴퍼니<br>대표 류수홍</p>
+        <p class="footer-copy">사업자등록번호 416-26-29575<br>간이과세자</p>
+      </div>
+      <div class="footer-links">
+        <h4>바로가기</h4>
+        <ul>
+          <li><a href="#about">팀 소개</a></li>
+          <li><a href="#videos">공연 영상</a></li>
+          <li><a href="#credentials">공연 실적</a></li>
+          <li><a href="#members">팀원</a></li>
+          <li><a href="#programs">프로그램</a></li>
+          <li><a href="#schedule">공연 일정</a></li>
+          <li><a href="#repertoire">레퍼토리</a></li>
+          <li><a href="#reviews">후기</a></li>
+          <li><a href="#guestbook">방명록</a></li>
+          <li><a href="#shop">굿즈샵</a></li>
+          <li><a href="#contact">공연 문의</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>연락처</h4>
+        <p>공연 섭외: <a href="tel:010-6668-2436">010-6668-2436</a></p>
+        <p><a href="mailto:yuzevent@naver.com">yuzevent@naver.com</a></p>
+        <div class="footer-sns">
+          <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://youtube.com/@yuzevent-m3o" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://blog.naver.com/yuzevent" target="_blank" rel="noopener">Blog</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Team Yuz · 유즈 이벤트 컴퍼니. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY CTA ===== -->
+<div class="m-sticky-bar" id="mStickyBar">
+  <a href="#contact" class="m-sticky-inquiry">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    공연 문의하기
+  </a>
+  <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener" class="m-sticky-insta">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+</div>
+
+<!-- ===== SCROLL TO TOP ===== -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="맨 위로">↑</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="main.js"></script>
+
+<!-- ===== PERF PHOTO MODAL ===== -->
+<div class="perf-modal-overlay" id="perfModal">
+  <div class="perf-modal-box">
+    <button class="perf-modal-close" id="perfModalClose">×</button>
+    <div class="perf-modal-img-wrap">
+      <button class="perf-modal-nav perf-modal-prev" id="perfModalPrev">‹</button>
+      <img class="perf-modal-img" id="perfModalImg" src="" alt="" />
+      <button class="perf-modal-nav perf-modal-next" id="perfModalNext">›</button>
+    </div>
+    <div class="perf-modal-footer">
+      <span class="perf-modal-title" id="perfModalTitle"></span>
+      <span class="perf-modal-counter" id="perfModalCounter"></span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
