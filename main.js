@@ -247,6 +247,144 @@ function initPerfModal() {
       open(nums, t);
     });
   });
+
+  document.querySelectorAll('.gallery-item[data-imgs]').forEach(item => {
+    item.addEventListener('click', () => {
+      const nums = item.dataset.imgs.split(',').map(Number);
+      const t = item.dataset.title || '';
+      open(nums, t);
+    });
+  });
+}
+
+// ===== TYPING ANIMATION (1) =====
+function initTyping() {
+  const el = document.getElementById('heroSub');
+  if (!el) return;
+  const phrases = [
+    'CROSSOVER MUSIC PERFORMANCE',
+    '뮤지컬 · 팝페라 · 실용음악',
+    '무대에서 노는 걸 제일 좋아하는 팀',
+    '대구 · 부산 · 경북 기반 6인 퍼포먼스',
+  ];
+  let pi = 0, ci = 0, deleting = false, paused = false;
+
+  function tick() {
+    if (paused) return;
+    const phrase = phrases[pi];
+    if (!deleting) {
+      ci++;
+      el.textContent = phrase.slice(0, ci);
+      if (ci === phrase.length) {
+        deleting = true; paused = true;
+        setTimeout(() => { paused = false; tick(); }, 2200);
+        return;
+      }
+      setTimeout(tick, 75);
+    } else {
+      ci--;
+      el.textContent = phrase.slice(0, ci);
+      if (ci === 0) {
+        deleting = false;
+        pi = (pi + 1) % phrases.length;
+      }
+      setTimeout(tick, ci === 0 ? 300 : 38);
+    }
+  }
+  setTimeout(tick, 800);
+}
+
+// ===== COUNT-UP ANIMATION (3) =====
+function initCountUp() {
+  const stats = document.querySelectorAll('.stat-num');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const raw = el.textContent.trim();
+      const hasPlus = raw.endsWith('+');
+      const target = parseInt(raw);
+      if (isNaN(target)) return;
+      const duration = 1400, step = 16;
+      let start = 0;
+      const inc = target / (duration / step);
+      const timer = setInterval(() => {
+        start += inc;
+        if (start >= target) {
+          el.textContent = target + (hasPlus ? '+' : '');
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(start) + (hasPlus ? '+' : '');
+        }
+      }, step);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  stats.forEach(s => obs.observe(s));
+}
+
+// ===== PARTICLES (4) =====
+function initParticles() {
+  const canvas = document.getElementById('heroParticles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = Array.from({ length: 70 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.8 + 0.4,
+    dx: (Math.random() - 0.5) * 0.35,
+    dy: -(Math.random() * 0.45 + 0.15),
+    alpha: Math.random() * 0.45 + 0.15,
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(168,216,240,${p.alpha})`;
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.y < -4) { p.y = canvas.height + 4; p.x = Math.random() * canvas.width; }
+      if (p.x < -4) p.x = canvas.width + 4;
+      if (p.x > canvas.width + 4) p.x = -4;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// ===== STAR ANIMATION (20) =====
+function initStarAnimation() {
+  const cards = document.querySelectorAll('.review-card');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const stars = entry.target.querySelectorAll('.review-stars span');
+      stars.forEach((star, i) => {
+        setTimeout(() => star.classList.add('lit'), i * 130 + 250);
+      });
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+  cards.forEach(c => obs.observe(c));
+}
+
+// ===== MEMBER FLIP (touch 대응) (15) =====
+function initMemberFlip() {
+  if (!window.matchMedia('(hover: none)').matches) return;
+  document.querySelectorAll('.member-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+  });
 }
 
 // ===== COUNTDOWN =====
@@ -369,4 +507,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   initGuestbook();
   initScrollTop();
+  initTyping();
+  initCountUp();
+  initParticles();
+  initStarAnimation();
+  initMemberFlip();
 });

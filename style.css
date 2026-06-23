@@ -1116,3 +1116,187 @@ textarea { resize: vertical; min-height: 120px; }
   .scroll-top-btn { display: block; }
   .m-sticky-bar   { display: flex; }
 }
+
+/* ===== HERO PARTICLES (4) ===== */
+.hero-particles {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 1;
+}
+
+/* ===== GALLERY (6) ===== */
+#gallery { background: var(--navy); }
+#gallery .section-label { color: var(--sky-light); }
+#gallery .section-title { color: white; }
+#gallery .section-desc  { color: rgba(255,255,255,.55); }
+
+.gallery-grid {
+  columns: 3; column-gap: 12px;
+}
+.gallery-item {
+  break-inside: avoid; margin-bottom: 12px;
+  position: relative; overflow: hidden; border-radius: 12px;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%; display: block;
+  transition: transform .4s ease;
+}
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: rgba(26,58,92,.55);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .3s;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay span {
+  color: white; font-size: .82rem; font-weight: 600;
+  letter-spacing: .12em; border: 1.5px solid rgba(255,255,255,.8);
+  padding: 6px 18px; border-radius: 20px;
+}
+.gallery-more { text-align: center; margin-top: 36px; }
+
+@media (max-width: 960px) { .gallery-grid { columns: 2; } }
+@media (max-width: 640px) { .gallery-grid { columns: 2; column-gap: 8px; } .gallery-item { margin-bottom: 8px; } }
+
+/* ===== MEMBER CARD FLIP (15) ===== */
+.member-card {
+  perspective: 1000px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.member-flip-inner {
+  position: relative; width: 100%; height: 400px;
+  transform-style: preserve-3d;
+  transition: transform .65s cubic-bezier(.4,.2,.2,1);
+}
+.member-card:hover .member-flip-inner,
+.member-card.flipped .member-flip-inner { transform: rotateY(180deg); }
+
+.member-front, .member-back {
+  position: absolute; width: 100%; height: 100%;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.member-front {
+  background: var(--white);
+  display: flex; flex-direction: column;
+}
+.member-back {
+  background: var(--navy);
+  transform: rotateY(180deg);
+  display: flex; flex-direction: column;
+  padding: 28px 24px; justify-content: center; gap: 14px;
+  border-color: rgba(91,181,232,.3);
+}
+
+.member-photo-front {
+  flex: 1; overflow: hidden; background: var(--sky-pale);
+}
+.member-photo-front img {
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: top center; display: block;
+}
+.member-photo-front.placeholder {
+  display: flex; align-items: center; justify-content: center;
+}
+.member-info-front {
+  padding: 14px 18px 18px;
+}
+.member-info-front .member-name { margin-bottom: 2px; }
+.member-info-front .member-role { font-size: .78rem; color: var(--text-light); margin-bottom: 0; }
+
+.flip-hint {
+  display: block; font-size: .7rem; color: var(--sky);
+  margin-top: 8px; font-weight: 600; letter-spacing: .04em;
+  opacity: .8;
+}
+
+.member-back .member-role-tag { align-self: flex-start; }
+.member-back .member-name { color: white; font-size: 1.2rem; margin: 0; }
+.member-back .member-career {
+  list-style: none; display: flex; flex-direction: column; gap: 9px;
+}
+.member-back .member-career li {
+  color: rgba(255,255,255,.8); font-size: .8rem;
+  padding-left: 14px; position: relative; line-height: 1.5;
+}
+.member-back .member-career li::before {
+  content: '—'; position: absolute; left: 0; color: var(--sky);
+}
+.member-back .member-coming { color: rgba(255,255,255,.45); font-style: italic; font-size: .85rem; }
+
+@media (max-width: 640px) {
+  .member-flip-inner { height: 340px; }
+  .member-info-front { padding: 10px 12px 14px; }
+  .member-back { padding: 20px 16px; gap: 10px; }
+  .member-back .member-career li { font-size: .73rem; }
+}
+
+/* ===== INSTAGRAM (5) ===== */
+#instagram { background: var(--white); }
+
+.insta-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 6px; border-radius: 16px; overflow: hidden;
+  margin-bottom: 36px;
+}
+.insta-item {
+  position: relative; aspect-ratio: 1/1; overflow: hidden;
+  display: block; background: var(--sky-pale);
+}
+.insta-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .35s ease;
+}
+.insta-item:hover img { transform: scale(1.07); }
+.insta-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.38);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .3s;
+}
+.insta-item:hover .insta-overlay { opacity: 1; }
+
+.insta-cta {
+  text-align: center; display: flex; flex-direction: column;
+  align-items: center; gap: 14px;
+}
+.insta-cta p { color: var(--text-mid); font-size: .9rem; }
+.btn-insta-main {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; border-radius: 32px; font-weight: 700;
+  font-size: .9rem; letter-spacing: .04em; text-decoration: none;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white; transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(220,39,67,.3);
+}
+.btn-insta-main:hover {
+  color: white; transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(220,39,67,.4);
+}
+
+@media (max-width: 640px) {
+  .insta-grid { grid-template-columns: repeat(3, 1fr); gap: 3px; }
+}
+
+/* ===== STAR ANIMATION (20) ===== */
+.review-stars span {
+  color: #d4d4d4; display: inline-block;
+  transition: color .25s, transform .25s;
+}
+.review-stars span.lit {
+  color: #f5a623;
+  animation: starPop .3s ease forwards;
+}
+@keyframes starPop {
+  0%   { transform: scale(1.6) rotate(-10deg); }
+  60%  { transform: scale(.9) rotate(4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* ===== COUNT-UP numbers (3) — override initReveal opacity reset ===== */
+.stat { opacity: 1 !important; transform: none !important; }

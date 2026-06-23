@@ -5,6 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Team Yuz | 팀 유즈</title>
   <meta name="description" content="무대에서 노는 걸 제일 좋아하는 팀, 유즈. 실용음악·뮤지컬·성악 기반 크로스오버 퍼포먼스 팀." />
+
+  <!-- Open Graph (13) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Team YUZ | 팀 유즈" />
+  <meta property="og:description" content="무대에서 노는 걸 제일 좋아하는 팀, 유즈. 실용음악·뮤지컬·성악 기반 크로스오버 퍼포먼스 팀." />
+  <meta property="og:image" content="https://teamyuz.com/images/team-group1.jpg" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Team YUZ | 팀 유즈" />
+  <meta name="twitter:description" content="무대에서 노는 걸 제일 좋아하는 팀, 유즈." />
+  <meta name="twitter:image" content="https://teamyuz.com/images/team-group1.jpg" />
+
+  <!-- Schema.org 구조화 데이터 (14) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PerformingGroup",
+    "name": "Team YUZ",
+    "alternateName": "팀 유즈",
+    "description": "실용음악·뮤지컬·성악 기반 크로스오버 퍼포먼스 팀. 대구·경북·부산 연고, 50곡 레퍼토리, 지자체·기업·웨딩 공연 전문.",
+    "url": "https://teamyuz.com",
+    "image": "https://teamyuz.com/images/team-group1.jpg",
+    "genre": ["뮤지컬", "팝페라", "실용음악", "크로스오버"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "010-6668-2436",
+      "email": "yuzevent@naver.com",
+      "contactType": "booking",
+      "availableLanguage": "Korean"
+    },
+    "member": [
+      { "@type": "Person", "name": "류수홍", "jobTitle": "뮤지컬 배우 · 리더" },
+      { "@type": "Person", "name": "이정효", "jobTitle": "Main Vocal" },
+      { "@type": "Person", "name": "박성빈", "jobTitle": "성악 · Tenor" },
+      { "@type": "Person", "name": "이호준", "jobTitle": "성악 · Bass" }
+    ],
+    "sameAs": [
+      "https://instagram.com/team_yuz_",
+      "https://youtube.com/@yuzevent-m3o",
+      "https://blog.naver.com/yuzevent"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
@@ -24,6 +68,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">팀 소개</a></li>
       <li><a href="#videos">영상</a></li>
+      <li><a href="#gallery">갤러리</a></li>
       <li><a href="#credentials">실적</a></li>
       <li><a href="#members">팀원</a></li>
       <li><a href="#programs">프로그램</a></li>
@@ -41,9 +86,10 @@
 <section id="hero">
   <div class="hero-bg-gradient">
     <img src="images/team-group1.jpg" alt="Team YUZ" class="hero-bg-img" />
+    <canvas id="heroParticles" class="hero-particles"></canvas>
   </div>
   <div class="hero-content">
-    <p class="hero-sub">CROSSOVER MUSIC PERFORMANCE</p>
+    <p class="hero-sub" id="heroSub">CROSSOVER MUSIC PERFORMANCE</p>
     <h1 class="hero-title">TEAM <em>YUZ</em></h1>
     <p class="hero-tagline">무대에서 노는 걸 제일 좋아하는 팀, 유즈</p>
     <div class="hero-badges">
@@ -164,6 +210,68 @@
   </div>
 </section>
 
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-label">GALLERY</div>
+    <h2 class="section-title">공연 갤러리</h2>
+    <p class="section-desc">무대 위 팀 유즈의 순간들.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" data-imgs="18" data-title="해운대 버스킹 페스티벌">
+        <img src="images/perf-imgs/img-018.png" alt="해운대 버스킹 페스티벌" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="17" data-title="DIMF 린지 공식 선정">
+        <img src="images/perf-imgs/img-017.png" alt="DIMF 린지" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="29" data-title="영화의전당 시네마 팝업">
+        <img src="images/perf-imgs/img-029.png" alt="영화의전당" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="26" data-title="창원 북 페스타">
+        <img src="images/perf-imgs/img-026.png" alt="창원 북 페스타" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="13" data-title="NC 다이노스 개막식">
+        <img src="images/perf-imgs/img-013.png" alt="NC 다이노스 개막식" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="22" data-title="서면 차 없는 거리 축제">
+        <img src="images/perf-imgs/img-022.png" alt="서면 축제" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="21" data-title="경산 대추축제">
+        <img src="images/perf-imgs/img-021.png" alt="경산 대추축제" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="32" data-title="영남대 챔버홀 콘서트">
+        <img src="images/perf-imgs/img-032.png" alt="영남대 챔버홀" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="24" data-title="봉화 설죽 예술제">
+        <img src="images/perf-imgs/img-024.png" alt="봉화 설죽 예술제" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="25" data-title="부산 세븐브릿지 투어">
+        <img src="images/perf-imgs/img-025.png" alt="부산 세븐브릿지" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="23" data-title="인동 도시숲 빛 축제">
+        <img src="images/perf-imgs/img-023.png" alt="인동 도시숲 빛 축제" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+      <div class="gallery-item" data-imgs="28" data-title="장애인 체육대회 결단식">
+        <img src="images/perf-imgs/img-028.png" alt="장애인 체육대회" loading="lazy" />
+        <div class="gallery-overlay"><span>보기</span></div>
+      </div>
+    </div>
+    <div class="gallery-more">
+      <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener" class="btn btn-primary">더 많은 사진 보기</a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CREDENTIALS ===== -->
 <section id="credentials">
   <div class="container">
@@ -250,72 +358,139 @@
     <p class="section-desc">실용음악·뮤지컬·성악 전공의 6인이 함께합니다.</p>
 
     <div class="members-grid">
+
+      <!-- 류수홍 -->
       <div class="member-card">
-        <div class="member-photo">
-          <img src="images/member-ryu.jpg" alt="류수홍" />
-        </div>
-        <div class="member-info">
-          <div class="member-role-tag musical">뮤지컬 배우 · 리더</div>
-          <h3 class="member-name">류수홍</h3>
-          <p class="member-role">뮤지컬 배우 | 연기자 | 공연 기획자</p>
-          <ul class="member-career">
-            <li>TEAM YUZ 리더</li>
-            <li>대구국제뮤지컬페스티벌 DIMF 린지 공식 선정</li>
-            <li>부산 현대백화점 전속 싱어</li>
-            <li>뮤지컬 「터널 아래 별을 심다」 연출</li>
-            <li>뮤지컬 「서푼짜리 오페라」 출연</li>
-          </ul>
+        <div class="member-flip-inner">
+          <div class="member-front">
+            <div class="member-photo-front">
+              <img src="images/member-ryu.jpg" alt="류수홍" />
+            </div>
+            <div class="member-info-front">
+              <div class="member-role-tag musical">뮤지컬 배우 · 리더</div>
+              <h3 class="member-name">류수홍</h3>
+              <p class="member-role">뮤지컬 배우 | 연기자 | 공연 기획자</p>
+              <span class="flip-hint">경력 보기 →</span>
+            </div>
+          </div>
+          <div class="member-back">
+            <div class="member-role-tag musical">뮤지컬 배우 · 리더</div>
+            <h3 class="member-name">류수홍</h3>
+            <ul class="member-career">
+              <li>TEAM YUZ 리더</li>
+              <li>대구국제뮤지컬페스티벌 DIMF 린지 공식 선정</li>
+              <li>부산 현대백화점 전속 싱어</li>
+              <li>뮤지컬 「터널 아래 별을 심다」 연출</li>
+              <li>뮤지컬 「서푼짜리 오페라」 출연</li>
+            </ul>
+          </div>
         </div>
       </div>
+
+      <!-- 이정효 -->
       <div class="member-card">
-        <div class="member-photo">
-          <img src="images/member-lee-jh.jpg" alt="이정효" />
-        </div>
-        <div class="member-info">
-          <div class="member-role-tag crossover">실용음악 · 뮤지컬 · 성악</div>
-          <h3 class="member-name">이정효</h3>
-          <p class="member-role">Main Vocal</p>
-          <ul class="member-career">
-            <li>영남대학교 음악대학 성악과 졸업 (2023)</li>
-            <li>2017 경상남도 성악 콩쿨 최우수 수상</li>
-            <li>2024~2025 현대백화점 전속 싱어</li>
-            <li>2025 부산 남구 최우수 버스커</li>
-            <li>現 911연기학원 뮤지컬 강사</li>
-          </ul>
+        <div class="member-flip-inner">
+          <div class="member-front">
+            <div class="member-photo-front">
+              <img src="images/member-lee-jh.jpg" alt="이정효" />
+            </div>
+            <div class="member-info-front">
+              <div class="member-role-tag crossover">실용음악 · 뮤지컬 · 성악</div>
+              <h3 class="member-name">이정효</h3>
+              <p class="member-role">Main Vocal</p>
+              <span class="flip-hint">경력 보기 →</span>
+            </div>
+          </div>
+          <div class="member-back">
+            <div class="member-role-tag crossover">실용음악 · 뮤지컬 · 성악</div>
+            <h3 class="member-name">이정효</h3>
+            <ul class="member-career">
+              <li>영남대학교 음악대학 성악과 졸업 (2023)</li>
+              <li>2017 경상남도 성악 콩쿨 최우수 수상</li>
+              <li>2024~2025 현대백화점 전속 싱어</li>
+              <li>2025 부산 남구 최우수 버스커</li>
+              <li>現 911연기학원 뮤지컬 강사</li>
+            </ul>
+          </div>
         </div>
       </div>
+
+      <!-- 박성빈 -->
       <div class="member-card">
-        <div class="member-photo placeholder"><span class="member-initial">♪</span></div>
-        <div class="member-info">
-          <div class="member-role-tag vocal">성악 · Tenor</div>
-          <h3 class="member-name">박성빈</h3>
-          <p class="member-coming">사진 준비 중</p>
+        <div class="member-flip-inner">
+          <div class="member-front">
+            <div class="member-photo-front placeholder"><span class="member-initial">♪</span></div>
+            <div class="member-info-front">
+              <div class="member-role-tag vocal">성악 · Tenor</div>
+              <h3 class="member-name">박성빈</h3>
+              <p class="member-coming">사진 준비 중</p>
+            </div>
+          </div>
+          <div class="member-back">
+            <div class="member-role-tag vocal">성악 · Tenor</div>
+            <h3 class="member-name">박성빈</h3>
+            <p class="member-coming" style="color:rgba(255,255,255,.5);margin-top:12px">경력 정보 준비 중입니다.</p>
+          </div>
         </div>
       </div>
+
+      <!-- 이호준 -->
       <div class="member-card">
-        <div class="member-photo placeholder"><span class="member-initial">♪</span></div>
-        <div class="member-info">
-          <div class="member-role-tag vocal">성악 · Bass</div>
-          <h3 class="member-name">이호준</h3>
-          <p class="member-coming">사진 준비 중</p>
+        <div class="member-flip-inner">
+          <div class="member-front">
+            <div class="member-photo-front placeholder"><span class="member-initial">♪</span></div>
+            <div class="member-info-front">
+              <div class="member-role-tag vocal">성악 · Bass</div>
+              <h3 class="member-name">이호준</h3>
+              <p class="member-coming">사진 준비 중</p>
+            </div>
+          </div>
+          <div class="member-back">
+            <div class="member-role-tag vocal">성악 · Bass</div>
+            <h3 class="member-name">이호준</h3>
+            <p class="member-coming" style="color:rgba(255,255,255,.5);margin-top:12px">경력 정보 준비 중입니다.</p>
+          </div>
         </div>
       </div>
+
+      <!-- 멤버 5 -->
       <div class="member-card">
-        <div class="member-photo placeholder"><span class="member-initial">🎭</span></div>
-        <div class="member-info">
-          <div class="member-role-tag musical">뮤지컬</div>
-          <h3 class="member-name">멤버 5</h3>
-          <p class="member-coming">프로필 준비 중</p>
+        <div class="member-flip-inner">
+          <div class="member-front">
+            <div class="member-photo-front placeholder"><span class="member-initial">🎭</span></div>
+            <div class="member-info-front">
+              <div class="member-role-tag musical">뮤지컬</div>
+              <h3 class="member-name">멤버 5</h3>
+              <p class="member-coming">프로필 준비 중</p>
+            </div>
+          </div>
+          <div class="member-back">
+            <div class="member-role-tag musical">뮤지컬</div>
+            <h3 class="member-name">멤버 5</h3>
+            <p class="member-coming" style="color:rgba(255,255,255,.5);margin-top:12px">경력 정보 준비 중입니다.</p>
+          </div>
         </div>
       </div>
+
+      <!-- 멤버 6 -->
       <div class="member-card">
-        <div class="member-photo placeholder"><span class="member-initial">🎭</span></div>
-        <div class="member-info">
-          <div class="member-role-tag musical">뮤지컬</div>
-          <h3 class="member-name">멤버 6</h3>
-          <p class="member-coming">프로필 준비 중</p>
+        <div class="member-flip-inner">
+          <div class="member-front">
+            <div class="member-photo-front placeholder"><span class="member-initial">🎭</span></div>
+            <div class="member-info-front">
+              <div class="member-role-tag musical">뮤지컬</div>
+              <h3 class="member-name">멤버 6</h3>
+              <p class="member-coming">프로필 준비 중</p>
+            </div>
+          </div>
+          <div class="member-back">
+            <div class="member-role-tag musical">뮤지컬</div>
+            <h3 class="member-name">멤버 6</h3>
+            <p class="member-coming" style="color:rgba(255,255,255,.5);margin-top:12px">경력 정보 준비 중입니다.</p>
+          </div>
         </div>
       </div>
+
     </div>
     <p class="members-note">* 팀원 사진과 프로필을 보내주시면 바로 업데이트합니다.</p>
   </div>
@@ -503,7 +678,7 @@
     <p class="swipe-hint" aria-hidden="true">← 옆으로 밀어보세요</p>
     <div class="reviews-grid">
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="review-text">"Team Yuz 덕분에 저희 결혼식이 정말 특별해졌어요. 감미로운 목소리와 완벽한 하모니가 모든 하객에게 큰 감동을 주었습니다. 인생 최고의 순간을 더욱 아름답게 장식할 수 있었습니다. 강력 추천합니다!"</p>
         <div class="review-meta">
           <span class="review-tag wedding">웨딩 축가</span>
@@ -511,7 +686,7 @@
         </div>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="review-text">"부산 버스킹 페스티벌에서 Team Yuz의 공연을 보고 정말 놀랐습니다. 압도적인 에너지와 다채로운 레퍼토리에 저절로 몸이 들썩였어요. 관객들과의 소통도 최고였고, 덕분에 페스티벌이 한층 더 즐거웠습니다!"</p>
         <div class="review-meta">
           <span class="review-tag festival">버스킹 페스티벌</span>
@@ -519,7 +694,7 @@
         </div>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="review-text">"저희 회사 연말 파티에 Team Yuz를 초청했는데, 기대 이상으로 멋진 공연을 보여주셨습니다. 전문적이고 세련된 무대 매너로 행사의 품격을 높여주셔서 모든 임직원이 대만족했습니다. 다음 행사에도 꼭 다시 모시고 싶습니다."</p>
         <div class="review-meta">
           <span class="review-tag corporate">기업 행사</span>
@@ -527,7 +702,7 @@
         </div>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="review-text">"Team Yuz의 따뜻한 마음이 담긴 자선 콘서트에 참여할 수 있어서 정말 감사했습니다. 아름다운 음악으로 많은 사람들에게 희망과 위로를 선사해주셨어요. 진정한 예술의 힘을 느낄 수 있는 시간이었습니다."</p>
         <div class="review-meta">
           <span class="review-tag charity">자선 콘서트</span>
@@ -535,13 +710,55 @@
         </div>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="review-text">"우리 동네 문화 축제에 Team Yuz가 함께 해주어 행사가 더욱 풍성해졌습니다. 남녀노소 누구나 즐길 수 있는 공연으로 지역 주민들에게 큰 즐거움을 주었고, 덕분에 축제 분위기가 한층 더 고조되었습니다."</p>
         <div class="review-meta">
           <span class="review-tag local">지역 행사</span>
           <span class="review-author">— 지역 주민 대표</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTAGRAM ===== -->
+<section id="instagram">
+  <div class="container">
+    <div class="section-label">INSTAGRAM</div>
+    <h2 class="section-title">@team_yuz_</h2>
+    <p class="section-desc">팀 유즈의 최신 공연 소식과 비하인드를 인스타그램에서 만나보세요.</p>
+    <div class="insta-grid">
+      <a class="insta-item" href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">
+        <img src="images/perf-imgs/img-009.png" alt="팀 유즈 인스타그램" loading="lazy" />
+        <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      </a>
+      <a class="insta-item" href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">
+        <img src="images/perf-imgs/img-015.png" alt="팀 유즈 인스타그램" loading="lazy" />
+        <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      </a>
+      <a class="insta-item" href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">
+        <img src="images/perf-imgs/img-016.png" alt="팀 유즈 인스타그램" loading="lazy" />
+        <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      </a>
+      <a class="insta-item" href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">
+        <img src="images/perf-imgs/img-027.png" alt="팀 유즈 인스타그램" loading="lazy" />
+        <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      </a>
+      <a class="insta-item" href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">
+        <img src="images/perf-imgs/img-033.png" alt="팀 유즈 인스타그램" loading="lazy" />
+        <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      </a>
+      <a class="insta-item" href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">
+        <img src="images/perf-imgs/img-036.png" alt="팀 유즈 인스타그램" loading="lazy" />
+        <div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      </a>
+    </div>
+    <div class="insta-cta">
+      <p>팔로워들과 가장 먼저 공연 소식을 나눕니다</p>
+      <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener" class="btn-insta-main">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @team_yuz_ 팔로우하기
+      </a>
     </div>
   </div>
 </section>
