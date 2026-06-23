@@ -155,6 +155,8 @@ img { display: block; max-width: 100%; }
 .hero-sub {
   font-size: .68rem; letter-spacing: .4em; color: var(--sky-light);
   margin-bottom: 24px; font-weight: 500;
+  min-height: 1.2em;
+  display: block;
 }
 .hero-title {
   font-family: var(--font-serif);
