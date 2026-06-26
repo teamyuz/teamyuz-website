@@ -473,6 +473,14 @@ function initGuestbook() {
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    // honeypot
+    if (form.querySelector('[name="hp_website"]').value) return;
+    // rate limit: 30초 쿨다운
+    const lastSubmit = parseInt(localStorage.getItem('gb_last') || '0');
+    if (Date.now() - lastSubmit < 30000) {
+      alert('잠시 후 다시 시도해주세요.');
+      return;
+    }
     const name    = document.getElementById('gbName').value.trim();
     const message = document.getElementById('gbMessage').value.trim();
     if (!name || !message) return;
@@ -482,7 +490,7 @@ function initGuestbook() {
     const { error } = await db.from('guestbook').insert({ name, message });
     btn.disabled = false;
     btn.textContent = '남기기';
-    if (!error) { form.reset(); loadMessages(); }
+    if (!error) { localStorage.setItem('gb_last', Date.now()); form.reset(); loadMessages(); }
   });
 
   // 실시간 업데이트 — 다른 방문자가 남기면 즉시 반영
@@ -504,6 +512,17 @@ function initScrollTop() {
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+function initEmailLinks() {
+  document.querySelectorAll('.email-link').forEach(a => {
+    const addr = a.dataset.u + '@' + a.dataset.d;
+    a.querySelector('.email-display').textContent = addr;
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      window.location.href = 'mailto:' + addr;
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initFilters();
@@ -519,4 +538,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   initStarAnimation();
   initMemberFlip();
+  initEmailLinks();
 });

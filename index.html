@@ -31,7 +31,7 @@
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "010-6668-2436",
-      "email": "yuzevent@naver.com",
+      "email": "yuzevent [at] naver.com",
       "contactType": "booking",
       "availableLanguage": "Korean"
     },
@@ -664,7 +664,7 @@
       <p>🛍️ 공연 현장 구매 또는 사전 예약 문의</p>
       <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">Instagram DM @team_yuz_</a>
       <span>·</span>
-      <a href="mailto:yuzevent@naver.com">yuzevent@naver.com</a>
+      <a href="#" class="email-link" data-u="yuzevent" data-d="naver.com"><span class="email-display"></span></a>
     </div>
   </div>
 </section>
@@ -780,7 +780,7 @@
           </div>
           <div class="ci-row">
             <span class="ci-label">이메일</span>
-            <a href="mailto:yuzevent@naver.com">yuzevent@naver.com</a>
+            <a href="#" class="email-link" data-u="yuzevent" data-d="naver.com"><span class="email-display"></span></a>
           </div>
         </div>
         <div class="ci-block">
@@ -864,7 +864,7 @@
           <textarea id="message" name="message" rows="5" placeholder="행사 개요, 공연 시간, 특별 요청사항 등을 자유롭게 적어주세요." required></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-full">문의 보내기</button>
-        <p class="form-note">* 문의 내용은 yuzevent@naver.com으로 전달됩니다. 영업일 기준 1~2일 내 답변드립니다.</p>
+        <p class="form-note">* 문의 내용은 이메일로 전달됩니다. 영업일 기준 1~2일 내 답변드립니다.</p>
       </form>
     </div>
   </div>
@@ -878,6 +878,7 @@
     <p class="section-desc">팀 유즈에게 응원 메시지를 남겨주세요! 💙</p>
     <div class="guestbook-wrap">
       <form class="guestbook-form" id="guestbookForm">
+        <input type="text" name="hp_website" style="display:none" tabindex="-1" autocomplete="off" />
         <input type="text" id="gbName" class="gb-input" placeholder="이름 (필명 가능)" maxlength="20" required />
         <input type="text" id="gbMessage" class="gb-input gb-msg-input" placeholder="응원 메시지를 남겨주세요! (최대 200자)" maxlength="200" required />
         <button type="submit" class="btn btn-primary">남기기</button>
@@ -915,7 +916,7 @@
       <div class="footer-contact">
         <h4>연락처</h4>
         <p>공연 섭외: <a href="tel:010-6668-2436">010-6668-2436</a></p>
-        <p><a href="mailto:yuzevent@naver.com">yuzevent@naver.com</a></p>
+        <p><a href="#" class="email-link" data-u="yuzevent" data-d="naver.com"><span class="email-display"></span></a></p>
         <div class="footer-sns">
           <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">Instagram</a>
           <a href="https://youtube.com/@yuzevent-m3o" target="_blank" rel="noopener">YouTube</a>
