@@ -399,7 +399,7 @@ section:nth-child(even) { background: var(--sky-bg); }
 .member-career li::before {
   content: '—'; position: absolute; left: 0; color: var(--sky); font-size: .75rem;
 }
-.member-coming { font-size: .85rem; color: var(--text-light); font-style: italic; }
+.member-coming { font-size: .85rem; color: var(--text-mid); font-style: italic; }
 .members-note {
   font-size: .8rem; color: var(--text-light); text-align: center;
   border: 1px dashed var(--border); padding: 14px; border-radius: 12px;
