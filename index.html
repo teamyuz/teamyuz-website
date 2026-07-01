@@ -59,12 +59,23 @@
 </head>
 <body>
 
+<!-- ===== SPLASH ===== -->
+<div id="splashScreen" class="splash-screen">
+  <div class="splash-inner">
+    <img src="images/logo-new.jpg" alt="Team YUZ" class="splash-logo" />
+  </div>
+</div>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div id="scrollProgressBar" class="scroll-progress-bar"></div>
+
 <!-- ===== NAV ===== -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
       <img src="images/logo-new.jpg" alt="Team YUZ 팀 유즈" class="nav-logo-img" />
     </a>
+    <button class="dark-toggle" id="darkToggle" aria-label="다크모드">🌙</button>
     <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
       <span></span><span></span><span></span>
     </button>
@@ -90,6 +101,7 @@
   <div class="hero-bg-gradient">
     <img src="images/team-group1.jpg" alt="Team YUZ" class="hero-bg-img" />
     <canvas id="heroParticles" class="hero-particles"></canvas>
+    <div class="hero-video-wrap" id="heroVideoWrap"></div>
   </div>
   <div class="hero-content">
     <p class="hero-sub" id="heroSub">CROSSOVER MUSIC PERFORMANCE</p>
@@ -209,6 +221,10 @@
           채널 구독하기
         </a>
       </div>
+    </div>
+    <div class="yt-latest">
+      <h3 class="yt-latest-title">최신 업로드</h3>
+      <div class="yt-latest-grid" id="ytLatestGrid"><p class="yt-loading">영상 불러오는 중…</p></div>
     </div>
   </div>
 </section>
@@ -762,6 +778,19 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         @team_yuz_ 팔로우하기
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG ===== -->
+<section id="blog">
+  <div class="container">
+    <div class="section-label">NAVER BLOG</div>
+    <h2 class="section-title">블로그 최신 글</h2>
+    <p class="section-desc">공연 후기와 현장 비하인드를 확인해보세요.</p>
+    <div class="blog-grid" id="blogGrid"><p class="blog-loading">포스트 불러오는 중…</p></div>
+    <div style="text-align:center;margin-top:28px">
+      <a href="https://blog.naver.com/yuzevent" target="_blank" rel="noopener" class="btn btn-primary">블로그 더 보기</a>
     </div>
   </div>
 </section>

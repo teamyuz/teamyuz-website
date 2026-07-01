@@ -523,12 +523,184 @@ function initEmailLinks() {
   });
 }
 
+// ===== SCROLL PROGRESS BAR (#1) =====
+function initScrollProgress() {
+  const bar = document.getElementById('scrollProgressBar');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = docHeight > 0 ? (scrollTop / docHeight * 100) + '%' : '0%';
+  }, { passive: true });
+}
+
+// ===== SECTION FADE-IN EXTENDED (#2) =====
+function initRevealExtended() {
+  if (!('IntersectionObserver' in window)) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('revealed');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll(
+    '.section-title, .section-desc, .section-label, .about-text-block, .about-photo-wrap, ' +
+    '.schedule-ongoing, .sched-row, .rep-filters, .review-card, .insta-item, ' +
+    '.ci-block, .contact-form, .gb-item, .shop-item, .program-card'
+  ).forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .55s ease, transform .55s ease';
+    obs.observe(el);
+  });
+  document.querySelectorAll('.section-title.revealed, .section-desc.revealed').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+}
+
+// Patch: apply revealed styles via CSS (injected once)
+(function() {
+  const s = document.createElement('style');
+  s.textContent = '.revealed { opacity: 1 !important; transform: translateY(0) !important; }';
+  document.head.appendChild(s);
+})();
+
+// ===== SPLASH SCREEN (#9) =====
+function initSplash() {
+  const splash = document.getElementById('splashScreen');
+  if (!splash) return;
+  const hide = () => splash.classList.add('hidden');
+  if (document.readyState === 'complete') {
+    setTimeout(hide, 500);
+  } else {
+    window.addEventListener('load', () => setTimeout(hide, 900));
+  }
+}
+
+// ===== DARK MODE (#6) =====
+function initDarkMode() {
+  const btn = document.getElementById('darkToggle');
+  if (!btn) return;
+  const root = document.documentElement;
+  function setDark(on) {
+    root.classList.toggle('dark', on);
+    btn.textContent = on ? '☀️' : '🌙';
+    localStorage.setItem('yuz_dark', on ? '1' : '0');
+  }
+  if (localStorage.getItem('yuz_dark') === '1') setDark(true);
+  btn.addEventListener('click', () => setDark(!root.classList.contains('dark')));
+}
+
+// ===== HERO VIDEO BACKGROUND (#3) =====
+function initHeroVideo() {
+  const wrap = document.getElementById('heroVideoWrap');
+  if (!wrap || window.innerWidth < 641) return;
+  const iframe = document.createElement('iframe');
+  iframe.className = 'hero-video-iframe';
+  iframe.src = 'https://www.youtube.com/embed/RuWCaiUDkA0?autoplay=1&mute=1&loop=1&playlist=RuWCaiUDkA0&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1';
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('allow', 'autoplay; fullscreen');
+  iframe.setAttribute('allowfullscreen', '');
+  const heroBg = document.querySelector('.hero-bg-img');
+  iframe.addEventListener('load', () => {
+    setTimeout(() => {
+      iframe.classList.add('loaded');
+      if (heroBg) heroBg.style.transition = 'opacity 1.5s ease';
+      if (heroBg) heroBg.style.opacity = '0.25';
+    }, 1200);
+  });
+  wrap.appendChild(iframe);
+}
+
+// ===== PARALLAX (#10) =====
+function initParallax() {
+  const heroBg = document.querySelector('.hero-bg-img');
+  if (!heroBg) return;
+  const heroH = window.innerHeight;
+  function onScroll() {
+    const y = window.scrollY;
+    if (y > heroH) return;
+    heroBg.style.transform = `translateY(${y * 0.28}px) scale(1.12)`;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// ===== YOUTUBE LATEST FEED (#23) =====
+function initYoutubeFeed() {
+  const grid = document.getElementById('ytLatestGrid');
+  if (!grid) return;
+  const rssUrl = encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCilQVc3jLXEV88tH8GL7rOQ');
+  fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&count=3`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.status !== 'ok' || !data.items?.length) throw new Error();
+      grid.innerHTML = data.items.map(item => {
+        const videoId = (item.link.match(/[?&]v=([^&]+)/) || [])[1] || '';
+        const thumb = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+        const date = (item.pubDate || '').split(' ')[0].replace(/-/g, '.');
+        return `<a class="yt-card" href="${item.link}" target="_blank" rel="noopener">
+          <div class="yt-card-thumb">
+            <img src="${thumb}" alt="${item.title}" loading="lazy" />
+            <div class="yt-card-play">
+              <svg width="52" height="52" viewBox="0 0 52 52">
+                <circle cx="26" cy="26" r="26" fill="rgba(0,0,0,.45)"/>
+                <path d="M21 17l18 9-18 9V17z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="yt-card-info"><h4>${item.title}</h4><p>${date}</p></div>
+        </a>`;
+      }).join('');
+    })
+    .catch(() => { grid.innerHTML = '<p class="yt-loading">영상을 불러올 수 없습니다.</p>'; });
+}
+
+// ===== NAVER BLOG FEED (#24) =====
+function initNaverBlogFeed() {
+  const grid = document.getElementById('blogGrid');
+  if (!grid) return;
+  const rssUrl = encodeURIComponent('https://rss.blog.naver.com/yuzevent.xml');
+  fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&count=3`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.status !== 'ok' || !data.items?.length) throw new Error();
+      grid.innerHTML = data.items.map(item => {
+        const html = item.content || item.description || '';
+        const thumbMatch = html.match(/<img[^>]+src="([^"]+)"/);
+        const thumb = thumbMatch ? thumbMatch[1] : null;
+        const date = (item.pubDate || '').split(' ')[0].replace(/-/g, '.');
+        const desc = html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 120);
+        return `<a class="blog-card" href="${item.link}" target="_blank" rel="noopener">
+          <div class="blog-card-thumb">
+            ${thumb
+              ? `<img src="${thumb}" alt="${item.title}" loading="lazy" />`
+              : `<div class="blog-card-thumb-ph">📝</div>`}
+          </div>
+          <div class="blog-card-body">
+            <h4>${item.title}</h4>
+            <p>${desc}</p>
+            <div class="blog-card-date">${date}</div>
+          </div>
+        </a>`;
+      }).join('');
+    })
+    .catch(() => { grid.innerHTML = '<p class="blog-loading">포스트를 불러올 수 없습니다.</p>'; });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initSplash();
+  initScrollProgress();
+  initDarkMode();
   initNav();
   initFilters();
   renderSchedule();
   initForm();
   initReveal();
+  initRevealExtended();
   initPerfModal();
   initCountdown();
   initGuestbook();
@@ -539,4 +711,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initStarAnimation();
   initMemberFlip();
   initEmailLinks();
+  initHeroVideo();
+  initParallax();
+  initYoutubeFeed();
+  initNaverBlogFeed();
 });
