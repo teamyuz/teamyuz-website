@@ -83,26 +83,45 @@ function renderRep(filter) {
 }
 
 // ===== SCHEDULE DATA =====
+// 날짜만 적으면 예정/완료는 자동 계산됩니다. '2026.7.11'(일 단위) 또는 '2026.5'(월 단위) 형식.
 const schedule = [
-  { date: '2026.7.11', title: '부산 영도 깡깡이 마을 공연', venue: '깡깡이 마을 (부산 영도)', status: 'upcoming' },
-  { date: '2026.6.20', title: '수성못 뮤직앤비어 페스티벌', venue: '수성못 (대구)', status: 'past' },
-  { date: '2026.5', title: '광안리 발코니 음악회', venue: '부산 수영구', status: 'past' },
-  { date: '2026.5', title: '숲속 작은 음악회', venue: '부산 북구', status: 'past' },
-  { date: '2026.5', title: '경산 어린이날 큰 잔치', venue: '경산 (경북)', status: 'past' },
-  { date: '2026.3', title: 'NC 다이노스 개막식 공연', venue: 'NC 다이노스 구장', status: 'past' },
+  { date: '2026.7.11', title: '부산 영도 깡깡이 마을 공연', venue: '깡깡이 마을 (부산 영도)' },
+  { date: '2026.6.20', title: '수성못 뮤직앤비어 페스티벌', venue: '수성못 (대구)' },
+  { date: '2026.5', title: '광안리 발코니 음악회', venue: '부산 수영구' },
+  { date: '2026.5', title: '숲속 작은 음악회', venue: '부산 북구' },
+  { date: '2026.5', title: '경산 어린이날 큰 잔치', venue: '경산 (경북)' },
+  { date: '2026.3', title: 'NC 다이노스 개막식 공연', venue: 'NC 다이노스 구장' },
 ];
+
+// '2026.7.11' → 그날 자정, '2026.5' → 그달 마지막 날 자정 (월 단위는 월이 끝나야 '완료' 처리)
+function schedDate(str) {
+  const p = String(str).split('.').map(Number);
+  if (p.length >= 3) return new Date(p[0], p[1] - 1, p[2]);
+  if (p.length === 2) return new Date(p[0], p[1], 0);
+  return null;
+}
+
+function schedStatus(s) {
+  const d = schedDate(s.date);
+  if (!d) return s.status || 'past';
+  const endOfDay = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+  return new Date() < endOfDay ? 'upcoming' : 'past';
+}
 
 function renderSchedule() {
   const list = document.getElementById('scheduleList');
   if (!list) return;
-  list.innerHTML = schedule.map(s => `
+  list.innerHTML = schedule.map(s => {
+    const status = schedStatus(s);
+    return `
     <div class="sched-row">
       <span class="sched-date">${s.date}</span>
       <span class="sched-title">${s.title}</span>
       <span class="sched-venue">${s.venue}</span>
-      <span class="sched-badge ${s.status}">${s.status === 'upcoming' ? '예정' : '완료'}</span>
+      <span class="sched-badge ${status}">${status === 'upcoming' ? '예정' : '완료'}</span>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // ===== FILTER BUTTONS =====
@@ -140,14 +159,53 @@ function initNav() {
   });
 }
 
+// ===== SUPABASE CLIENT (방명록·문의 공용) =====
+let _sb = null;
+function getSupabase() {
+  if (!_sb && window.supabase) {
+    _sb = window.supabase.createClient(
+      'https://iwaeswhrysvcuopqeyia.supabase.co',
+      'sb_publishable_AZWK-T5m0Q-dKOw4WeJ5Pw_uzyVrXA-'
+    );
+  }
+  return _sb;
+}
+
 // ===== CONTACT FORM =====
 function initForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const data = new FormData(form);
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = '전송 중…';
+
+    // 1) Supabase에 먼저 저장 — 메일 앱이 없어도 문의가 유실되지 않도록
+    let saved = false;
+    try {
+      const db = getSupabase();
+      if (db) {
+        const { error } = await db.from('inquiries').insert({
+          org: data.get('org'),
+          phone: data.get('phone'),
+          email: data.get('email') || null,
+          event_type: data.get('eventType'),
+          event_date: data.get('eventDate') || null,
+          venue: data.get('venue') || null,
+          budget: data.get('budget') || null,
+          message: data.get('message'),
+        });
+        saved = !error;
+        if (error) console.error('Inquiry save error:', error);
+      }
+    } catch (err) {
+      console.error('Inquiry save error:', err);
+    }
+
+    // 2) 기존 메일 채널도 그대로 유지
     const subject = encodeURIComponent(`[팀유즈 공연문의] ${data.get('org')} - ${data.get('eventType')}`);
     const body = encodeURIComponent(
 `단체/성함: ${data.get('org')}
@@ -161,18 +219,22 @@ function initForm() {
 문의 내용:
 ${data.get('message')}`
     );
-
-    // 메일 클라이언트 열기
     window.location.href = `mailto:yuzevent@naver.com?subject=${subject}&body=${body}`;
 
-    // 성공 메시지 표시
+    // 3) 결과 메시지 — 저장 성공 여부에 따라 정직하게 안내
     form.style.display = 'none';
     const success = document.createElement('div');
     success.className = 'form-success visible';
-    success.innerHTML = `
-      <h3>문의가 전송되었습니다</h3>
-      <p>이메일 앱이 열렸습니다. 전송 후 영업일 1~2일 내 답변드리겠습니다.<br>
+    success.innerHTML = saved
+      ? `
+      <h3>문의가 접수되었습니다</h3>
+      <p>영업일 기준 1~2일 내 답변드리겠습니다.<br>
       긴급 문의: <a href="tel:010-6668-2436">010-6668-2436</a></p>
+    `
+      : `
+      <h3>이메일 앱이 열렸습니다</h3>
+      <p>열린 메일을 <strong>전송해주셔야 문의가 접수됩니다.</strong><br>
+      메일 앱이 열리지 않았다면 전화로 문의해주세요: <a href="tel:010-6668-2436">010-6668-2436</a></p>
     `;
     form.parentNode.appendChild(success);
   });
@@ -215,7 +277,7 @@ function initPerfModal() {
   function show(i) {
     idx = (i + imgs.length) % imgs.length;
     const n = String(idx_to_num(idx)).padStart(3, '0');
-    img.src = `images/perf-imgs/img-${n}.png`;
+    img.src = `images/perf-imgs/img-${n}.jpg`;
     img.alt = title.textContent;
     counter.textContent = `${idx + 1} / ${imgs.length}`;
     prev.style.display = imgs.length > 1 ? '' : 'none';
@@ -395,9 +457,24 @@ function initMemberFlip() {
 }
 
 // ===== COUNTDOWN =====
+// schedule 배열에서 아직 지나지 않은 가장 가까운 공연(일 단위 날짜만)을 자동으로 골라 표시.
+// 예정 공연이 없으면 배너를 숨긴다 — 데이터는 schedule만 고치면 됨.
 function initCountdown() {
-  const target = new Date('2026-07-11T00:00:00+09:00');
   const banner = document.getElementById('countdownBanner');
+  if (!banner) return;
+
+  const now = new Date();
+  const next = schedule
+    .filter(s => String(s.date).split('.').length >= 3)
+    .map(s => ({ ...s, d: schedDate(s.date) }))
+    .filter(s => s.d && now < new Date(s.d.getFullYear(), s.d.getMonth(), s.d.getDate() + 1))
+    .sort((a, b) => a.d - b.d)[0];
+
+  if (!next) { banner.style.display = 'none'; return; }
+
+  const titleEl = banner.querySelector('.cd-title');
+  if (titleEl) titleEl.textContent = `${next.date} · ${next.title}`;
+
   const els = {
     days:  document.getElementById('cdDays'),
     hours: document.getElementById('cdHours'),
@@ -405,10 +482,16 @@ function initCountdown() {
     secs:  document.getElementById('cdSecs'),
   };
   if (!els.days) return;
+
+  const target = next.d;
+  const dayEnd = new Date(target.getFullYear(), target.getMonth(), target.getDate() + 1);
+
   function tick() {
-    const diff = target - new Date();
+    const t = new Date();
+    if (t >= dayEnd) { banner.style.display = 'none'; return; }
+    const diff = target - t;
     if (diff <= 0) {
-      banner.innerHTML = '<div class="countdown-inner"><span style="font-size:18px;font-weight:700;color:white">🎉 오늘 공연 날! 깡깡이 마을에서 만나요!</span></div>';
+      banner.innerHTML = `<div class="countdown-inner"><span style="font-size:18px;font-weight:700;color:white">🎉 오늘 공연 날! ${next.title}</span></div>`;
       return;
     }
     els.days.textContent  = String(Math.floor(diff / 86400000)).padStart(2, '0');
@@ -426,11 +509,8 @@ function initGuestbook() {
   const list = document.getElementById('guestbookList');
   if (!form || !list) return;
 
-  const { createClient } = window.supabase;
-  const db = createClient(
-    'https://iwaeswhrysvcuopqeyia.supabase.co',
-    'sb_publishable_AZWK-T5m0Q-dKOw4WeJ5Pw_uzyVrXA-'
-  );
+  const db = getSupabase();
+  if (!db) return;
 
   function esc(s) {
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -528,11 +608,12 @@ function initNaverBlogFeed() {
   const grid = document.getElementById('blogGrid');
   if (!grid) return;
   const rssUrl = encodeURIComponent('https://rss.blog.naver.com/yuzevent.xml');
-  fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&count=3`)
+  // rss2json 무료 플랜은 count 파라미터를 지원하지 않음 — 전체 응답에서 3개만 사용
+  fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`)
     .then(r => r.json())
     .then(data => {
       if (data.status !== 'ok' || !data.items?.length) throw new Error();
-      grid.innerHTML = data.items.map(item => {
+      grid.innerHTML = data.items.slice(0, 3).map(item => {
         const html = item.content || item.description || '';
         const thumbMatch = html.match(/<img[^>]+src="([^"]+)"/);
         const thumb = thumbMatch ? thumbMatch[1] : null;
