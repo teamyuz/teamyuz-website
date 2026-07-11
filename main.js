@@ -159,14 +159,53 @@ function initNav() {
   });
 }
 
+// ===== SUPABASE CLIENT (방명록·문의 공용) =====
+let _sb = null;
+function getSupabase() {
+  if (!_sb && window.supabase) {
+    _sb = window.supabase.createClient(
+      'https://iwaeswhrysvcuopqeyia.supabase.co',
+      'sb_publishable_AZWK-T5m0Q-dKOw4WeJ5Pw_uzyVrXA-'
+    );
+  }
+  return _sb;
+}
+
 // ===== CONTACT FORM =====
 function initForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const data = new FormData(form);
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = '전송 중…';
+
+    // 1) Supabase에 먼저 저장 — 메일 앱이 없어도 문의가 유실되지 않도록
+    let saved = false;
+    try {
+      const db = getSupabase();
+      if (db) {
+        const { error } = await db.from('inquiries').insert({
+          org: data.get('org'),
+          phone: data.get('phone'),
+          email: data.get('email') || null,
+          event_type: data.get('eventType'),
+          event_date: data.get('eventDate') || null,
+          venue: data.get('venue') || null,
+          budget: data.get('budget') || null,
+          message: data.get('message'),
+        });
+        saved = !error;
+        if (error) console.error('Inquiry save error:', error);
+      }
+    } catch (err) {
+      console.error('Inquiry save error:', err);
+    }
+
+    // 2) 기존 메일 채널도 그대로 유지
     const subject = encodeURIComponent(`[팀유즈 공연문의] ${data.get('org')} - ${data.get('eventType')}`);
     const body = encodeURIComponent(
 `단체/성함: ${data.get('org')}
@@ -180,18 +219,22 @@ function initForm() {
 문의 내용:
 ${data.get('message')}`
     );
-
-    // 메일 클라이언트 열기
     window.location.href = `mailto:yuzevent@naver.com?subject=${subject}&body=${body}`;
 
-    // 성공 메시지 표시
+    // 3) 결과 메시지 — 저장 성공 여부에 따라 정직하게 안내
     form.style.display = 'none';
     const success = document.createElement('div');
     success.className = 'form-success visible';
-    success.innerHTML = `
-      <h3>문의가 전송되었습니다</h3>
-      <p>이메일 앱이 열렸습니다. 전송 후 영업일 1~2일 내 답변드리겠습니다.<br>
+    success.innerHTML = saved
+      ? `
+      <h3>문의가 접수되었습니다</h3>
+      <p>영업일 기준 1~2일 내 답변드리겠습니다.<br>
       긴급 문의: <a href="tel:010-6668-2436">010-6668-2436</a></p>
+    `
+      : `
+      <h3>이메일 앱이 열렸습니다</h3>
+      <p>열린 메일을 <strong>전송해주셔야 문의가 접수됩니다.</strong><br>
+      메일 앱이 열리지 않았다면 전화로 문의해주세요: <a href="tel:010-6668-2436">010-6668-2436</a></p>
     `;
     form.parentNode.appendChild(success);
   });
@@ -466,11 +509,8 @@ function initGuestbook() {
   const list = document.getElementById('guestbookList');
   if (!form || !list) return;
 
-  const { createClient } = window.supabase;
-  const db = createClient(
-    'https://iwaeswhrysvcuopqeyia.supabase.co',
-    'sb_publishable_AZWK-T5m0Q-dKOw4WeJ5Pw_uzyVrXA-'
-  );
+  const db = getSupabase();
+  if (!db) return;
 
   function esc(s) {
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
