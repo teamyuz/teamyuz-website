@@ -277,7 +277,7 @@ function initPerfModal() {
   function show(i) {
     idx = (i + imgs.length) % imgs.length;
     const n = String(idx_to_num(idx)).padStart(3, '0');
-    img.src = `images/perf-imgs/img-${n}.png`;
+    img.src = `images/perf-imgs/img-${n}.jpg`;
     img.alt = title.textContent;
     counter.textContent = `${idx + 1} / ${imgs.length}`;
     prev.style.display = imgs.length > 1 ? '' : 'none';
