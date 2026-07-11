@@ -83,26 +83,45 @@ function renderRep(filter) {
 }
 
 // ===== SCHEDULE DATA =====
+// 날짜만 적으면 예정/완료는 자동 계산됩니다. '2026.7.11'(일 단위) 또는 '2026.5'(월 단위) 형식.
 const schedule = [
-  { date: '2026.7.11', title: '부산 영도 깡깡이 마을 공연', venue: '깡깡이 마을 (부산 영도)', status: 'upcoming' },
-  { date: '2026.6.20', title: '수성못 뮤직앤비어 페스티벌', venue: '수성못 (대구)', status: 'past' },
-  { date: '2026.5', title: '광안리 발코니 음악회', venue: '부산 수영구', status: 'past' },
-  { date: '2026.5', title: '숲속 작은 음악회', venue: '부산 북구', status: 'past' },
-  { date: '2026.5', title: '경산 어린이날 큰 잔치', venue: '경산 (경북)', status: 'past' },
-  { date: '2026.3', title: 'NC 다이노스 개막식 공연', venue: 'NC 다이노스 구장', status: 'past' },
+  { date: '2026.7.11', title: '부산 영도 깡깡이 마을 공연', venue: '깡깡이 마을 (부산 영도)' },
+  { date: '2026.6.20', title: '수성못 뮤직앤비어 페스티벌', venue: '수성못 (대구)' },
+  { date: '2026.5', title: '광안리 발코니 음악회', venue: '부산 수영구' },
+  { date: '2026.5', title: '숲속 작은 음악회', venue: '부산 북구' },
+  { date: '2026.5', title: '경산 어린이날 큰 잔치', venue: '경산 (경북)' },
+  { date: '2026.3', title: 'NC 다이노스 개막식 공연', venue: 'NC 다이노스 구장' },
 ];
+
+// '2026.7.11' → 그날 자정, '2026.5' → 그달 마지막 날 자정 (월 단위는 월이 끝나야 '완료' 처리)
+function schedDate(str) {
+  const p = String(str).split('.').map(Number);
+  if (p.length >= 3) return new Date(p[0], p[1] - 1, p[2]);
+  if (p.length === 2) return new Date(p[0], p[1], 0);
+  return null;
+}
+
+function schedStatus(s) {
+  const d = schedDate(s.date);
+  if (!d) return s.status || 'past';
+  const endOfDay = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+  return new Date() < endOfDay ? 'upcoming' : 'past';
+}
 
 function renderSchedule() {
   const list = document.getElementById('scheduleList');
   if (!list) return;
-  list.innerHTML = schedule.map(s => `
+  list.innerHTML = schedule.map(s => {
+    const status = schedStatus(s);
+    return `
     <div class="sched-row">
       <span class="sched-date">${s.date}</span>
       <span class="sched-title">${s.title}</span>
       <span class="sched-venue">${s.venue}</span>
-      <span class="sched-badge ${s.status}">${s.status === 'upcoming' ? '예정' : '완료'}</span>
+      <span class="sched-badge ${status}">${status === 'upcoming' ? '예정' : '완료'}</span>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // ===== FILTER BUTTONS =====
@@ -395,9 +414,24 @@ function initMemberFlip() {
 }
 
 // ===== COUNTDOWN =====
+// schedule 배열에서 아직 지나지 않은 가장 가까운 공연(일 단위 날짜만)을 자동으로 골라 표시.
+// 예정 공연이 없으면 배너를 숨긴다 — 데이터는 schedule만 고치면 됨.
 function initCountdown() {
-  const target = new Date('2026-07-11T00:00:00+09:00');
   const banner = document.getElementById('countdownBanner');
+  if (!banner) return;
+
+  const now = new Date();
+  const next = schedule
+    .filter(s => String(s.date).split('.').length >= 3)
+    .map(s => ({ ...s, d: schedDate(s.date) }))
+    .filter(s => s.d && now < new Date(s.d.getFullYear(), s.d.getMonth(), s.d.getDate() + 1))
+    .sort((a, b) => a.d - b.d)[0];
+
+  if (!next) { banner.style.display = 'none'; return; }
+
+  const titleEl = banner.querySelector('.cd-title');
+  if (titleEl) titleEl.textContent = `${next.date} · ${next.title}`;
+
   const els = {
     days:  document.getElementById('cdDays'),
     hours: document.getElementById('cdHours'),
@@ -405,10 +439,16 @@ function initCountdown() {
     secs:  document.getElementById('cdSecs'),
   };
   if (!els.days) return;
+
+  const target = next.d;
+  const dayEnd = new Date(target.getFullYear(), target.getMonth(), target.getDate() + 1);
+
   function tick() {
-    const diff = target - new Date();
+    const t = new Date();
+    if (t >= dayEnd) { banner.style.display = 'none'; return; }
+    const diff = target - t;
     if (diff <= 0) {
-      banner.innerHTML = '<div class="countdown-inner"><span style="font-size:18px;font-weight:700;color:white">🎉 오늘 공연 날! 깡깡이 마을에서 만나요!</span></div>';
+      banner.innerHTML = `<div class="countdown-inner"><span style="font-size:18px;font-weight:700;color:white">🎉 오늘 공연 날! ${next.title}</span></div>`;
       return;
     }
     els.days.textContent  = String(Math.floor(diff / 86400000)).padStart(2, '0');
@@ -528,11 +568,12 @@ function initNaverBlogFeed() {
   const grid = document.getElementById('blogGrid');
   if (!grid) return;
   const rssUrl = encodeURIComponent('https://rss.blog.naver.com/yuzevent.xml');
-  fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&count=3`)
+  // rss2json 무료 플랜은 count 파라미터를 지원하지 않음 — 전체 응답에서 3개만 사용
+  fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`)
     .then(r => r.json())
     .then(data => {
       if (data.status !== 'ok' || !data.items?.length) throw new Error();
-      grid.innerHTML = data.items.map(item => {
+      grid.innerHTML = data.items.slice(0, 3).map(item => {
         const html = item.content || item.description || '';
         const thumbMatch = html.match(/<img[^>]+src="([^"]+)"/);
         const thumb = thumbMatch ? thumbMatch[1] : null;
