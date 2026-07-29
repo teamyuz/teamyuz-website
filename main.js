@@ -10,7 +10,6 @@ const repertoire = [
   { num: 7,  title: "그 날을 기약하며",                    source: "뮤지컬 영웅",                      genre: "뮤지컬" },
   { num: 8,  title: "You Will Be Found",                   source: "뮤지컬 디어 에반 핸슨",             genre: "뮤지컬" },
   { num: 9,  title: "Waving Through a Window",             source: "뮤지컬 디어 에반 핸슨",             genre: "뮤지컬" },
-  { num: 10, title: "아라비안 나이트",                     source: "뮤지컬·영화 알라딘",                genre: "뮤지컬" },
   { num: 11, title: "Land of Lola",                        source: "뮤지컬 킹키부츠",                  genre: "뮤지컬" },
   { num: 12, title: "Everybody Say Yeah",                  source: "뮤지컬 킹키부츠",                  genre: "뮤지컬" },
   { num: 13, title: "C'mon Everybody",                     source: "뮤지컬 올 슉 업",                  genre: "뮤지컬" },
@@ -20,21 +19,31 @@ const repertoire = [
   { num: 17, title: "Let It Go",                           source: "뮤지컬 겨울왕국",                  genre: "뮤지컬" },
 
   // ── 디즈니 ──────────────────────────────────────────────────────
-  { num: 18, title: "사랑은 열린 문",    source: "영화 겨울왕국",                    genre: "디즈니" },
-  { num: 19, title: "Ring in the Season", source: "올라프의 겨울왕국 어드벤처 OST",  genre: "디즈니" },
-  { num: 20, title: "디즈니 메들리",    source: "Disney 곡 모음",                    genre: "디즈니" },
+  { title: "사랑은 열린 문",              source: "영화 겨울왕국",                   genre: "디즈니" },
+  { title: "Ring in the Season",           source: "올라프의 겨울왕국 어드벤처 OST",  genre: "디즈니" },
+  { title: "A Whole New World",            source: "영화 알라딘",                     genre: "디즈니" },
+  { title: "Arabian Nights",               source: "영화 알라딘",                     genre: "디즈니" },
+  { title: "Prince Ali",                   source: "영화 알라딘",                     genre: "디즈니" },
+  { title: "Can You Feel the Love Tonight", source: "영화 라이온킹",                  genre: "디즈니" },
+  { title: "How Far I'll Go",              source: "영화 모아나",                     genre: "디즈니" },
+  { title: "Under the Sea",                source: "영화 인어공주",                   genre: "디즈니" },
+  { title: "Part of Your World",           source: "영화 인어공주",                   genre: "디즈니" },
+  { title: "Colors of the Wind",           source: "영화 포카혼타스",                 genre: "디즈니" },
+  { title: "Try Everything",               source: "영화 주토피아",                   genre: "디즈니" },
+  { title: "Beauty and the Beast",         source: "영화 미녀와 야수",                genre: "디즈니" },
+  { title: "Belle",                        source: "영화 미녀와 야수",                genre: "디즈니" },
+  { title: "디즈니 메들리",                source: "Disney 곡 모음",                  genre: "디즈니" },
 
   // ── 팝 ──────────────────────────────────────────────────────────
   { num: 21, title: "Can't Help Falling in Love", source: "Elvis Presley 원곡",        genre: "팝" },
-  { num: 22, title: "Try Everything",             source: "영화 주토피아 OST · Shakira", genre: "팝" },
   { num: 23, title: "This Is Me",                 source: "영화 위대한 쇼맨",           genre: "팝" },
 
   // ── 가요 ──────────────────────────────────────────────────────────
   { num: 24, title: "꽃이 피고 지듯이",       source: "영화 사도 OST · 조승우",       genre: "가요" },
   { num: 25, title: "빙글빙글",               source: "나미",                         genre: "가요" },
   { num: 26, title: "삐에로는 우릴 보고 웃지", source: "김완선",                      genre: "가요" },
-  { num: 27, title: "널 사랑하겠어",          source: "—",                            genre: "가요" },
-  { num: 28, title: "이제 나만 믿어요",        source: "임영웅",                       genre: "가요" },
+  { num: 27, title: "널 사랑하겠어",          source: "—",                            genre: "가요", wedding: true },
+  { num: 28, title: "이제 나만 믿어요",        source: "임영웅",                       genre: "가요", wedding: true },
   { num: 29, title: "바람의 노래",            source: "소향",                         genre: "가요" },
   { num: 30, title: "라라라",                 source: "SG 워너비",                    genre: "가요" },
   { num: 31, title: "아름다운 나라",          source: "심문희",                       genre: "가요" },
@@ -44,11 +53,30 @@ const repertoire = [
   { num: 35, title: "촛불하나",               source: "이문세",                       genre: "가요" },
   { num: 36, title: "붉은노을",               source: "이문세",                       genre: "가요" },
   { num: 37, title: "서울의 달",              source: "김건모",                       genre: "가요" },
-  { num: 38, title: "그대 고운 내 사랑",      source: "이정열 / 어반자카파",           genre: "가요" },
-  { num: 39, title: "LOVE DAY",               source: "양요섭, 정은지",               genre: "가요" },
+  { num: 38, title: "그대 고운 내 사랑",      source: "이정열 / 어반자카파",           genre: "가요", wedding: true },
+  { num: 39, title: "LOVE DAY",               source: "양요섭, 정은지",               genre: "가요", wedding: true },
   { num: 40, title: "버터플라이",             source: "국가대표 OST",                 genre: "가요" },
   { num: 41, title: "슈퍼스타",               source: "미도와 파라솔",                genre: "가요" },
   { num: 42, title: "새들처럼",               source: "변진섭",                       genre: "가요" },
+  { title: "여행을 떠나요",                   source: "이승기",                       genre: "가요" },
+  { title: "사람들이 움직이는 게",            source: "악동뮤지션",                   genre: "가요" },
+  { title: "멸종위기 사랑",                   source: "이찬혁",                       genre: "가요" },
+  { title: "I Love You",                      source: "악동뮤지션",                   genre: "가요", wedding: true },
+  { title: "밤양갱",                          source: "비비",                         genre: "가요" },
+  { title: "Golden",                          source: "케이팝 데몬 헌터스 OST",        genre: "가요" },
+  { title: "꿈",                              source: "태연",                         genre: "가요" },
+  { title: "언제나 사랑해",                   source: "케이시",                       genre: "가요", wedding: true },
+  { title: "너에게 난, 나에게 넌",            source: "자전거 탄 풍경",               genre: "가요" },
+  { title: "나성에 가면",                     source: "심은경",                       genre: "가요" },
+  { title: "아름다운 구속",                   source: "서영은",                       genre: "가요", wedding: true },
+  { title: "휘파람",                          source: "로이킴",                       genre: "가요" },
+  { title: "내게 사랑이 뭐냐고 물어본다면",   source: "로이킴",                       genre: "가요", wedding: true },
+  { title: "사랑시 고백구 행복동",            source: "제이세라",                     genre: "가요", wedding: true },
+  { title: "인연",                            source: "이선희",                       genre: "가요", wedding: true },
+  { title: "좋겠다",                          source: "스윗소로우",                   genre: "가요", wedding: true },
+  { title: "아로하",                          source: "조정석",                       genre: "가요", wedding: true },
+  { title: "Perhaps Love",                    source: "하울 & 제이",                  genre: "가요" },
+  { title: "MAMA",                            source: "엑소",                         genre: "가요" },
 
   // ── 트로트 ──────────────────────────────────────────────────────
   { num: 43, title: "아모르파티",  source: "김연자",        genre: "트로트" },
@@ -65,10 +93,14 @@ const repertoire = [
   { num: 50, title: "캐롤 메들리", source: "크리스마스 캐롤 모음", genre: "캐롤" },
 ];
 
+// 곡 번호는 배열 순서대로 자동 부여 — 곡을 추가해도 번호를 손댈 필요 없음
+repertoire.forEach((r, i) => { r.num = i + 1; });
+
 // ===== RENDER REPERTOIRE =====
 function renderRep(filter) {
   const grid = document.getElementById('repGrid');
   const items = filter === 'all' ? repertoire : repertoire.filter(r => {
+    if (filter === 'wedding') return r.wedding;
     if (filter === '민요') return r.genre === '민요' || r.genre === '캐롤';
     return r.genre === filter;
   });
@@ -77,7 +109,10 @@ function renderRep(filter) {
       <span class="rep-num">#${String(r.num).padStart(2,'0')}</span>
       <span class="rep-title">${r.title}</span>
       <span class="rep-source">${r.source}</span>
-      <span class="rep-genre ${r.genre}">${r.genre}</span>
+      <span class="rep-tags">
+        <span class="rep-genre ${r.genre}">${r.genre}</span>
+        ${r.wedding ? '<span class="rep-wedding">축가 추천</span>' : ''}
+      </span>
     </div>
   `).join('');
 }
