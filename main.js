@@ -85,6 +85,11 @@ function renderRep(filter) {
 // ===== SCHEDULE DATA =====
 // 날짜만 적으면 예정/완료는 자동 계산됩니다. '2026.7.11'(일 단위) 또는 '2026.5'(월 단위) 형식.
 const schedule = [
+  { date: '2026.9.2', title: '문화가 있는 날 공연', venue: '부산 강서구' },
+  { date: '2026.8.8~9', title: '여수 거문도 공연', venue: '거문도 (여수)' },
+  { date: '2026.8.5', title: '영남대 천마아트홀 공연', venue: '천마아트홀 그랜드홀 (영남대)' },
+  { date: '2026.8.2', title: '거제 한화 벨버디어 공연', venue: '한화 벨버디어 (거제)' },
+  { date: '2026.7.24', title: '수성못 아이콘 공연', venue: '수성못 (대구)' },
   { date: '2026.7.11', title: '부산 영도 깡깡이 마을 공연', venue: '깡깡이 마을 (부산 영도)' },
   { date: '2026.6.20', title: '수성못 뮤직앤비어 페스티벌', venue: '수성못 (대구)' },
   { date: '2026.5', title: '광안리 발코니 음악회', venue: '부산 수영구' },
@@ -93,19 +98,36 @@ const schedule = [
   { date: '2026.3', title: 'NC 다이노스 개막식 공연', venue: 'NC 다이노스 구장' },
 ];
 
-// '2026.7.11' → 그날 자정, '2026.5' → 그달 마지막 날 자정 (월 단위는 월이 끝나야 '완료' 처리)
-function schedDate(str) {
-  const p = String(str).split('.').map(Number);
-  if (p.length >= 3) return new Date(p[0], p[1] - 1, p[2]);
-  if (p.length === 2) return new Date(p[0], p[1], 0);
-  return null;
+// '2026.7.11' → 그날, '2026.8.8~9' → 8일 시작·9일 종료, '2026.5' → 그달 (월 단위는 월이 끝나야 '완료' 처리)
+function schedDate(str, which = 'start') {
+  const p = String(str).split('.');
+  const y = Number(p[0]), m = Number(p[1]);
+  if (!y || !m) return null;
+  if (p.length >= 3) {
+    const days = String(p[2]).split('~').map(Number);
+    const day = which === 'end' ? days[days.length - 1] : days[0];
+    return day ? new Date(y, m - 1, day) : null;
+  }
+  return which === 'end' ? new Date(y, m, 0) : new Date(y, m - 1, 1);
 }
 
 function schedStatus(s) {
-  const d = schedDate(s.date);
+  const d = schedDate(s.date, 'end');
   if (!d) return s.status || 'past';
   const endOfDay = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
   return new Date() < endOfDay ? 'upcoming' : 'past';
+}
+
+// 실적 표의 '예정' 표시를 날짜 기준으로 자동 갱신 — 공연이 지나면 클래스를 손댈 필요 없음
+function syncPerfTableStatus() {
+  const now = new Date();
+  document.querySelectorAll('.perf-table tbody tr').forEach(row => {
+    if (row.classList.contains('year-header')) return;
+    const end = schedDate(row.cells[0]?.textContent.trim(), 'end');
+    if (!end) return;
+    const past = now >= new Date(end.getFullYear(), end.getMonth(), end.getDate() + 1);
+    row.classList.toggle('perf-upcoming', !past);
+  });
 }
 
 function renderSchedule() {
@@ -466,8 +488,8 @@ function initCountdown() {
   const now = new Date();
   const next = schedule
     .filter(s => String(s.date).split('.').length >= 3)
-    .map(s => ({ ...s, d: schedDate(s.date) }))
-    .filter(s => s.d && now < new Date(s.d.getFullYear(), s.d.getMonth(), s.d.getDate() + 1))
+    .map(s => ({ ...s, d: schedDate(s.date), end: schedDate(s.date, 'end') }))
+    .filter(s => s.d && s.end && now < new Date(s.end.getFullYear(), s.end.getMonth(), s.end.getDate() + 1))
     .sort((a, b) => a.d - b.d)[0];
 
   if (!next) { banner.style.display = 'none'; return; }
@@ -484,7 +506,7 @@ function initCountdown() {
   if (!els.days) return;
 
   const target = next.d;
-  const dayEnd = new Date(target.getFullYear(), target.getMonth(), target.getDate() + 1);
+  const dayEnd = new Date(next.end.getFullYear(), next.end.getMonth(), next.end.getDate() + 1);
 
   function tick() {
     const t = new Date();
@@ -638,6 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initFilters();
   renderSchedule();
+  syncPerfTableStatus();
   initForm();
   initReveal();
   initPerfModal();
