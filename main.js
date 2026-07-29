@@ -111,7 +111,7 @@ function renderRep(filter) {
       <span class="rep-source">${r.source}</span>
       <span class="rep-tags">
         <span class="rep-genre ${r.genre}">${r.genre}</span>
-        ${r.wedding ? '<span class="rep-wedding">축가 추천</span>' : ''}
+        ${r.wedding ? '<span class="rep-wedding">웨딩 축가</span>' : ''}
       </span>
     </div>
   `).join('');
