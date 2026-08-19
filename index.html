@@ -626,68 +626,65 @@
 <section id="shop">
   <div class="container">
     <div class="section-label">OFFICIAL GOODS</div>
-    <h2 class="section-title">팀 유즈 굿즈샵</h2>
-    <p class="section-desc">팀 유즈 공식 굿즈. 현장 또는 DM으로 구매 가능합니다.</p>
+    <h2 class="section-title">굿즈샵</h2>
+    <p class="section-desc">무대 위에서 저희가 실제로 입는 옷을 팬분들께도 전합니다.</p>
 
-    <div class="shop-coming-banner">
-      <span class="shop-badge">COMING SOON</span>
-      <p>공식 굿즈가 곧 출시됩니다! 인스타그램 <strong>@team_yuz_</strong>을 팔로우하고 소식을 먼저 받아보세요.</p>
-      <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener" class="btn btn-sky">인스타 팔로우</a>
+    <!-- 예약 마감 카운트다운 -->
+    <div class="goods-cd" data-goods-countdown>
+      <div class="gcd-live">
+        <span class="gcd-label">1차 예약 판매 진행 중</span>
+        <div class="gcd-timer">
+          <div class="gcd-unit"><span class="gcd-num gcd-days">--</span><span class="gcd-lbl">일</span></div>
+          <span class="gcd-sep">:</span>
+          <div class="gcd-unit"><span class="gcd-num gcd-hours">--</span><span class="gcd-lbl">시간</span></div>
+          <span class="gcd-sep">:</span>
+          <div class="gcd-unit"><span class="gcd-num gcd-mins">--</span><span class="gcd-lbl">분</span></div>
+        </div>
+      </div>
+      <div class="gcd-closed" style="display:none"><span class="gcd-label">마감</span></div>
+      <p class="gcd-note">마감 후 제작에 들어갑니다. 마감 전까지는 언제든 전액 환불이 가능합니다.</p>
     </div>
 
-    <div class="shop-grid">
-      <div class="shop-item">
-        <div class="shop-img-wrap">
-          <div class="shop-img-ph">🃏</div>
-          <div class="shop-badge-overlay">추후 출시</div>
-        </div>
-        <div class="shop-info">
-          <h4>팀 유즈 포토카드 세트</h4>
-          <p class="shop-desc">멤버 6인 포토카드 + 팀샷 포함 7장 구성</p>
-          <button class="btn btn-shop-soon" disabled>추후 출시</button>
-        </div>
+    <!-- 대표 상품 -->
+    <div class="goods-hero">
+      <div class="goods-hero-img">
+        <div class="goods-ph">TEAM YUZ<br>로고 티셔츠</div>
       </div>
-      <div class="shop-item">
-        <div class="shop-img-wrap">
-          <div class="shop-img-ph">👜</div>
-          <div class="shop-badge-overlay">추후 출시</div>
-        </div>
-        <div class="shop-info">
-          <h4>팀 유즈 에코백</h4>
-          <p class="shop-desc">로고 프린팅 캔버스 에코백</p>
-          <button class="btn btn-shop-soon" disabled>추후 출시</button>
-        </div>
-      </div>
-      <div class="shop-item">
-        <div class="shop-img-wrap">
-          <div class="shop-img-ph">🏷️</div>
-          <div class="shop-badge-overlay">추후 출시</div>
-        </div>
-        <div class="shop-info">
-          <h4>스티커 팩</h4>
-          <p class="shop-desc">팀 유즈 로고 & 캐릭터 스티커 10종</p>
-          <button class="btn btn-shop-soon" disabled>추후 출시</button>
-        </div>
-      </div>
-      <div class="shop-item">
-        <div class="shop-img-wrap">
-          <div class="shop-img-ph">☕</div>
-          <div class="shop-badge-overlay">추후 출시</div>
-        </div>
-        <div class="shop-info">
-          <h4>로고 텀블러</h4>
-          <p class="shop-desc">스테인리스 보온 텀블러</p>
-          <button class="btn btn-shop-soon" disabled>추후 출시</button>
-        </div>
+      <div class="goods-hero-info">
+        <span class="goods-badge">1ST OFFICIAL GOODS</span>
+        <h3 class="goods-name">TEAM YUZ 로고 티셔츠</h3>
+        <p class="goods-sub">멤버 사인 카드 랜덤 1종 봉입 · 기간 한정 예약 판매</p>
+        <div class="goods-price">39,000<span>원</span></div>
+        <ul class="goods-points">
+          <li>멤버 6명 친필 사인 카드 중 <strong>랜덤 1종</strong> 동봉</li>
+          <li>멤버 단체복과 <strong>동일한 원단</strong>으로 제작</li>
+          <li>실측 사이즈표 · 멤버 착용컷 제공</li>
+        </ul>
+        <a href="goods/tee.html" class="btn btn-primary btn-goods">예약 주문하기</a>
+        <p class="goods-pay">네이버페이 · 카카오페이 · 토스페이 · 신용카드 결제 가능</p>
       </div>
     </div>
 
-    <div class="shop-contact">
-      <p>🛍️ 공연 현장 구매 또는 사전 예약 문의</p>
-      <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener">Instagram DM @team_yuz_</a>
-      <span>·</span>
-      <a href="#" class="email-link" data-u="yuzevent" data-d="naver.com"><span class="email-display"></span></a>
+    <!-- 다음 굿즈 예고 -->
+    <h4 class="goods-next-title">다음 굿즈</h4>
+    <div class="goods-next-grid">
+      <div class="goods-next-item">
+        <div class="goods-next-ph">🃏</div>
+        <h5>포토카드 세트</h5>
+        <p>멤버 6인 포토카드 + 팀샷 구성</p>
+      </div>
+      <div class="goods-next-item">
+        <div class="goods-next-ph">👜</div>
+        <h5>에코백</h5>
+        <p>로고 프린팅 캔버스 에코백</p>
+      </div>
+      <div class="goods-next-item">
+        <div class="goods-next-ph">☕</div>
+        <h5>로고 텀블러</h5>
+        <p>스테인리스 보온 텀블러</p>
+      </div>
     </div>
+    <p class="goods-next-note">2차 굿즈는 1차 판매 반응을 보고 순차적으로 공개합니다.</p>
   </div>
 </section>
 
@@ -959,6 +956,27 @@
         </div>
       </div>
     </div>
+    <!-- ===== 사업자정보 ===== -->
+    <div class="biz-info">
+      <h4>사업자정보</h4>
+      <dl class="biz-grid">
+        <div><dt>상호</dt><dd>유즈 이벤트 컴퍼니</dd></div>
+        <div><dt>대표자</dt><dd>류수홍</dd></div>
+        <div><dt>사업자등록번호</dt><dd>416-26-29575</dd></div>
+        <div><dt>통신판매업신고</dt><dd>2024-경북경산-0215</dd></div>
+        <div><dt>사업장 주소</dt><dd>경상북도 경산시 압량읍 오목로 183</dd></div>
+        <div><dt>대표전화</dt><dd><a href="tel:010-9210-2436">010-9210-2436</a></dd></div>
+        <div><dt>이메일</dt><dd><a href="mailto:yuzevent@naver.com">yuzevent@naver.com</a></dd></div>
+        <div><dt>개인정보관리책임자</dt><dd>류수홍 (yuzevent@naver.com)</dd></div>
+      </dl>
+      <div class="biz-links">
+        <a href="terms/">이용약관</a>
+        <a href="privacy/">개인정보처리방침</a>
+        <a href="refund/">교환 및 환불 안내</a>
+        <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=4162629575" target="_blank" rel="noopener">사업자정보확인</a>
+      </div>
+    </div>
+
     <div class="footer-bottom">
       <p>© 2026 Team Yuz · 유즈 이벤트 컴퍼니. All rights reserved.</p>
     </div>
@@ -981,6 +999,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="main.js"></script>
+<script src="goods.js"></script>
 
 <!-- ===== PERF PHOTO MODAL ===== -->
 <div class="perf-modal-overlay" id="perfModal">

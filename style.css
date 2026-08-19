@@ -1442,3 +1442,333 @@ textarea { resize: vertical; min-height: 100px; }
 .blog-loading { color: var(--text-light); font-size: .9rem; padding: 8px 0; }
 @media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr; } }
 @media (min-width: 641px) and (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ============================================================
+   GOODS / 정책 페이지 / 사업자정보  (PG 심사 대응)
+   기존 CSS 변수만 사용 — 새 색·폰트 도입 없음
+   ============================================================ */
+
+/* 미확정 값 표시 — 코지포우 회신 후 교체 */
+.fill {
+  background: #FFF1DF; color: #B45309;
+  padding: 1px 7px; border-radius: 5px;
+  font-weight: 600; font-size: .92em; white-space: nowrap;
+}
+
+/* ===== 예약 마감 카운트다운 ===== */
+.goods-cd {
+  background: var(--navy); color: var(--white);
+  border-radius: 18px; padding: 22px 24px;
+  margin-bottom: 32px; text-align: center;
+}
+.goods-cd.closed { background: var(--text-mid); }
+.gcd-label {
+  display: block; font-size: .82rem; font-weight: 700;
+  letter-spacing: .1em; color: var(--sky-light); margin-bottom: 12px;
+}
+.goods-cd.closed .gcd-label { color: var(--white); font-size: 1.1rem; margin: 0; }
+.gcd-timer { display: flex; align-items: flex-end; justify-content: center; gap: 10px; }
+.gcd-unit { display: flex; flex-direction: column; align-items: center; min-width: 58px; }
+.gcd-num {
+  font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700;
+  line-height: 1; color: var(--white);
+}
+.gcd-lbl { font-size: .7rem; color: var(--sky-light); margin-top: 5px; letter-spacing: .06em; }
+.gcd-sep { font-size: 1.7rem; color: var(--sky); line-height: 1; padding-bottom: 16px; }
+.gcd-note {
+  font-size: .78rem; color: var(--sky-light);
+  margin-top: 16px; line-height: 1.6;
+}
+
+/* ===== 대표 상품 카드 ===== */
+.goods-hero {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  align-items: center;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; padding: 28px; margin-bottom: 48px;
+}
+.goods-hero-img { aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden; }
+.goods-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  background: var(--sky-pale); color: var(--sky-dark);
+  font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600;
+  letter-spacing: .04em; line-height: 1.5;
+}
+.goods-badge {
+  display: inline-block; background: var(--sky-pale); color: var(--sky-dark);
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+  padding: 5px 12px; border-radius: 20px;
+}
+.goods-name {
+  font-family: var(--font-serif); font-size: 1.75rem; font-weight: 700;
+  color: var(--text-dark); margin: 14px 0 6px;
+}
+.goods-sub { font-size: .85rem; color: var(--text-mid); margin-bottom: 16px; }
+.goods-price {
+  font-family: var(--font-serif); font-size: 2.1rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 20px;
+}
+.goods-price span { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; margin-left: 3px; }
+.goods-points { list-style: none; margin-bottom: 24px; }
+.goods-points li {
+  position: relative; padding-left: 20px; margin-bottom: 9px;
+  font-size: .86rem; color: var(--text-mid); line-height: 1.6;
+}
+.goods-points li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--sky); font-weight: 700;
+}
+.goods-points strong { color: var(--text-dark); }
+.btn-goods { display: block; width: 100%; text-align: center; }
+.goods-pay {
+  font-size: .75rem; color: var(--text-light);
+  text-align: center; margin-top: 12px; line-height: 1.6;
+}
+
+/* ===== 다음 굿즈 예고 ===== */
+.goods-next-title {
+  font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700;
+  color: var(--text-dark); text-align: center; margin-bottom: 20px;
+}
+.goods-next-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.goods-next-item {
+  border: 1.5px dashed var(--border); border-radius: 16px;
+  padding: 26px 18px; text-align: center; background: var(--off-white);
+}
+.goods-next-ph { font-size: 2rem; margin-bottom: 12px; opacity: .55; }
+.goods-next-item h5 { font-size: .95rem; font-weight: 700; color: var(--text-mid); margin-bottom: 5px; }
+.goods-next-item p { font-size: .78rem; color: var(--text-light); line-height: 1.55; }
+.goods-next-note {
+  text-align: center; font-size: .8rem; color: var(--text-light); margin-top: 22px;
+}
+
+/* ===== 사업자정보 푸터 ===== */
+.biz-info {
+  border-top: 1px solid rgba(255,255,255,.14);
+  margin-top: 36px; padding-top: 26px;
+}
+.biz-info h4 {
+  font-size: .74rem; letter-spacing: .12em; font-weight: 700;
+  color: var(--sky-light); margin-bottom: 14px;
+}
+.biz-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 7px 28px; margin-bottom: 18px;
+}
+.biz-grid > div { display: flex; gap: 8px; font-size: .76rem; line-height: 1.6; }
+.biz-grid dt { color: rgba(255,255,255,.5); min-width: 108px; flex-shrink: 0; }
+.biz-grid dd { color: rgba(255,255,255,.85); }
+.biz-grid dd a { color: rgba(255,255,255,.85); }
+.biz-grid dd a:hover { color: var(--sky-light); }
+.biz-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.biz-links a {
+  font-size: .78rem; color: var(--sky-light);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.biz-links a:hover { color: var(--white); }
+
+/* ===== 서브 페이지 공통 (상품 상세 · 정책) ===== */
+.sub-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.96); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.sub-nav-inner {
+  max-width: 1180px; margin: 0 auto; padding: 12px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.sub-nav-logo img { height: 42px; width: auto; display: block; border-radius: 8px; }
+.sub-nav-home { font-size: .85rem; font-weight: 600; color: var(--text-mid); }
+.sub-nav-home:hover { color: var(--sky-dark); }
+.sub-main { padding: 44px 0 72px; }
+
+/* ===== 정책 페이지 ===== */
+.policy-head { text-align: center; margin-bottom: 40px; }
+.policy-head h1 {
+  font-family: var(--font-serif); font-size: 2.1rem; font-weight: 700;
+  color: var(--text-dark); margin-bottom: 10px;
+}
+.policy-head p { font-size: .88rem; color: var(--text-light); }
+.policy-body { max-width: 800px; margin: 0 auto; }
+.policy-body h2 {
+  font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700;
+  color: var(--navy); margin: 38px 0 14px;
+  padding-bottom: 9px; border-bottom: 2px solid var(--sky-pale);
+}
+.policy-body h2:first-child { margin-top: 0; }
+.policy-body h3 {
+  font-size: 1rem; font-weight: 700; color: var(--text-dark); margin: 24px 0 9px;
+}
+.policy-body p { font-size: .89rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 12px; }
+.policy-body ul { list-style: none; margin: 0 0 16px; }
+.policy-body ul li {
+  position: relative; padding-left: 17px; margin-bottom: 8px;
+  font-size: .89rem; color: var(--text-mid); line-height: 1.75;
+}
+.policy-body ul li::before {
+  content: ''; position: absolute; left: 3px; top: .72em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--sky);
+}
+.policy-note {
+  background: var(--sky-bg); border-left: 3px solid var(--sky);
+  border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 18px 0;
+  font-size: .86rem; color: var(--text-mid); line-height: 1.75;
+}
+.policy-date {
+  margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--border);
+  font-size: .84rem; color: var(--text-light);
+}
+
+/* 정책·사양 공통 표 */
+.doc-table-wrap { overflow-x: auto; margin: 14px 0 20px; }
+.doc-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .85rem; min-width: 420px;
+}
+.doc-table th, .doc-table td {
+  padding: 11px 14px; text-align: left;
+  border-bottom: 1px solid var(--border); line-height: 1.6;
+}
+.doc-table thead th {
+  background: var(--sky-pale); color: var(--sky-dark);
+  font-weight: 700; font-size: .78rem; letter-spacing: .04em;
+  border-bottom: 1px solid var(--sky-light);
+}
+.doc-table tbody th {
+  background: var(--off-white); color: var(--text-dark);
+  font-weight: 600; width: 34%; white-space: nowrap;
+}
+.doc-table td { color: var(--text-mid); }
+
+/* ===== 상품 상세 ===== */
+.goods-detail {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  margin-bottom: 60px;
+}
+/* 그리드 자식의 기본 min-width:auto 가 트랙을 밀어 컨테이너를 넘기는 것 방지 */
+.goods-detail > *, .goods-hero > * { min-width: 0; }
+.goods-gallery-main { aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; margin-bottom: 12px; }
+.goods-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.goods-thumb {
+  aspect-ratio: 1 / 1; border-radius: 10px; cursor: pointer;
+  background: var(--sky-pale); border: 2px solid transparent;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .66rem; color: var(--sky-dark); text-align: center;
+  padding: 4px; line-height: 1.35; transition: border-color .2s;
+}
+.goods-thumb:hover { border-color: var(--sky-light); }
+.goods-thumb.active { border-color: var(--sky); font-weight: 700; }
+
+.goods-size-label {
+  font-size: .82rem; font-weight: 700; color: var(--text-dark);
+  margin: 24px 0 10px;
+}
+.goods-sizes { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 8px; }
+.size-btn {
+  min-width: 62px; padding: 11px 16px;
+  border: 1.5px solid var(--border); border-radius: 11px;
+  background: var(--white); color: var(--text-mid);
+  font-family: var(--font-sans); font-size: .88rem; font-weight: 600;
+  cursor: pointer; transition: .18s;
+}
+.size-btn:hover { border-color: var(--sky); color: var(--sky-dark); }
+.size-btn.active {
+  background: var(--sky); border-color: var(--sky);
+  color: var(--white); font-weight: 700;
+}
+.goods-notice {
+  display: none; font-size: .82rem; color: #B45309;
+  background: #FFF1DF; border-radius: 9px; padding: 10px 14px; margin-bottom: 14px;
+}
+.goods-notice.show { display: block; }
+.goods-actions { display: flex; gap: 10px; margin-top: 14px; }
+.goods-actions .btn-buy { flex: 1; }
+.btn-outline {
+  border: 1.5px solid var(--border); background: var(--white);
+  color: var(--text-mid); border-radius: 30px;
+  padding: 14px 22px; font-size: .86rem; font-weight: 600;
+  font-family: var(--font-sans); cursor: pointer; white-space: nowrap;
+  display: inline-flex; align-items: center;
+}
+.btn-outline:hover { border-color: var(--sky); color: var(--sky-dark); }
+
+/* 사인 카드 / 착용컷 */
+.goods-sec { margin-bottom: 60px; }
+.goods-sec-title {
+  font-family: var(--font-serif); font-size: 1.55rem; font-weight: 700;
+  color: var(--text-dark); text-align: center; margin-bottom: 8px;
+}
+.goods-sec-desc {
+  font-size: .87rem; color: var(--text-mid);
+  text-align: center; margin-bottom: 28px; line-height: 1.7;
+}
+.sign-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sign-card {
+  background: var(--sky-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 26px 22px; text-align: center;
+}
+.sign-card h4 {
+  font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 9px;
+}
+.sign-card p { font-size: .83rem; color: var(--text-mid); line-height: 1.7; }
+
+.wear-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.wear-item { text-align: center; }
+.wear-ph {
+  aspect-ratio: 3 / 4; border-radius: 14px; margin-bottom: 10px;
+  background: var(--sky-pale); color: var(--sky-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .82rem;
+}
+.wear-cap { font-size: .8rem; color: var(--text-mid); }
+
+/* ===== 모바일 ===== */
+@media (max-width: 860px) {
+  .goods-hero { grid-template-columns: 1fr; gap: 24px; padding: 20px; }
+  .goods-detail { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 640px) {
+  .goods-cd { padding: 18px 16px; border-radius: 14px; }
+  .gcd-num { font-size: 2rem; }
+  .gcd-unit { min-width: 46px; }
+  .gcd-sep { font-size: 1.3rem; padding-bottom: 14px; }
+  .gcd-note { font-size: .72rem; margin-top: 12px; }
+
+  .goods-name { font-size: 1.4rem; }
+  .goods-price { font-size: 1.75rem; }
+  .goods-points li { font-size: .82rem; }
+
+  .goods-next-grid { grid-template-columns: 1fr; gap: 10px; }
+  .goods-next-item { padding: 18px 16px; display: flex; align-items: center; gap: 14px; text-align: left; }
+  .goods-next-ph { font-size: 1.5rem; margin: 0; }
+  .goods-next-note { font-size: .74rem; }
+
+  .biz-grid { grid-template-columns: 1fr; gap: 6px; }
+  .biz-grid dt { min-width: 96px; }
+  .biz-grid > div { font-size: .73rem; }
+  .biz-links { gap: 6px 14px; }
+  .biz-links a { font-size: .73rem; }
+
+  .sub-nav-inner { padding: 10px 16px; }
+  .sub-nav-logo img { height: 34px; }
+  .sub-main { padding: 28px 0 52px; }
+
+  .policy-head h1 { font-size: 1.6rem; }
+  .policy-body h2 { font-size: 1.15rem; margin-top: 30px; }
+  .policy-body p, .policy-body ul li { font-size: .85rem; }
+  .doc-table { font-size: .8rem; min-width: 380px; }
+  .doc-table th, .doc-table td { padding: 9px 11px; }
+
+  .goods-sec { margin-bottom: 44px; }
+  .goods-sec-title { font-size: 1.3rem; }
+  .sign-grid { grid-template-columns: 1fr; gap: 10px; }
+  .sign-card { padding: 20px 18px; }
+  .wear-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .wear-ph { font-size: .68rem; border-radius: 10px; }
+  .wear-cap { font-size: .68rem; line-height: 1.45; }
+  .goods-actions { flex-direction: column; }
+  .btn-outline { text-align: center; justify-content: center; }
+}
