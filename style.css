@@ -2011,3 +2011,9 @@ textarea { resize: vertical; min-height: 100px; }
   .gp-cta { order: 4; font-size: .76rem; padding: 9px 16px; }
   .limited-line { font-size: .76rem; padding: 9px 12px; }
 }
+
+/* 결제 영역 아래로 내려간 상품 정보 소제목 */
+.spec-heading {
+  margin-top: 30px; padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
