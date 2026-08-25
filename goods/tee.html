@@ -37,17 +37,19 @@
     <!-- 예약 마감 카운트다운 -->
     <div class="goods-cd" data-goods-countdown>
       <div class="gcd-live">
-        <span class="gcd-label">1차 예약 판매 진행 중</span>
+        <span class="gcd-label">예약 오픈까지</span>
         <div class="gcd-timer">
           <div class="gcd-unit"><span class="gcd-num gcd-days">--</span><span class="gcd-lbl">일</span></div>
           <span class="gcd-sep">:</span>
           <div class="gcd-unit"><span class="gcd-num gcd-hours">--</span><span class="gcd-lbl">시간</span></div>
           <span class="gcd-sep">:</span>
           <div class="gcd-unit"><span class="gcd-num gcd-mins">--</span><span class="gcd-lbl">분</span></div>
+          <span class="gcd-sep">:</span>
+          <div class="gcd-unit"><span class="gcd-num gcd-secs">--</span><span class="gcd-lbl">초</span></div>
         </div>
       </div>
-      <div class="gcd-closed" style="display:none"><span class="gcd-label">마감</span></div>
-      <p class="gcd-note">예약 마감 <strong>9월 7일(월) 23:59</strong> · 마감 후 제작에 들어갑니다. 마감 전까지는 언제든 전액 환불이 가능합니다.</p>
+      <div class="gcd-closed" style="display:none"><span class="gcd-label">예약 마감</span></div>
+      <p class="gcd-note">8월 26일(수) 저녁 7시에 열립니다</p>
     </div>
 
     <!-- ===== 상품 개요 ===== -->
@@ -82,33 +84,54 @@
         </div>
 
         <div class="doc-table-wrap">
+          <table class="doc-table price-table">
+            <thead>
+              <tr><th>수량</th><th>결제 금액</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>1장</th><td>36,000원 <em>(배송비 3,000원 포함)</em></td></tr>
+              <tr><th>2장</th><td>66,000원 <em>(배송비 무료)</em></td></tr>
+              <tr><th>3장</th><td>99,000원</td></tr>
+              <tr><th>4장</th><td>132,000원</td></tr>
+              <tr><th>5장</th><td>165,000원</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="price-table-note">제주·도서산간은 3,000원이 추가됩니다. 사이즈를 섞으실 경우 결제 메모란에 적어주세요.</p>
+
+        <div class="doc-table-wrap">
           <table class="doc-table">
             <tbody>
               <tr><th>구성</th><td>티셔츠 1장 + 멤버 사인 카드 랜덤 1종</td></tr>
-              <tr><th>소재</th><td>가볍고 땀이 잘 마르는 기능성 원단</td></tr>
+              <tr><th>색상</th><td>화이트 1종</td></tr>
+              <tr><th>소재</th><td>폴리에스터 100% (glimmer 4.4oz 드라이 원단)</td></tr>
               <tr><th>사이즈</th><td>S · M · L · LL · 3L · 5L (6종)</td></tr>
+              <tr><th>제조국</th><td>방글라데시</td></tr>
+              <tr><th>세탁 방법</th><td>찬물 단독세탁 · 그늘에서 건조 · 프린팅 부분 다림질 금지</td></tr>
               <tr><th>발송</th><td>예약 마감 후 7일 이내 순차 발송</td></tr>
               <tr><th>배송비</th><td>1장 3,000원 · 2장 이상 무료</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="goods-material-note">두꺼운 면 티셔츠와 달리 여름에도 쾌적하게 입을 수 있는 원단입니다.</p>
+        <p class="goods-material-note">면이 아닌 폴리에스터 드라이 원단입니다. 땀이 빠르게 마르고 여름에도 쾌적하게 입을 수 있습니다.</p>
 
         <p class="goods-size-label">사이즈 선택</p>
         <div class="goods-sizes">
-          <button type="button" class="size-btn" data-size="S (90)" aria-pressed="false">S<em>90</em></button>
-          <button type="button" class="size-btn" data-size="M (95)" aria-pressed="false">M<em>95</em></button>
-          <button type="button" class="size-btn" data-size="L (100)" aria-pressed="false">L<em>100</em></button>
-          <button type="button" class="size-btn" data-size="LL (105)" aria-pressed="false">LL<em>105</em></button>
-          <button type="button" class="size-btn" data-size="3L (110)" aria-pressed="false">3L<em>110</em></button>
-          <button type="button" class="size-btn" data-size="5L (120)" aria-pressed="false">5L<em>120</em></button>
+          <button type="button" class="size-btn" data-size="S" aria-pressed="false">S<em>90</em></button>
+          <button type="button" class="size-btn" data-size="M" aria-pressed="false">M<em>95</em></button>
+          <button type="button" class="size-btn" data-size="L" aria-pressed="false">L<em>100</em></button>
+          <button type="button" class="size-btn" data-size="LL" aria-pressed="false">LL<em>105</em></button>
+          <button type="button" class="size-btn" data-size="3L" aria-pressed="false">3L<em>110</em></button>
+          <button type="button" class="size-btn" data-size="5L" aria-pressed="false">5L<em>120</em></button>
         </div>
+        <p class="mix-order"><a href="#" data-mix-link>사이즈를 섞어서 2장 이상 주문하기 →</a></p>
         <p class="goods-notice" id="goodsNotice" role="status" aria-live="polite"></p>
 
         <div class="goods-actions">
-          <button type="button" class="btn btn-primary btn-buy" id="goodsBuy">예약 주문하기</button>
+          <button type="button" class="btn btn-primary btn-buy" id="goodsBuy" data-goods-cta>예약 주문하기</button>
           <a href="#size-chart" class="btn-outline">사이즈표</a>
         </div>
+        <p class="goods-buy-hint">사이즈를 먼저 선택해 주세요. 수량은 결제창에서 고르실 수 있습니다.</p>
         <p class="goods-pay">네이버페이 · 카카오페이 · 토스페이 · 신용카드 결제 가능<br>회원가입 없이 비회원으로 주문하실 수 있습니다.</p>
       </div>
     </div>

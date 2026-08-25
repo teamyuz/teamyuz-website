@@ -1856,3 +1856,59 @@ textarea { resize: vertical; min-height: 100px; }
   .size-guide p, .size-guide ul li { font-size: .8rem; }
   .size-table { min-width: 460px; }
 }
+
+/* ===== 예약 오픈 전 · 마감 후 비활성 상태 ===== */
+.btn.is-locked,
+.btn:disabled {
+  background: var(--border) !important;
+  color: var(--text-light) !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.size-btn:disabled {
+  background: var(--off-white); border-color: var(--border);
+  color: var(--text-light); cursor: not-allowed; opacity: .65;
+}
+.size-btn:disabled em { color: var(--text-light); }
+
+/* 사이즈 혼합 주문 링크 */
+.mix-order { margin: 10px 0 4px; }
+.mix-order a {
+  font-size: .84rem; font-weight: 600; color: var(--sky-dark);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.mix-order a:hover { color: var(--navy); }
+.mix-order a.is-locked {
+  color: var(--text-light); text-decoration: none;
+  cursor: not-allowed; pointer-events: none;
+}
+
+.goods-buy-hint {
+  font-size: .78rem; color: var(--text-mid);
+  text-align: center; margin-top: 10px; line-height: 1.6;
+}
+
+/* ===== 수량별 결제 금액표 ===== */
+.price-table tbody th { width: 26%; }
+.price-table td { color: var(--text-dark); font-weight: 600; }
+.price-table td em {
+  font-style: normal; font-weight: 400;
+  font-size: .82em; color: var(--text-light); margin-left: 3px;
+}
+.price-table-note {
+  font-size: .76rem; color: var(--text-light);
+  line-height: 1.65; margin: -8px 0 20px;
+}
+
+@media (max-width: 640px) {
+  .mix-order a { font-size: .78rem; }
+  .goods-buy-hint { font-size: .73rem; }
+  .price-table-note { font-size: .71rem; }
+  .price-table td em { display: block; margin: 1px 0 0; }
+  /* 오픈 전 카운트다운은 4칸 — 좁은 화면에서 줄이기 */
+  .gcd-timer { gap: 6px; }
+  .gcd-unit { min-width: 40px; }
+  .gcd-num { font-size: 1.7rem; }
+  .gcd-sep { font-size: 1.1rem; padding-bottom: 13px; }
+}
