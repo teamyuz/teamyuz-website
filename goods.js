@@ -4,7 +4,10 @@
 //  ▼ 예약 마감일은 아래 한 줄만 고치면 됩니다.
 //    메인 굿즈샵(index.html)과 상품 상세(goods/tee.html)에 모두 반영됩니다.
 // ============================================================
-const GOODS_DEADLINE = '2026-09-10T23:59:59+09:00';
+const GOODS_DEADLINE = '2026-09-07T23:59:59+09:00';
+
+// ▼ 페이앱 결제 링크. 비워두면 버튼이 안내 문구만 표시하고 이동하지 않습니다.
+const ORDER_URL = '';   // 페이앱 결제 링크 (추후 입력)
 
 // ===== 예약 마감 카운트다운 =====
 // 마크업: [data-goods-countdown] 안에 .gcd-days / .gcd-hours / .gcd-mins,
@@ -77,15 +80,17 @@ function initGoodsOrder() {
 
   if (!buyBtn) return;
   buyBtn.addEventListener('click', () => {
+    // 결제 링크가 아직 없으면 안내만 하고 이동하지 않음
+    if (!ORDER_URL) {
+      say('결제 준비 중입니다.');
+      return;
+    }
     if (!size) {
       say('사이즈를 먼저 선택해 주세요.');
       return;
     }
-
-    // TODO: PG 결제 연동 지점.
-    //  - 비회원 구매를 허용해야 하므로 로그인/회원가입 단계를 넣지 말 것.
-    //  - 예) requestPayment({ item: 'TEE-1ST', size, amount: 39000 })
-    say(`${size} 사이즈 · 39,000원 — 결제 연동 후 이 버튼에서 주문이 완료됩니다.`);
+    // 비회원 구매를 허용해야 하므로 로그인/회원가입 단계를 넣지 말 것
+    window.open(ORDER_URL, '_blank', 'noopener');
   });
 }
 

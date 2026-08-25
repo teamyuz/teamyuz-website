@@ -1772,3 +1772,87 @@ textarea { resize: vertical; min-height: 100px; }
   .goods-actions { flex-direction: column; }
   .btn-outline { text-align: center; justify-content: center; }
 }
+
+/* ===== 가격 · 배송비 (굿즈 정보 확정) ===== */
+.goods-price { margin-bottom: 4px; }
+.goods-price-sub {
+  font-size: .82rem; color: var(--text-light); margin-bottom: 4px;
+}
+.goods-price-next {
+  font-size: .82rem; color: var(--sky-dark); font-weight: 600;
+  margin-bottom: 16px;
+}
+.goods-ship-free {
+  display: inline-block; background: var(--sky-pale); color: var(--sky-dark);
+  font-size: .82rem; font-weight: 700; border-radius: 10px;
+  padding: 8px 14px; margin-bottom: 18px;
+}
+
+.ship-box {
+  background: var(--sky-bg); border: 1px solid var(--border);
+  border-radius: 14px; padding: 16px 18px; margin-bottom: 20px;
+}
+.ship-headline {
+  font-size: .95rem; font-weight: 700; color: var(--sky-dark);
+  margin-bottom: 10px;
+}
+.ship-list { list-style: none; }
+.ship-list li {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: .83rem; padding: 5px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.ship-list li:last-child { border-bottom: none; }
+.ship-list span { color: var(--text-mid); }
+.ship-list strong { color: var(--text-dark); font-weight: 700; }
+
+.goods-material-note {
+  font-size: .8rem; color: var(--text-mid);
+  line-height: 1.65; margin: -6px 0 4px;
+}
+
+/* 사이즈 버튼 — 호수 병기 */
+.size-btn { display: flex; flex-direction: column; align-items: center; gap: 1px; line-height: 1.2; }
+.size-btn em {
+  font-style: normal; font-size: .68rem; font-weight: 500;
+  color: var(--text-light);
+}
+.size-btn.active em { color: rgba(255,255,255,.85); }
+
+/* 실측 사이즈표 — 숫자 우측 정렬 */
+.size-table td { text-align: right; font-variant-numeric: tabular-nums; }
+.size-table thead th:not(:first-child) { text-align: right; }
+.size-table tbody th { white-space: nowrap; width: auto; }
+
+/* 사이즈 고르는 법 */
+.size-guide {
+  background: var(--sky-bg); border-left: 3px solid var(--sky);
+  border-radius: 0 12px 12px 0; padding: 18px 20px; margin-top: 18px;
+}
+.size-guide h3 {
+  font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 9px;
+}
+.size-guide p { font-size: .86rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 10px; }
+.size-guide ul { list-style: none; margin-bottom: 12px; }
+.size-guide ul li {
+  font-size: .86rem; color: var(--text-mid);
+  padding-left: 12px; margin-bottom: 5px; line-height: 1.7;
+}
+.size-guide-warn {
+  font-size: .82rem; color: var(--sky-dark); font-weight: 600;
+  padding-top: 10px; border-top: 1px solid var(--border); margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .goods-price-sub, .goods-price-next { font-size: .76rem; }
+  .goods-ship-free { font-size: .76rem; padding: 7px 12px; }
+  .ship-box { padding: 13px 15px; }
+  .ship-headline { font-size: .87rem; }
+  .ship-list li { font-size: .78rem; }
+  .goods-sizes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .size-btn { min-width: 0; padding: 9px 6px; font-size: .85rem; }
+  .size-guide { padding: 15px 16px; }
+  .size-guide h3 { font-size: .92rem; }
+  .size-guide p, .size-guide ul li { font-size: .8rem; }
+  .size-table { min-width: 460px; }
+}
