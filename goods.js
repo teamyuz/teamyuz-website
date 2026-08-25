@@ -187,7 +187,8 @@ function initGoodsGallery() {
     t.addEventListener('click', () => {
       thumbs.forEach(x => x.classList.remove('active'));
       t.classList.add('active');
-      main.textContent = t.dataset.label || '';
+      if (t.dataset.src) main.src = t.dataset.src;
+      if (t.dataset.label) main.alt = t.dataset.label;
     });
   });
 }
