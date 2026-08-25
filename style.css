@@ -1939,3 +1939,75 @@ textarea { resize: vertical; min-height: 100px; }
   .wear-grid-2 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .wear-item img { border-radius: 10px; }
 }
+
+/* ===== 메인 상단 굿즈 프로모 배너 ===== */
+.goods-promo {
+  display: block; color: inherit;
+  background: linear-gradient(135deg, var(--navy) 0%, #26527d 100%);
+  border-bottom: 3px solid var(--sky);
+}
+.goods-promo:hover { color: inherit; }
+.gp-inner {
+  max-width: 1180px; margin: 0 auto;
+  padding: 16px 24px; display: flex; align-items: center; gap: 20px;
+}
+.gp-thumb {
+  width: 68px; height: 68px; object-fit: cover;
+  border-radius: 12px; flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,.25);
+}
+.gp-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.gp-tag {
+  font-size: .66rem; font-weight: 700; letter-spacing: .1em;
+  color: var(--sky-light);
+}
+.gp-title {
+  font-size: 1.02rem; font-weight: 700; color: var(--white); line-height: 1.35;
+}
+.gp-sub { font-size: .78rem; color: rgba(255,255,255,.72); }
+.gp-cd { flex-shrink: 0; text-align: center; }
+.gp-cd .gcd-label {
+  display: block; font-size: .66rem; letter-spacing: .08em;
+  color: var(--sky-light); margin-bottom: 5px; font-weight: 700;
+}
+.gp-cd .gcd-timer { gap: 6px; }
+.gp-cd .gcd-unit { min-width: 34px; }
+.gp-cd .gcd-num { font-size: 1.32rem; }
+.gp-cd .gcd-lbl { font-size: .58rem; margin-top: 2px; }
+.gp-cd .gcd-sep { font-size: .9rem; padding-bottom: 11px; }
+.gp-cta {
+  flex-shrink: 0; background: var(--sky); color: var(--white);
+  font-size: .84rem; font-weight: 700;
+  padding: 11px 20px; border-radius: 24px; white-space: nowrap;
+  transition: background .2s;
+}
+.goods-promo:hover .gp-cta { background: var(--sky-dark); }
+
+/* 한정 수량 배지 · 안내 */
+.goods-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.goods-badge.limited { background: #FDF0F5; color: #C2477E; }
+.limited-line {
+  font-size: .82rem; color: var(--text-mid); line-height: 1.65;
+  background: var(--sky-bg); border-left: 3px solid var(--sky);
+  border-radius: 0 10px 10px 0; padding: 10px 14px; margin: 10px 0 16px;
+}
+.limited-line strong { color: var(--sky-dark); }
+
+@media (max-width: 900px) {
+  .gp-inner { flex-wrap: wrap; gap: 12px 16px; padding: 14px 16px; }
+  .gp-cd { order: 3; }
+  .gp-cta { order: 4; margin-left: auto; }
+}
+@media (max-width: 640px) {
+  .gp-inner { padding: 13px 16px; gap: 10px 12px; }
+  .gp-thumb { width: 54px; height: 54px; border-radius: 10px; }
+  .gp-text { flex: 1 1 auto; }
+  .gp-tag { font-size: .6rem; }
+  .gp-title { font-size: .88rem; }
+  .gp-sub { font-size: .7rem; }
+  .gp-cd { order: 3; flex: 1 1 auto; text-align: left; }
+  .gp-cd .gcd-num { font-size: 1.15rem; }
+  .gp-cd .gcd-unit { min-width: 28px; }
+  .gp-cta { order: 4; font-size: .76rem; padding: 9px 16px; }
+  .limited-line { font-size: .76rem; padding: 9px 12px; }
+}

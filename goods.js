@@ -94,6 +94,11 @@ function renderGoodsState() {
     set('.gcd-secs',  Math.floor((diff % 60000) / 1000));
   });
 
+  // --- 메인 상단 굿즈 배너: 마감되면 숨김 ---
+  document.querySelectorAll('[data-goods-promo]').forEach(el => {
+    el.style.display = state === 'closed' ? 'none' : '';
+  });
+
   // --- 구매 버튼 / 사이즈 / 혼합 주문 링크 ---
   const sellable = state === 'open';
 
