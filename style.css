@@ -2012,8 +2012,6 @@ textarea { resize: vertical; min-height: 100px; }
   .limited-line { font-size: .76rem; padding: 9px 12px; }
 }
 
-/* 결제 영역 아래로 내려간 상품 정보 소제목 */
-.spec-heading {
-  margin-top: 30px; padding-top: 22px;
-  border-top: 1px solid var(--border);
-}
+/* 상품 정보 섹션 */
+.spec-wrap { max-width: 800px; margin: 0 auto; }
+.spec-wrap .goods-material-note { margin: 6px 0 0; text-align: center; }
