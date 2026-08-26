@@ -2043,7 +2043,10 @@ textarea { resize: vertical; min-height: 100px; }
 }
 
 /* ===== LOGO STORY ===== */
-#logo-story { background: var(--sky-bg); }
+#logo-story {
+  background: var(--sky-bg); border-radius: 24px;
+  padding: 48px 32px;
+}
 .logo-story-mark {
   display: flex; justify-content: center; margin: 8px 0 36px;
 }
@@ -2088,6 +2091,7 @@ textarea { resize: vertical; min-height: 100px; }
 .ls-item-wide { grid-column: 1 / -1; }
 
 @media (max-width: 720px) {
+  #logo-story { padding: 32px 18px; border-radius: 18px; }
   .logo-story-mark img { max-width: 260px; }
   .logo-story-date { margin-bottom: 40px; }
   .lsd-num { font-size: 1.85rem; }
