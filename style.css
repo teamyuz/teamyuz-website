@@ -2029,3 +2029,15 @@ textarea { resize: vertical; min-height: 100px; }
 @media (max-width: 640px) {
   .wear-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 10px 8px; }
 }
+
+/* 썸네일 6장 · 단체 착용샷 */
+.goods-thumbs { grid-template-columns: repeat(6, 1fr); }
+.wear-group { max-width: 860px; margin: 0 auto 18px; text-align: center; }
+.wear-group img {
+  width: 100%; border-radius: 16px; display: block; margin-bottom: 10px;
+}
+@media (max-width: 640px) {
+  .goods-thumbs { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .wear-group { margin-bottom: 12px; }
+  .wear-group img { border-radius: 12px; }
+}
