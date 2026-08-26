@@ -2021,3 +2021,11 @@ textarea { resize: vertical; min-height: 100px; }
   width: 100%; height: 100%; object-fit: cover;
   object-position: center 22%; display: block;
 }
+
+/* 썸네일 4장 · 착용컷 4인 */
+.goods-thumbs { grid-template-columns: repeat(4, 1fr); }
+.wear-grid-4 { grid-template-columns: repeat(4, 1fr); max-width: none; }
+.wear-cap strong { color: var(--sky-dark); font-weight: 700; }
+@media (max-width: 640px) {
+  .wear-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 10px 8px; }
+}
