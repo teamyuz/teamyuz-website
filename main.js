@@ -5,6 +5,7 @@ const repertoire = [
   { num: 2,  title: "One Short Day",                       source: "뮤지컬 위키드",                    genre: "뮤지컬" },
   { num: 3,  title: "Defying Gravity",                     source: "뮤지컬 위키드",                    genre: "뮤지컬" },
   { num: 4,  title: "All I Ask of You",                    source: "뮤지컬 오페라의 유령",              genre: "뮤지컬" },
+  { title: "The Phantom of the Opera",            source: "뮤지컬 오페라의 유령 · 영어",       genre: "뮤지컬" },
   { num: 5,  title: "지금 이 순간",                        source: "뮤지컬 지킬 앤 하이드",             genre: "뮤지컬" },
   { num: 6,  title: "컨프론테이션",                        source: "뮤지컬 지킬 앤 하이드",             genre: "뮤지컬" },
   { num: 7,  title: "그 날을 기약하며",                    source: "뮤지컬 영웅",                      genre: "뮤지컬" },
@@ -77,6 +78,9 @@ const repertoire = [
   { title: "아로하",                          source: "조정석",                       genre: "가요", wedding: true },
   { title: "Perhaps Love",                    source: "하울 & 제이",                  genre: "가요" },
   { title: "MAMA",                            source: "엑소",                         genre: "가요" },
+  { title: "시작",                            source: "가호 · 드라마 이태원 클라쓰 OST", genre: "가요" },
+  { title: "Lazenca, Save Us",                source: "국카스텐 · 영어 버전",          genre: "가요" },
+  { title: "예술이야",                        source: "싸이",                         genre: "가요" },
 
   // ── 트로트 ──────────────────────────────────────────────────────
   { num: 43, title: "아모르파티",  source: "김연자",        genre: "트로트" },
