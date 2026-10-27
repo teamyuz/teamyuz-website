@@ -48,16 +48,18 @@ const GOODS = {
 
   // ── 2차 · 로고 짐색 (재고 소진 시까지 판매) ──────────────────
   bag: {
-    openAt:  new Date('2026-10-29T18:00:00+09:00'),
+    openAt:  new Date('2026-11-02T19:00:00+09:00'),
     closeAt: null,          // 마감일 없음 — 재고 소진 시까지
     soldOut: false,         // 품절되면 true 로 바꾸면 판매 종료 화면으로 전환
-    // 페이앱 결제 링크 (상품가 18,000원 · 배송비 4,000원 수량 무관)
-    orderUrl: '',
+    // 페이앱 결제 링크 (상품가 18,000원 · 배송비 4,000원 수량 무관 · 수량은 결제창 금액 드롭다운)
+    orderUrl: 'https://www.payapp.kr/L/z4n2ZD',
+    // 결제창을 열기 전에 받는 분 성함·주소 입력 안내 모달(#payConfirm)을 먼저 띄움
+    confirmBeforePay: true,
     txt: {
       before: {
         label: '판매 오픈까지',
-        note:  '10월 29일(목) 오후 6시에 열립니다',
-        cta:   '10월 29일(목) 오후 6시 오픈',
+        note:  '11월 2일(월) 저녁 7시에 열립니다',
+        cta:   '11월 2일(월) 저녁 7시 오픈',
         nav:   '상품 정보 보기'
       },
       open: {
@@ -203,6 +205,7 @@ function initGoodsOrder() {
   const notice = document.getElementById('goodsNotice');
   const buyBtn = document.getElementById('goodsBuy');
   const sizeBtns = wrap.querySelectorAll('.size-btn');
+  const payConfirm = initPayConfirm();
   let size = null;
 
   function say(msg) {
@@ -235,6 +238,7 @@ function initGoodsOrder() {
       }
       if (!url) return;
       // 비회원 구매를 허용해야 하므로 로그인/회원가입 단계를 넣지 말 것
+      if (p.confirmBeforePay && payConfirm) { payConfirm.open(url); return; }
       window.open(url, '_blank', 'noopener');
     });
   }
@@ -247,6 +251,55 @@ function initGoodsOrder() {
       window.open(p.mixUrl, '_blank', 'noopener');
     });
   });
+}
+
+// ===== 결제 전 확인 모달 =====
+// 페이앱 결제창에는 성함 칸이 없어 주소란에 함께 적어야 함 — 결제 전에 한 번 안내
+function initPayConfirm() {
+  const modal = document.getElementById('payConfirm');
+  if (!modal) return null;
+
+  const goBtn = modal.querySelector('[data-pay-go]');
+  let url = null;
+  let lastFocus = null;
+
+  function open(u) {
+    url = u;
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.classList.add('pay-confirm-open');
+    goBtn.focus();
+  }
+
+  function close() {
+    url = null;
+    modal.hidden = true;
+    document.body.classList.remove('pay-confirm-open');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  goBtn.addEventListener('click', () => {
+    const u = url;
+    close();
+    if (u) window.open(u, '_blank', 'noopener');
+  });
+
+  // [닫기] · 배경 클릭
+  modal.querySelectorAll('[data-pay-close]').forEach(el => el.addEventListener('click', close));
+
+  document.addEventListener('keydown', e => {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    // 모달 안에서만 Tab 이동
+    if (e.key === 'Tab') {
+      const f = [...modal.querySelectorAll('button')];
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  return { open, close };
 }
 
 // ===== 상품 이미지 썸네일 전환 =====

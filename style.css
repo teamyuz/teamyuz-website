@@ -2131,3 +2131,65 @@ textarea { resize: vertical; min-height: 100px; }
   .goods-past-text span:last-child { font-size: .72rem; }
 }
 .goods-thumbs.goods-thumbs--3 { grid-template-columns: repeat(3, 1fr); }
+
+/* 시안 이미지 안내 (실물 사진 교체 시 삭제) */
+.goods-mock-note {
+  font-size: .72rem; color: var(--text-light);
+  text-align: center; margin-top: 8px; line-height: 1.5;
+}
+
+/* ===== 결제 전 확인 모달 ===== */
+.pay-confirm {
+  position: fixed; inset: 0; z-index: 9500;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.pay-confirm[hidden] { display: none; }
+.pay-confirm-bg {
+  position: absolute; inset: 0;
+  background: var(--navy); opacity: .62;
+}
+.pay-confirm-box {
+  position: relative; width: 100%; max-width: 420px;
+  max-height: calc(100vh - 32px); overflow-y: auto;
+  background: var(--white); color: var(--text-dark);
+  border-radius: 18px; padding: 26px 24px 22px;
+  border-top: 4px solid var(--sky);
+}
+.pay-confirm-title {
+  font-size: 1.12rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 12px; text-align: center;
+}
+.pay-confirm-lead { font-size: .88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 12px; }
+.pay-confirm-lead strong { color: var(--text-dark); }
+.pay-confirm-list {
+  list-style: none; background: var(--sky-bg);
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 16px; margin-bottom: 10px;
+}
+.pay-confirm-list li {
+  font-size: .92rem; font-weight: 700; color: var(--text-dark);
+  padding: 4px 0; display: flex; gap: 8px;
+}
+.pay-confirm-list span { color: var(--sky-dark); }
+.pay-confirm-ex {
+  font-size: .8rem; color: var(--text-mid); line-height: 1.55;
+  margin-bottom: 10px; word-break: keep-all;
+}
+.pay-confirm-warn { font-size: .84rem; font-weight: 700; color: var(--sky-dark); margin-bottom: 18px; }
+.pay-confirm-actions { display: flex; flex-direction: column; gap: 8px; }
+.pay-confirm-go { width: 100%; justify-content: center; }
+.pay-confirm-close {
+  width: 100%; padding: 11px; border-radius: 24px;
+  background: none; border: 1px solid var(--border);
+  color: var(--text-mid); font-size: .88rem; font-weight: 600; cursor: pointer;
+  font-family: inherit;
+}
+.pay-confirm-close:hover { border-color: var(--sky); color: var(--sky-dark); }
+body.pay-confirm-open { overflow: hidden; }
+@media (max-width: 640px) {
+  .pay-confirm-box { padding: 22px 18px 18px; }
+  .pay-confirm-title { font-size: 1.02rem; }
+  .pay-confirm-lead { font-size: .84rem; }
+  .pay-confirm-list li { font-size: .88rem; padding: 3px 0; }
+}
