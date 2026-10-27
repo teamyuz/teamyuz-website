@@ -2193,3 +2193,30 @@ body.pay-confirm-open { overflow: hidden; }
   .pay-confirm-lead { font-size: .84rem; }
   .pay-confirm-list li { font-size: .88rem; padding: 3px 0; }
 }
+
+/* ===== LED 응원봉 · 구매 옵션 ===== */
+.goods-thumbs.goods-thumbs--2 { grid-template-columns: repeat(2, 1fr); max-width: 260px; }
+.stick-opt {
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: 16px 18px; margin-bottom: 14px; background: var(--white);
+}
+.stick-opt .goods-price { margin-bottom: 10px; }
+.stick-opt .goods-price-sub { margin: -6px 0 12px; }
+.stick-opt .goods-actions { margin-top: 0; }
+.stick-opt-name { font-size: .92rem; font-weight: 700; color: var(--sky-dark); margin-bottom: 2px; }
+.stick-opt-link { font-size: .8rem; color: var(--text-mid); margin: -10px 0 12px; line-height: 1.6; }
+.stick-opt-link a { color: var(--sky-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.goods-hero-info > .stick-opt-link { margin: 14px 0 0; text-align: center; }
+.stick-detail-imgs { max-width: 640px; margin: 24px auto 0; }
+.stick-detail-imgs img { width: 100%; height: auto; display: block; }
+.pay-confirm-battery {
+  font-size: .8rem; color: var(--text-mid); text-align: center;
+  margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border);
+}
+@media (max-width: 640px) {
+  .stick-opt { padding: 14px 14px; }
+  .goods-thumbs.goods-thumbs--2 { max-width: 200px; }
+  .stick-detail-imgs { margin-top: 18px; }
+  /* 응원봉 페이지 표는 2칸이라 좁은 화면에서도 가로 스크롤 없이 */
+  body[data-product="stick"] .doc-table { min-width: 0; }
+}

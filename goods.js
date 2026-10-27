@@ -75,6 +75,66 @@ const GOODS = {
         nav:   '상품 정보 보기'
       }
     }
+  },
+
+  // ── 3차 · 로고 LED 응원봉 단품 (첫 제작 15개 한정) ──────────────
+  stick: {
+    openAt:  new Date('2026-11-02T19:00:00+09:00'),
+    closeAt: null,
+    soldOut: false,
+    // 상품가 25,000원 · 배송비 3,000원 수량 무관
+    orderUrl: 'https://www.payapp.kr/L/z4n344',
+    confirmBeforePay: true,
+    txt: {
+      before: {
+        label: '판매 오픈까지',
+        note:  '11월 2일(월) 저녁 7시에 열립니다',
+        cta:   '11월 2일(월) 저녁 7시 오픈',
+        nav:   '상품 정보 보기'
+      },
+      open: {
+        label: '지금 판매 중',
+        note:  '첫 제작 15개 한정 · 수량이 모두 판매되면 종료됩니다',
+        cta:   '응원봉 주문하기',
+        nav:   '주문하러 가기'
+      },
+      closed: {
+        label: '품절',
+        note:  '첫 제작 수량이 모두 판매되었습니다. 다음 소식은 인스타그램에서 안내드립니다.',
+        cta:   '품절되었습니다',
+        nav:   '상품 정보 보기'
+      }
+    }
+  },
+
+  // ── 3차 · 응원봉 + 짐색 세트 ─────────────────────────────────
+  stickSet: {
+    openAt:  new Date('2026-11-02T19:00:00+09:00'),
+    closeAt: null,
+    soldOut: false,
+    // 세트 39,000원 · 배송비 3,000원 수량 무관
+    orderUrl: 'https://www.payapp.kr/L/z4n356',
+    confirmBeforePay: true,
+    txt: {
+      before: {
+        label: '판매 오픈까지',
+        note:  '11월 2일(월) 저녁 7시에 열립니다',
+        cta:   '11월 2일(월) 저녁 7시 오픈',
+        nav:   '상품 정보 보기'
+      },
+      open: {
+        label: '지금 판매 중',
+        note:  '첫 제작 15개 한정 · 수량이 모두 판매되면 종료됩니다',
+        cta:   '세트 주문하기',
+        nav:   '주문하러 가기'
+      },
+      closed: {
+        label: '품절',
+        note:  '첫 제작 수량이 모두 판매되었습니다. 다음 소식은 인스타그램에서 안내드립니다.',
+        cta:   '품절되었습니다',
+        nav:   '상품 정보 보기'
+      }
+    }
   }
 };
 
@@ -228,20 +288,25 @@ function initGoodsOrder() {
     });
   });
 
-  if (buyBtn) {
-    buyBtn.addEventListener('click', () => {
-      if (goodsState(id) !== 'open') return;   // 오픈 전 · 마감 후에는 아무 동작 없음
-      let url = p.orderUrl;
+  // 구매 버튼 — 한 페이지에 상품이 여럿이면(응원봉 단품·세트) 버튼마다 자기 상품으로 결제
+  const buyBtns = buyBtn ? [buyBtn] : [...wrap.querySelectorAll('[data-goods-buy]')];
+  buyBtns.forEach(btn => {
+    const bid = productOf(btn);
+    const bp = GOODS[bid];
+    if (!bp) return;
+    btn.addEventListener('click', () => {
+      if (goodsState(bid) !== 'open') return;   // 오픈 전 · 마감 후에는 아무 동작 없음
+      let url = bp.orderUrl;
       if (sizeBtns.length) {
         if (!size) { say('사이즈를 먼저 선택해 주세요.'); return; }
-        url = p.orderUrls[size];
+        url = bp.orderUrls[size];
       }
       if (!url) return;
       // 비회원 구매를 허용해야 하므로 로그인/회원가입 단계를 넣지 말 것
-      if (p.confirmBeforePay && payConfirm) { payConfirm.open(url); return; }
+      if (bp.confirmBeforePay && payConfirm) { payConfirm.open(url); return; }
       window.open(url, '_blank', 'noopener');
     });
-  }
+  });
 
   // 사이즈 혼합 주문
   document.querySelectorAll('[data-mix-link]').forEach(a => {
