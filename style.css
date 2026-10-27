@@ -2102,3 +2102,32 @@ textarea { resize: vertical; min-height: 100px; }
   .ls-item h4 { font-size: .95rem; }
   .ls-item p { font-size: .8rem; line-height: 1.75; }
 }
+
+/* ===== 짐색 (정사각 제품컷) ===== */
+.goods-hero-img--product img { object-position: center; }
+.goods-gallery-main.goods-gallery-main--square { aspect-ratio: 1 / 1; }
+
+/* 지난 굿즈 */
+.goods-past {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--off-white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 14px 18px; margin: -24px 0 48px;
+  color: inherit; transition: border-color .2s;
+}
+.goods-past:hover { color: inherit; border-color: var(--sky); }
+.goods-past img {
+  width: 64px; height: 64px; object-fit: cover; object-position: center 22%;
+  border-radius: 10px; flex-shrink: 0;
+}
+.goods-past-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.goods-past-tag { font-size: .64rem; font-weight: 700; letter-spacing: .1em; color: var(--text-light); }
+.goods-past-text strong { font-size: .95rem; color: var(--text-dark); }
+.goods-past-text span:last-child { font-size: .78rem; color: var(--text-light); }
+.goods-past-go { font-size: .82rem; font-weight: 700; color: var(--sky-dark); white-space: nowrap; }
+@media (max-width: 640px) {
+  .goods-past { gap: 12px; padding: 12px 14px; margin-top: -16px; }
+  .goods-past img { width: 52px; height: 52px; }
+  .goods-past-text strong { font-size: .86rem; }
+  .goods-past-text span:last-child { font-size: .72rem; }
+}
+.goods-thumbs.goods-thumbs--3 { grid-template-columns: repeat(3, 1fr); }
