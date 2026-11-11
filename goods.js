@@ -50,7 +50,7 @@ const GOODS = {
   bag: {
     openAt:  new Date('2026-11-05T19:00:00+09:00'),
     closeAt: null,          // 마감일 없음 — 재고 소진 시까지
-    soldOut: false,         // 품절되면 true 로 바꾸면 판매 종료 화면으로 전환
+    soldOut: true,          // 2026-11 완판 — 2차 판매 오픈 시 false 로 되돌리고 openAt 변경
     // 페이앱 결제 링크 (상품가 18,000원 · 배송비 4,000원 수량 무관 · 수량은 결제창 금액 드롭다운)
     orderUrl: 'https://www.payapp.kr/L/z4n2ZD',
     // 결제창을 열기 전에 받는 분 성함·주소 입력 안내 모달(#payConfirm)을 먼저 띄움
@@ -69,9 +69,9 @@ const GOODS = {
         nav:   '주문하러 가기'
       },
       closed: {
-        label: '품절',
-        note:  '준비된 수량이 모두 판매되었습니다. 재입고 소식은 인스타그램에서 안내드립니다.',
-        cta:   '품절되었습니다',
+        label: '완판되었습니다',
+        note:  '보내주신 큰 사랑 덕분에 준비한 수량이 모두 판매되었습니다. 2차 판매를 준비하고 있으니 조금만 기다려 주세요!',
+        cta:   '완판 · 2차 판매를 기다려 주세요',
         nav:   '상품 정보 보기'
       }
     }
@@ -81,7 +81,7 @@ const GOODS = {
   stick: {
     openAt:  new Date('2026-11-05T19:00:00+09:00'),
     closeAt: null,
-    soldOut: false,
+    soldOut: true,          // 2026-11 완판
     // 상품가 25,000원 · 배송비 3,000원 수량 무관
     orderUrl: 'https://www.payapp.kr/L/z4n344',
     confirmBeforePay: true,
@@ -99,9 +99,9 @@ const GOODS = {
         nav:   '주문하러 가기'
       },
       closed: {
-        label: '품절',
-        note:  '첫 제작 수량이 모두 판매되었습니다. 다음 소식은 인스타그램에서 안내드립니다.',
-        cta:   '품절되었습니다',
+        label: '완판되었습니다',
+        note:  '보내주신 큰 사랑 덕분에 준비한 수량이 모두 판매되었습니다. 2차 판매를 준비하고 있으니 조금만 기다려 주세요!',
+        cta:   '완판 · 2차 판매를 기다려 주세요',
         nav:   '상품 정보 보기'
       }
     }
@@ -111,7 +111,7 @@ const GOODS = {
   stickSet: {
     openAt:  new Date('2026-11-05T19:00:00+09:00'),
     closeAt: null,
-    soldOut: false,
+    soldOut: true,          // 2026-11 완판
     // 세트 39,000원 · 배송비 3,000원 수량 무관
     orderUrl: 'https://www.payapp.kr/L/z4n356',
     confirmBeforePay: true,
@@ -129,9 +129,9 @@ const GOODS = {
         nav:   '주문하러 가기'
       },
       closed: {
-        label: '품절',
-        note:  '첫 제작 수량이 모두 판매되었습니다. 다음 소식은 인스타그램에서 안내드립니다.',
-        cta:   '품절되었습니다',
+        label: '완판되었습니다',
+        note:  '보내주신 큰 사랑 덕분에 준비한 수량이 모두 판매되었습니다. 2차 판매를 준비하고 있으니 조금만 기다려 주세요!',
+        cta:   '완판 · 2차 판매를 기다려 주세요',
         nav:   '상품 정보 보기'
       }
     }
@@ -215,6 +215,9 @@ function renderGoodsState(id) {
   });
 
   // --- 메인 상단 굿즈 배너: 마감·품절되면 숨김 ---
+  // --- 완판 도장 (상품 이미지 위) ---
+  goodsEls(id, '[data-goods-stamp]').forEach(el => { el.hidden = state !== 'closed'; });
+
   goodsEls(id, '[data-goods-promo]').forEach(el => {
     el.style.display = state === 'closed' ? 'none' : '';
   });
@@ -247,7 +250,7 @@ function renderAllGoods() {
 }
 
 function initGoodsCountdown() {
-  if (!document.querySelector('[data-goods-countdown], [data-goods-cta], [data-goods-promo]')) return;
+  if (!document.querySelector('[data-goods-countdown], [data-goods-cta], [data-goods-promo], [data-goods-stamp]')) return;
   renderAllGoods();
   // 1초마다 재평가 — 오픈/마감 시각에 새로고침 없이 자동 전환
   setInterval(renderAllGoods, 1000);

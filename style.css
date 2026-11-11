@@ -2220,3 +2220,98 @@ body.pay-confirm-open { overflow: hidden; }
   /* 응원봉 페이지 표는 2칸이라 좁은 화면에서도 가로 스크롤 없이 */
   body[data-product="stick"] .doc-table { min-width: 0; }
 }
+
+/* ===== 완판 (SOLD OUT) ===== */
+/* 상품 이미지 위 도장 */
+.stamp-host { position: relative; }
+.soldout-stamp {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(26, 58, 92, .38);
+  color: var(--white); pointer-events: none;
+  font-family: var(--font-serif); font-size: 2rem; font-weight: 700; letter-spacing: .14em;
+  text-shadow: 0 2px 10px rgba(26,58,92,.45);
+}
+.soldout-stamp[hidden] { display: none; }
+.soldout-stamp::before {
+  content: ''; position: absolute;
+  width: 62%; aspect-ratio: 2.6 / 1;
+  border: 3px solid var(--white); border-radius: 12px;
+  transform: rotate(-10deg);
+  box-shadow: 0 0 0 6px rgba(255,255,255,.18);
+}
+
+/* 공통 태그 · 버튼 */
+.gso-tag {
+  display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .22em;
+  color: var(--navy); background: var(--sky-light);
+  padding: 5px 14px; border-radius: 20px; margin-bottom: 14px;
+}
+.gso-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--white); color: var(--navy);
+  font-size: .86rem; font-weight: 700;
+  padding: 12px 24px; border-radius: 26px; margin-top: 18px;
+  transition: background .2s, color .2s;
+}
+.gso-btn:hover { background: var(--sky-pale); color: var(--navy); }
+
+/* 굿즈샵 상단 완판 카드 */
+.goods-soldout {
+  position: relative; overflow: hidden; text-align: center;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--sky-dark) 100%);
+  color: var(--white); border-radius: 20px;
+  padding: 40px 24px 36px; margin-bottom: 32px;
+}
+.goods-soldout::before, .goods-soldout::after {
+  content: ''; position: absolute; border-radius: 50%; pointer-events: none;
+  border: 1px solid rgba(255,255,255,.14);
+}
+.goods-soldout::before { width: 260px; height: 260px; top: -120px; left: -80px; }
+.goods-soldout::after  { width: 340px; height: 340px; bottom: -200px; right: -110px; }
+.gso-title {
+  font-family: var(--font-serif); font-size: 2rem; font-weight: 700;
+  line-height: 1.3; margin-bottom: 12px; color: var(--white);
+}
+.gso-title em { font-style: normal; color: var(--sky-light); }
+.gso-text { font-size: .92rem; line-height: 1.75; color: rgba(255,255,255,.82); }
+.gso-wait {
+  display: inline-block; margin-top: 16px;
+  font-size: .92rem; font-weight: 700; color: var(--white);
+  padding: 8px 18px; border-radius: 12px; background: rgba(255,255,255,.12);
+}
+
+/* 상세 페이지 상단 띠 — 완판일 때 */
+.goods-cd.goods-cd--soldout.closed {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--sky-dark) 100%);
+  padding: 32px 24px 30px;
+}
+.goods-cd--soldout.closed .gcd-closed { display: flex; flex-direction: column; align-items: center; }
+.goods-cd--soldout.closed .gso-tag { margin-bottom: 10px; }
+.goods-cd--soldout.closed .gcd-label {
+  font-family: var(--font-serif); font-size: 1.7rem; letter-spacing: .02em;
+}
+.goods-cd--soldout.closed .gcd-note { color: rgba(255,255,255,.85); font-size: .86rem; margin-top: 12px; }
+.goods-cd:not(.closed) .gcd-insta { display: none; }
+.goods-cd .gcd-insta { margin-top: 16px; }
+
+/* 메인 상단 완판 감사 띠 */
+.gp-duo { display: flex; flex-shrink: 0; }
+.gp-duo .gp-thumb { width: 56px; height: 56px; filter: saturate(.85); }
+.gp-duo .gp-thumb + .gp-thumb { margin-left: -16px; }
+.goods-promo--soldout .gp-tag { color: var(--sky-light); letter-spacing: .14em; }
+
+@media (max-width: 640px) {
+  .soldout-stamp { font-size: 1.5rem; }
+  .goods-soldout { padding: 30px 18px 28px; border-radius: 16px; margin-bottom: 26px; }
+  .gso-title { font-size: 1.5rem; }
+  .gso-text { font-size: .84rem; }
+  .gso-wait { font-size: .84rem; padding: 8px 14px; }
+  .gso-btn { font-size: .82rem; padding: 11px 20px; }
+  .goods-cd.goods-cd--soldout.closed { padding: 26px 18px 24px; }
+  .goods-cd--soldout.closed .gcd-label { font-size: 1.4rem; }
+  .goods-cd--soldout.closed .gcd-note { font-size: .8rem; }
+  .gp-duo .gp-thumb { width: 46px; height: 46px; }
+  .gp-duo .gp-thumb + .gp-thumb { margin-left: -14px; }
+}
+.goods-cd--soldout .gcd-note, .gso-text, .gso-wait, .gso-title { word-break: keep-all; }
