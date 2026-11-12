@@ -2344,3 +2344,15 @@ body.pay-confirm-open { overflow: hidden; }
   /* 하단 바로가기: 한 줄씩 길게 → 2열 */
   .footer-links ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
 }
+
+/* ===== 선 아이콘 (이모지 대체) ===== */
+.ico {
+  width: 1em; height: 1em; display: inline-block; vertical-align: -.14em;
+  fill: none; stroke: currentColor; stroke-width: 1.7;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.id-icon, .prog-icon { color: var(--sky-dark); }
+.nm-icon { color: var(--sky-light); }  /* 어두운 모바일 메뉴 위 */
+.goods-next-ph { color: var(--sky-dark); opacity: 1; }
+.member-initial .ico { color: var(--sky); }
+.nav-cta .ico, .rep-filter .ico { font-size: 1.05em; margin-right: 2px; }
