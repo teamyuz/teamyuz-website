@@ -2441,3 +2441,112 @@ a { text-underline-offset: 3px; }
 }
 .review-tag.festival { color: #B34700; }
 h1, h2, h3, h4, .section-desc { word-break: keep-all; }
+
+/* =====================================================================
+   무대 구간 (영상 + 공연 현장) — 첫 화면 바로 아래, 하나의 어두운 무대로
+   ===================================================================== */
+#videos, #gallery { background: var(--navy); }
+#videos { padding-bottom: 40px; }
+#gallery { padding-top: 40px; }
+#videos .section-title, #gallery .section-title { color: var(--white); }
+#videos .section-desc, #gallery .section-desc { color: rgba(255,255,255,.72); }
+#gallery .gallery-title { font-size: clamp(1.5rem, 3.4vw, 2rem); margin-bottom: 40px; }
+
+/* 대표 영상: 화면 가득 한 장 */
+.video-grid { display: block; margin-top: 0; }
+.video-card {
+  position: relative; background: none; border-radius: 22px;
+  box-shadow: 0 24px 60px -24px rgba(0,0,0,.6);
+}
+.video-card:hover { transform: none; box-shadow: 0 24px 60px -24px rgba(0,0,0,.6); }
+.video-thumb-wrap { aspect-ratio: 16 / 9; border-radius: 22px; }
+.video-thumb { transition: transform .9s cubic-bezier(.16,1,.3,1); }
+.video-card:hover .video-thumb { transform: scale(1.03); }
+.video-play-overlay {
+  background: linear-gradient(to top, rgba(10,24,40,.88) 0%, rgba(10,24,40,.15) 46%, rgba(10,24,40,.2) 100%);
+}
+.video-card:hover .video-play-overlay {
+  background: linear-gradient(to top, rgba(10,24,40,.9) 0%, rgba(10,24,40,.28) 46%, rgba(10,24,40,.3) 100%);
+}
+.video-play-btn {
+  width: 84px; height: 84px; margin: 0; background: var(--white);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  transition: transform .35s cubic-bezier(.16,1,.3,1);
+}
+.video-play-btn svg path { fill: var(--navy); }
+.video-play-btn svg { margin-left: 4px; }
+.video-card:hover .video-play-btn { transform: scale(1.08); }
+.video-duration { top: 16px; right: 16px; bottom: auto; font-size: 12px; padding: 4px 9px; border-radius: 6px; }
+.video-info {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 28px 32px; pointer-events: none;
+}
+.video-info h4 {
+  font-family: var(--font-serif); font-size: clamp(1.15rem, 2.6vw, 1.75rem);
+  line-height: 1.35; color: var(--white); margin-bottom: 6px; max-width: 26em;
+}
+.video-info p { font-size: .86rem; color: rgba(255,255,255,.78); }
+
+/* 채널 안내: 카드 대신 한 줄 */
+.video-channel-cta {
+  background: none; box-shadow: none; border-radius: 0; padding: 22px 4px 0;
+  flex-direction: row; justify-content: space-between; text-align: left; gap: 20px;
+}
+.video-channel-cta p { font-size: .9rem; color: rgba(255,255,255,.72); line-height: 1.6; }
+.video-channel-cta p strong { display: block; color: var(--white); font-size: 1rem; margin-bottom: 2px; }
+.video-channel-cta .btn-youtube { margin-top: 0; flex-shrink: 0; }
+
+/* 공연 현장: 크기가 다른 타일 + 항상 보이는 공연 이름 */
+.gallery-grid {
+  columns: auto; display: grid; gap: 12px;
+  grid-template-columns: repeat(4, 1fr); grid-auto-rows: 210px; grid-auto-flow: dense;
+}
+.gallery-item { margin: 0; border-radius: 14px; background: #10263d; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1); }
+.gallery-item:nth-child(1)  { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(7), .gallery-item:nth-child(12) { grid-column: span 2; }
+.gallery-overlay { display: none; }
+.gallery-item::after {
+  content: attr(data-title);
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 44px 14px 12px; color: var(--white);
+  font-size: .84rem; font-weight: 700; line-height: 1.35; word-break: keep-all;
+  background: linear-gradient(to top, rgba(10,24,40,.86), rgba(10,24,40,0));
+  pointer-events: none;
+}
+.gallery-item:nth-child(1)::after { font-size: 1.1rem; padding: 70px 20px 18px; }
+.gallery-item:focus-visible { outline-color: var(--white); }
+.gallery-swipe { display: none; }
+#gallery .gallery-more .btn {
+  background: transparent; border: 1.5px solid rgba(255,255,255,.55); color: var(--white); box-shadow: none;
+}
+#gallery .gallery-more .btn:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
+
+@media (max-width: 960px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 190px; }
+  .gallery-item:nth-child(7), .gallery-item:nth-child(12) { grid-column: auto; }
+}
+@media (max-width: 640px) {
+  #videos { padding-bottom: 28px; }
+  #gallery { padding-top: 28px; }
+  .video-thumb-wrap { aspect-ratio: 4 / 5; border-radius: 18px; }
+  .video-card { border-radius: 18px; }
+  .video-play-btn { width: 68px; height: 68px; }
+  .video-info { padding: 20px 18px; }
+  .video-channel-cta { flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 18px; }
+  #gallery .gallery-title { margin-bottom: 36px; }
+  /* 옆으로 넘기는 필름 스트립 */
+  .gallery-swipe { display: block; font-size: .78rem; color: var(--sky-light); margin: -6px 0 12px; font-weight: 600; }
+  .gallery-grid {
+    display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 -16px; padding: 0 16px 6px; scroll-padding: 0 16px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .gallery-grid::-webkit-scrollbar { display: none; }
+  .gallery-item, .gallery-item:nth-child(1) {
+    flex: 0 0 74%; aspect-ratio: 4 / 5; scroll-snap-align: start; margin: 0;
+  }
+  .gallery-item::after, .gallery-item:nth-child(1)::after { font-size: .92rem; padding: 60px 16px 14px; }
+}
+#navLinks .nav-cta { background: var(--sky-dark); color: var(--white); }
+#navLinks .nav-cta:hover { background: var(--navy); }
