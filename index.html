@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Team Yuz | 팀 유즈</title>
-  <meta name="description" content="무대에서 노는 걸 제일 좋아하는 팀, 유즈. 실용음악·뮤지컬·성악 기반 크로스오버 퍼포먼스 팀." />
+  <script>if(location.protocol==='http:'&&/(^|\.)teamyuz\.com$/.test(location.hostname))location.replace('https://teamyuz.com'+location.pathname+location.search+location.hash);</script>
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta property="og:site_name" content="팀 유즈 (Team YUZ)" />
+  <title>팀 유즈 (Team YUZ) | 크로스오버 공연팀 공식 홈페이지</title>
+  <meta name="description" content="팀 유즈(Team YUZ) 공식 홈페이지. 무대에서 노는 걸 제일 좋아하는 실용음악·뮤지컬·성악 기반 크로스오버 공연팀. 지자체·기업·웨딩 공연 섭외 문의." />
   <meta name="keywords" content="팀 유즈, 팀유즈, Team YUZ, 공연팀, 크로스오버, 뮤지컬, 실용음악, 성악, 대구 공연, 부산 공연, 기업 공연, 지자체 공연, 웨딩 공연, 퍼포먼스 팀" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://teamyuz.com/" />
@@ -12,25 +17,29 @@
   <!-- Open Graph (13) -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://teamyuz.com/" />
-  <meta property="og:title" content="Team YUZ | 팀 유즈" />
+  <meta property="og:title" content="팀 유즈 (Team YUZ) | 크로스오버 공연팀 공식 홈페이지" />
   <meta property="og:description" content="무대에서 노는 걸 제일 좋아하는 팀, 유즈. 실용음악·뮤지컬·성악 기반 크로스오버 퍼포먼스 팀." />
-  <meta property="og:image" content="https://teamyuz.com/images/team-group1.jpg" />
+  <meta property="og:image" content="https://teamyuz.com/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="팀 유즈(Team YUZ) 단체 사진" />
   <meta property="og:locale" content="ko_KR" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Team YUZ | 팀 유즈" />
+  <meta name="twitter:title" content="팀 유즈 (Team YUZ) | 크로스오버 공연팀 공식 홈페이지" />
   <meta name="twitter:description" content="무대에서 노는 걸 제일 좋아하는 팀, 유즈." />
-  <meta name="twitter:image" content="https://teamyuz.com/images/team-group1.jpg" />
+  <meta name="twitter:image" content="https://teamyuz.com/images/og-image.jpg" />
 
   <!-- Schema.org 구조화 데이터 (14) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "PerformingGroup",
-    "name": "Team YUZ",
-    "alternateName": "팀 유즈",
+    "name": "팀 유즈",
+    "alternateName": ["Team YUZ", "팀유즈", "TEAM YUZ"],
+    "logo": "https://teamyuz.com/images/icon-512.png",
     "description": "실용음악·뮤지컬·성악 기반 크로스오버 퍼포먼스 팀. 대구·경북·부산 연고, 82곡 레퍼토리, 지자체·기업·웨딩 공연 전문.",
     "url": "https://teamyuz.com",
-    "image": "https://teamyuz.com/images/team-group1.jpg",
+    "image": "https://teamyuz.com/images/og-image.jpg",
     "genre": ["뮤지컬", "팝페라", "실용음악", "크로스오버"],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -52,6 +61,15 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "팀 유즈",
+    "alternateName": ["Team YUZ", "팀유즈"],
+    "url": "https://teamyuz.com/"
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,7 +82,7 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
-      <img src="images/logo-new.jpg" alt="Team YUZ 팀 유즈" class="nav-logo-img" />
+      <img src="images/logo-team.png" alt="Team YUZ 팀 유즈" class="nav-logo-img" />
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
       <span></span><span></span><span></span>
@@ -1011,7 +1029,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="images/logo-new.jpg" alt="Team YUZ 팀 유즈" class="footer-logo-img" />
+        <img src="images/logo-team.png" alt="Team YUZ 팀 유즈" class="footer-logo-img" />
         <p>유즈 이벤트 컴퍼니<br>대표 류수홍</p>
         <p class="footer-copy">사업자등록번호 416-26-29575<br>간이과세자</p>
       </div>

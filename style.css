@@ -62,8 +62,7 @@ img { display: block; max-width: 100%; }
 }
 .nav-logo { display: flex; align-items: center; }
 .nav-logo-img {
-  height: 44px; width: auto; object-fit: contain;
-  mix-blend-mode: multiply;
+  height: 50px; width: auto; object-fit: contain;
 }
 
 .nav-links {
@@ -677,10 +676,11 @@ textarea { resize: vertical; min-height: 100px; }
   margin-bottom: 32px;
 }
 .footer-logo-img {
-  height: 72px; width: auto; object-fit: contain;
+  height: 84px; width: auto; object-fit: contain;
   margin-bottom: 14px;
-  mix-blend-mode: screen;
-  filter: brightness(1.4);
+  /* 투명 로고를 남색 바닥 위에서 흰색으로 */
+  filter: brightness(0) invert(1);
+  opacity: .92;
 }
 .footer-logo-text {
   font-family: var(--font-serif); font-size: 1.6rem; font-weight: 600;
@@ -1580,7 +1580,7 @@ textarea { resize: vertical; min-height: 100px; }
   max-width: 1180px; margin: 0 auto; padding: 12px 24px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
-.sub-nav-logo img { height: 42px; width: auto; display: block; border-radius: 8px; }
+.sub-nav-logo img { height: 46px; width: auto; display: block; }
 .sub-nav-home { font-size: .85rem; font-weight: 600; color: var(--text-mid); }
 .sub-nav-home:hover { color: var(--sky-dark); }
 .sub-main { padding: 44px 0 72px; }
@@ -1753,7 +1753,7 @@ textarea { resize: vertical; min-height: 100px; }
   .biz-links a { font-size: .73rem; }
 
   .sub-nav-inner { padding: 10px 16px; }
-  .sub-nav-logo img { height: 34px; }
+  .sub-nav-logo img { height: 40px; }
   .sub-main { padding: 28px 0 52px; }
 
   .policy-head h1 { font-size: 1.6rem; }
