@@ -74,9 +74,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20261112b" />
+  <link rel="stylesheet" href="style.css?v=20261112d" />
 </head>
 <body>
+<a class="skip-link" href="#main">본문으로 바로가기</a>
 
 <!-- ===== NAV ===== -->
 <nav id="nav">
@@ -105,6 +106,7 @@
 </ul>
 
 <!-- ===== HERO ===== -->
+<main id="main">
 <section id="hero">
   <div class="hero-bg-gradient">
     <img src="images/team-group1.jpg" alt="Team YUZ" class="hero-bg-img" />
@@ -132,8 +134,8 @@
 <a class="goods-promo goods-promo--soldout" href="#shop">
   <div class="gp-inner">
     <div class="gp-duo" aria-hidden="true">
-      <img class="gp-thumb" src="images/goods/bag-1.jpg" alt="" />
-      <img class="gp-thumb" src="images/goods/stick-1.jpg" alt="" />
+      <img class="gp-thumb" src="images/goods/bag-1.jpg" alt="" loading="lazy" />
+      <img class="gp-thumb" src="images/goods/stick-1.jpg" alt="" loading="lazy" />
     </div>
     <div class="gp-text">
       <span class="gp-tag">SOLD OUT · 완판 감사합니다</span>
@@ -175,7 +177,7 @@
         <p class="about-em">때로는 강렬하게, 때로는 유쾌하게, 때로는 깊이 있게.<br>유즈는 노래와 퍼포먼스로 관객과 함께 뛰고, 웃고, 즐기는 무대를 만듭니다.</p>
       </div>
       <div class="about-photo-wrap">
-        <img src="images/team-blue-seated.jpg" alt="팀 유즈 단체 사진" class="about-photo" />
+        <img src="images/team-blue-seated.jpg" alt="팀 유즈 단체 사진" class="about-photo" loading="lazy" decoding="async" />
       </div>
     </div>
 
@@ -220,7 +222,7 @@
     <div class="video-grid">
       <a class="video-card" href="https://youtube.com/@yuzevent-m3o?si=EU79TVnv4PNMsl62" target="_blank" rel="noopener">
         <div class="video-thumb-wrap">
-          <img src="images/perf-imgs/img-018.jpg" alt="해운대 버스킹 페스티벌" class="video-thumb" />
+          <img src="images/perf-imgs/img-018.jpg" alt="해운대 버스킹 페스티벌" class="video-thumb" loading="lazy" decoding="async" />
           <div class="video-play-overlay">
             <div class="video-play-btn">
               <svg viewBox="0 0 24 24" width="36" height="36"><path d="M8 5v14l11-7z" fill="white"/></svg>
@@ -439,7 +441,7 @@
         <div class="member-flip-inner">
           <div class="member-front">
             <div class="member-photo-front">
-              <img src="images/member-ryu.jpg" alt="류수홍" />
+              <img src="images/member-ryu.jpg" alt="류수홍" loading="lazy" decoding="async" />
             </div>
             <div class="member-info-front">
               <div class="member-role-tag musical">뮤지컬 배우 · 리더</div>
@@ -468,7 +470,7 @@
         <div class="member-flip-inner">
           <div class="member-front">
             <div class="member-photo-front">
-              <img src="images/member-lee-jh.jpg" alt="이정효" />
+              <img src="images/member-lee-jh.jpg" alt="이정효" loading="lazy" decoding="async" />
             </div>
             <div class="member-info-front">
               <div class="member-role-tag crossover">실용음악 · 뮤지컬 · 성악</div>
@@ -495,7 +497,7 @@
         <div class="member-flip-inner">
           <div class="member-front">
             <div class="member-photo-front">
-              <img src="images/member-park-sb.jpg" alt="박성빈" />
+              <img src="images/member-park-sb.jpg" alt="박성빈" loading="lazy" decoding="async" />
             </div>
             <div class="member-info-front">
               <div class="member-role-tag vocal">성악 · Tenor</div>
@@ -523,7 +525,7 @@
         <div class="member-flip-inner">
           <div class="member-front">
             <div class="member-photo-front">
-              <img src="images/member-lee-hj-profile.jpg" alt="이호준" />
+              <img src="images/member-lee-hj-profile.jpg" alt="이호준" loading="lazy" decoding="async" />
             </div>
             <div class="member-info-front">
               <div class="member-role-tag vocal">성악 · Bass</div>
@@ -1014,9 +1016,9 @@
     <p class="section-desc">팀 유즈에게 응원 메시지를 남겨주세요! 💙</p>
     <div class="guestbook-wrap">
       <form class="guestbook-form" id="guestbookForm">
-        <input type="text" name="hp_website" style="display:none" tabindex="-1" autocomplete="off" />
-        <input type="text" id="gbName" class="gb-input" placeholder="이름 (필명 가능)" maxlength="20" required />
-        <input type="text" id="gbMessage" class="gb-input gb-msg-input" placeholder="응원 메시지를 남겨주세요! (최대 200자)" maxlength="200" required />
+        <input type="text" name="hp_website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="text" id="gbName" class="gb-input" aria-label="이름" placeholder="이름 (필명 가능)" maxlength="20" required />
+        <input type="text" id="gbMessage" class="gb-input gb-msg-input" aria-label="응원 메시지" placeholder="응원 메시지를 남겨주세요! (최대 200자)" maxlength="200" required />
         <button type="submit" class="btn btn-primary">남기기</button>
       </form>
       <div class="guestbook-list" id="guestbookList"></div>
@@ -1025,11 +1027,13 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
+</main>
+
 <footer id="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="images/logo-team.png" alt="Team YUZ 팀 유즈" class="footer-logo-img" />
+        <img src="images/logo-team.png" alt="Team YUZ 팀 유즈" class="footer-logo-img" loading="lazy" />
         <p>유즈 이벤트 컴퍼니<br>대표 류수홍</p>
         <p class="footer-copy">사업자등록번호 416-26-29575<br>간이과세자</p>
       </div>
@@ -1093,7 +1097,7 @@
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
     공연 문의하기
   </a>
-  <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener" class="m-sticky-insta">
+  <a href="https://instagram.com/team_yuz_" target="_blank" rel="noopener" class="m-sticky-insta" aria-label="팀 유즈 인스타그램">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
   </a>
 </div>
@@ -1111,7 +1115,7 @@
     <button class="perf-modal-close" id="perfModalClose">×</button>
     <div class="perf-modal-img-wrap">
       <button class="perf-modal-nav perf-modal-prev" id="perfModalPrev">‹</button>
-      <img class="perf-modal-img" id="perfModalImg" src="" alt="" />
+      <img class="perf-modal-img" id="perfModalImg" alt="" />
       <button class="perf-modal-nav perf-modal-next" id="perfModalNext">›</button>
     </div>
     <div class="perf-modal-footer">

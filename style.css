@@ -6,13 +6,13 @@
   --sky-light: #A8D8F0;
   --sky-pale:  #E8F5FD;
   --sky-bg:    #F0F8FF;
-  --sky-dark:  #2A7AB5;
+  --sky-dark:  #246EA6;
   --navy:      #1A3A5C;
   --white:     #FFFFFF;
   --off-white: #F8FAFC;
   --text-dark: #1A2332;
   --text-mid:  #4A6278;
-  --text-light:#8AA0B4;
+  --text-light:#5F7488;
   --border:    #D4E8F5;
   --card-bg:   #FFFFFF;
   --font-serif: 'Cormorant Garamond', 'Noto Serif KR', serif;
@@ -2356,3 +2356,88 @@ body.pay-confirm-open { overflow: hidden; }
 .goods-next-ph { color: var(--sky-dark); opacity: 1; }
 .member-initial .ico { color: var(--sky); }
 .nav-cta .ico, .rep-filter .ico { font-size: 1.05em; margin-right: 2px; }
+
+
+/* =====================================================================
+   2026-11 접근성 · 다듬기
+   ===================================================================== */
+
+/* --- 색 대비: 흰 글자가 올라가는 하늘색 면은 진한 하늘색으로 --- */
+.btn-primary, .gp-cta, .nav-cta, .rep-filter.active, .size-btn.active,
+.gb-avatar, .fc-tag, .m-sticky-inquiry, .fold-btn:hover {
+  background: var(--sky-dark); border-color: var(--sky-dark); color: var(--white);
+}
+.btn-primary { box-shadow: 0 6px 18px rgba(36,110,166,.28); }
+.btn-primary:hover, .goods-promo:hover .gp-cta, .nav-cta:hover {
+  background: var(--navy); color: var(--white);
+  box-shadow: 0 10px 24px rgba(26,58,92,.28);
+}
+.rep-filter-wedding.active { background: #B03A70; border-color: #B03A70; }
+/* 흰 바탕 위 하늘색 글자 */
+.stat-num, .rep-count, .sched-date, .flip-hint, .swipe-hint,
+.blog-loading { color: var(--sky-dark); }
+.flip-hint { opacity: 1; }
+.sched-badge.past { color: var(--text-mid); }
+.rep-genre.트로트 { color: #B34700; }
+.rep-wedding, .goods-badge.limited { color: #B03A70; }
+.btn-youtube { background: #D00000; }
+.btn-youtube:hover { background: #A80000; }
+
+/* --- 제목 위 영문 라벨 제거: 제목이 직접 말하게 --- */
+.section-label { display: none; }
+.prog-number { display: none; }
+.section-title {
+  font-size: clamp(2.1rem, 5.4vw, 3.2rem); font-weight: 700;
+  letter-spacing: -.02em; line-height: 1.18;
+}
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+.perf-table td, .sched-date, .price-table td, .gcd-num, .stat-num { font-variant-numeric: tabular-nums; }
+
+/* --- 깊이: 은은한 그림자 + 눌리는 느낌 --- */
+.btn { transition: background .2s, color .2s, box-shadow .25s cubic-bezier(.16,1,.3,1), transform .25s cubic-bezier(.16,1,.3,1); }
+.btn:active { transform: translateY(0) scale(.98); }
+.id-card, .program-card, .review-card, .sched-row, .rep-item, .goods-hero {
+  box-shadow: 0 1px 2px rgba(26,58,92,.04), 0 8px 24px -12px rgba(26,58,92,.12);
+}
+
+/* --- 브라우저 기본 요소도 팀 색으로 --- */
+::selection { background: var(--sky-light); color: var(--navy); }
+html { accent-color: var(--sky-dark); caret-color: var(--sky-dark); scrollbar-color: var(--sky-light) transparent; }
+a { text-underline-offset: 3px; }
+
+/* --- 키보드 포커스 표시 --- */
+:focus-visible { outline: 2.5px solid var(--sky-dark); outline-offset: 3px; border-radius: 6px; }
+#footer :focus-visible, .nav-links.open :focus-visible, .goods-promo:focus-visible,
+.goods-soldout :focus-visible, .goods-cd :focus-visible, #hero :focus-visible { outline-color: var(--white); }
+
+/* --- 본문 바로가기 (키보드 사용자) --- */
+.skip-link {
+  position: fixed; left: 12px; top: -60px; z-index: 10000;
+  background: var(--navy); color: var(--white);
+  padding: 10px 16px; border-radius: 10px; font-size: .88rem; font-weight: 700;
+  transition: top .2s;
+}
+.skip-link:focus { top: 12px; color: var(--white); }
+
+/* --- 누르기 쉬운 크기 (모바일) --- */
+@media (max-width: 640px) {
+  .footer-links li { margin-bottom: 0; }
+  .footer-links a, .footer-contact a, .biz-links a, .biz-grid a {
+    display: inline-flex; align-items: center; min-height: 44px;
+  }
+  .footer-contact p { margin-bottom: 0; }
+  .schedule-note a { display: inline-block; padding: 12px 4px; margin: -12px -4px; }
+  .contact-info a, .email-link { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* --- 동작 줄이기 설정 존중: 내용은 바로 보이고, 장식 움직임만 끔 --- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-scroll span, .swipe-hint, .particle, #particles, .hero-particles { animation: none !important; }
+  .btn, .btn:hover, .btn:active { transform: none; }
+  * { scroll-behavior: auto !important; }
+}
+.review-tag.festival { color: #B34700; }
+h1, h2, h3, h4, .section-desc { word-break: keep-all; }
