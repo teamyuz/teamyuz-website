@@ -2315,3 +2315,32 @@ body.pay-confirm-open { overflow: hidden; }
   .gp-duo .gp-thumb + .gp-thumb { margin-left: -14px; }
 }
 .goods-cd--soldout .gcd-note, .gso-text, .gso-wait, .gso-title { word-break: keep-all; }
+
+/* ===== 긴 목록 접기 ===== */
+.fold.is-folded {
+  max-height: var(--fold-h, 560px); overflow-y: hidden;
+  -webkit-mask-image: linear-gradient(#000 calc(100% - 110px), transparent);
+          mask-image: linear-gradient(#000 calc(100% - 110px), transparent);
+}
+.fold-btn {
+  display: block; margin: 18px auto 0;
+  background: var(--white); color: var(--sky-dark);
+  border: 1.5px solid var(--sky); border-radius: 26px;
+  padding: 11px 26px; font-family: var(--font-sans);
+  font-size: .86rem; font-weight: 700; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.fold-btn:hover { background: var(--sky); color: var(--white); }
+.fold-btn[hidden] { display: none; }
+
+/* ===== 모바일 가독성 · 하단 정리 ===== */
+@media (max-width: 640px) {
+  .fold-btn { width: 100%; max-width: 320px; font-size: .84rem; }
+  /* 너무 작던 글자(9px대)를 읽을 수 있는 크기로 */
+  .hero-sub   { font-size: .68rem; letter-spacing: .22em; }
+  .rep-source { font-size: .68rem; }
+  .rep-genre, .rep-wedding { font-size: .64rem; }
+  .review-tag { font-size: .68rem; }
+  /* 하단 바로가기: 한 줄씩 길게 → 2열 */
+  .footer-links ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+}

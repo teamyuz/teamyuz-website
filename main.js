@@ -715,11 +715,51 @@ function initNaverBlogFeed() {
     .catch(() => { grid.innerHTML = '<p class="blog-loading">포스트를 불러올 수 없습니다.</p>'; });
 }
 
+// ===== 긴 목록 접기 (일정 · 실적 · 레퍼토리) =====
+// 처음에는 일부만 보여 주고 [전체 보기] 버튼으로 펼침 — 페이지가 끝없이 길어지는 것 방지
+function initFolds() {
+  const targets = [
+    { sel: '#scheduleList',    h: 560, label: '공연 일정' },
+    { sel: '.perf-table-wrap', h: 620, label: '공연 실적' },
+    { sel: '#repGrid',         h: 520, label: '레퍼토리' }
+  ];
+  targets.forEach(({ sel, h, label }) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    el.classList.add('fold');
+    el.style.setProperty('--fold-h', h + 'px');
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fold-btn';
+    el.insertAdjacentElement('afterend', btn);
+
+    let open = false;
+    const sync = () => {
+      const need = el.scrollHeight > h + 120;   // 조금만 넘치면 접지 않음
+      btn.hidden = !need;
+      el.classList.toggle('is-folded', need && !open);
+      btn.textContent = open ? '접기' : label + ' 전체 보기';
+      btn.setAttribute('aria-expanded', String(open));
+    };
+    btn.addEventListener('click', () => {
+      open = !open;
+      sync();
+      if (!open) el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    });
+    // 레퍼토리 필터처럼 내용이 바뀌면 다시 계산
+    new MutationObserver(sync).observe(el, { childList: true });
+    window.addEventListener('resize', sync);
+    sync();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initFilters();
   renderSchedule();
   syncPerfTableStatus();
+  initFolds();
   initForm();
   initReveal();
   initPerfModal();
